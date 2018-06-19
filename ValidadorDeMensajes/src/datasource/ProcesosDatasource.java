@@ -34,13 +34,16 @@ public class ProcesosDatasource implements IDatasource{
      */
     public ProcesosDatasource(){
         this.procesos = new LinkedList<>();
-        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, true);
+        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, false);
         for (String dato : datos_csv){
             String[] datos_proc = dato.split(";");
             String proc_nombre = datos_proc[0];
             String proc_tipo = datos_proc[1];
             String proc_comportamiento = datos_proc[2];
-            Proceso proc = new Proceso(proc_nombre, proc_tipo, proc_comportamiento);
+            Long proc_tiempoDeLlegada = Long.parseLong(datos_proc[3]);
+            Proceso proc = new Proceso(proc_nombre, proc_tipo, proc_comportamiento, proc_tiempoDeLlegada);
+            
+            //Aca va el codigo para que la insercion sea ordenada
             procesos.addLast(proc);
         }
     }
