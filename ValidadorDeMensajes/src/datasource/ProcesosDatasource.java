@@ -42,13 +42,20 @@ public class ProcesosDatasource implements IDatasource{
             String proc_comportamiento = datos_proc[2];
             Long proc_tiempoDeLlegada = Long.parseLong(datos_proc[3]);
             Proceso proc = new Proceso(proc_nombre, proc_tipo, proc_comportamiento, proc_tiempoDeLlegada);
+            this.insertarOrdenado(proc);
             
             //Aca va el codigo para que la insercion sea ordenada
-            procesos.addLast(proc);
+           
         }
     }
     // End Constructors ***********************************
 
+    
+    private void insertarOrdenado(Proceso proc)
+    {
+        //procesos.getLast().
+       //  procesos.addLast(proc);
+    }
     
     /**
      * Methods
