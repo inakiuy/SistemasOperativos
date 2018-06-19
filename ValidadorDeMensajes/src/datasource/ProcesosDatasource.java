@@ -35,7 +35,7 @@ public class ProcesosDatasource implements IDatasource{
      */
     public ProcesosDatasource(){
         this.listaProcesos = new LinkedList<>();
-        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, false);
+        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, true);  //Hay que ignorar la cabeza
         for (String dato : datos_csv){
             String[] datos_proc = dato.split(";");
             String proc_nombre = datos_proc[0];
@@ -49,22 +49,26 @@ public class ProcesosDatasource implements IDatasource{
     // End Constructors ***********************************
 
     
-    private void insertarOrdenado(Proceso proc)
-    { 
-        if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
-            listaProcesos.addLast(proc);
+    private void insertarOrdenado(Proceso proc) { 
+        if( listaProcesos.size() != 0 ){            
+            if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
+                listaProcesos.addLast(proc);
+            }
+            else{
+                Iterator <IProceso> iter = listaProcesos.iterator();            
+                for(int i = 0; i <= listaProcesos.size(); i++) {
+                    if ( iter.hasNext() ){                              //Iterador de java
+                        Proceso procesoSeleccionado = (Proceso) iter.next();
+                        if ( proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada() ){
+                            listaProcesos.add(i-1,proc);            //Agrega al anteriro, ya que se paso por uno.
+                            break;
+                        }
+                    }
+                }   
+            }
         }
         else{
-            Iterator <IProceso> iter = listaProcesos.iterator();            
-            for(int i = 0; i <= listaProcesos.size(); i++) {
-                if ( iter.hasNext() ){                              //Iterador de java
-                    Proceso procesoSeleccionado = (Proceso) iter.next();
-                    if ( proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada() ){
-                        listaProcesos.add(i-1,proc);            //Agrega al anteriro, ya que se paso por uno.
-                        break;
-                    }
-                }
-            }   
+            listaProcesos.addLast(proc);
         }
     }
     
