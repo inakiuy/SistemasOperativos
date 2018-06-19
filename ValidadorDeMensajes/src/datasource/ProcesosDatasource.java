@@ -6,6 +6,7 @@
 package datasource;
 
 import java.util.LinkedList;
+import java.util.Iterator;
 import entidades.IProceso;
 import entidades.Proceso;
 
@@ -18,7 +19,7 @@ public class ProcesosDatasource implements IDatasource{
      * Atributes
      * *****************************************************
      */
-    private LinkedList<IProceso> procesos;
+    private LinkedList<IProceso> listaProcesos;
     private String RUTA_DATOS = "./src/datos/procesos.txt";
     // End Atributes *************************************
 
@@ -33,7 +34,7 @@ public class ProcesosDatasource implements IDatasource{
      * en una lista
      */
     public ProcesosDatasource(){
-        this.procesos = new LinkedList<>();
+        this.listaProcesos = new LinkedList<>();
         String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, false);
         for (String dato : datos_csv){
             String[] datos_proc = dato.split(";");
@@ -43,18 +44,28 @@ public class ProcesosDatasource implements IDatasource{
             Long proc_tiempoDeLlegada = Long.parseLong(datos_proc[3]);
             Proceso proc = new Proceso(proc_nombre, proc_tipo, proc_comportamiento, proc_tiempoDeLlegada);
             this.insertarOrdenado(proc);
-            
-            //Aca va el codigo para que la insercion sea ordenada
-           
         }
     }
     // End Constructors ***********************************
 
     
     private void insertarOrdenado(Proceso proc)
-    {
-        //procesos.getLast().
-       //  procesos.addLast(proc);
+    { 
+        if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
+            listaProcesos.addLast(proc);
+        }
+        else{
+            Iterator <IProceso> iter = listaProcesos.iterator();            
+            for(int i = 0; i <= listaProcesos.size(); i++) {
+                if ( iter.hasNext() ){                              //Iterador de java
+                    Proceso procesoSeleccionado = (Proceso) iter.next();
+                    if ( proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada() ){
+                        listaProcesos.add(i-1,proc);            //Agrega al anteriro, ya que se paso por uno.
+                        break;
+                    }
+                }
+            }   
+        }
     }
     
     /**
@@ -74,7 +85,7 @@ public class ProcesosDatasource implements IDatasource{
       * @return 
       */
     public IProceso getPrimerProc(){
-        return this.procesos.getFirst();
+        return this.listaProcesos.getFirst();
     }
     // End Getters and Setters **************************** 
 }

@@ -5,6 +5,8 @@
  */
 package entidades;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Inaki
@@ -12,4 +14,6 @@ package entidades;
 public interface IProceso {
     public String getNombre();
     public String getTipo();
+    public LinkedList getComportamiento();
+    public Long getTiempoDeLlegada();
 }
