@@ -1,0 +1,5 @@
+calc_puntaje_mensaje-1;A;3,6,3
+firmar_mensaje-11;B;6,1,2
+calc_nivel_confianza-1;C;5,2,5
+conulstar_validez_mensaje-1;D;2,2
+calc_premio-1;E;10,5,10,5
