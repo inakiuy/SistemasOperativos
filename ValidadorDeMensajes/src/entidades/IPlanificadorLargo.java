@@ -9,6 +9,6 @@ package entidades;
  *
  * @author Inaki
  */
-public interface IPlanificadorLargo {
-    
+public interface IPlanificadorLargo extends Runnable{
+
 }

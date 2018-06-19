@@ -41,7 +41,7 @@ public class ProcesosDatasource implements IDatasource{
             String proc_tipo = datos_proc[1];
             String proc_comportamiento = datos_proc[2];
             Proceso proc = new Proceso(proc_nombre, proc_tipo, proc_comportamiento);
-            procesos.add(proc);
+            procesos.addLast(proc);
         }
     }
     // End Constructors ***********************************

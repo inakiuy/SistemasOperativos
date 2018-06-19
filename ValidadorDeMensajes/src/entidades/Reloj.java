@@ -22,7 +22,7 @@ public class Reloj implements Runnable {
      */
     private String nombre;
     private long intervaloDeTiempo;
-    private long tiempoActual;
+    private Long tiempoActual;
     private IDatasource fuenteDeDatosProcesos;
     private AtomicBoolean monitorPL;
     private AtomicBoolean monitorPC;
@@ -43,7 +43,7 @@ public class Reloj implements Runnable {
     public Reloj(String pnombre, int pintervalo, IDatasource pFuenteDeDatosProcesos) {
         this.nombre = pnombre;
         this.intervaloDeTiempo = pintervalo;
-        this.tiempoActual = 0;
+        this.tiempoActual = new Long(0);
         this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
         this.monitorPL = new AtomicBoolean();
         this.monitorPC = new AtomicBoolean();
@@ -61,21 +61,29 @@ public class Reloj implements Runnable {
     public void run() {
         //ACA VA LO QUE HACE EL RELOJ
 
-        //Creamos hilos de planificador largo que son los objetos que admiten los
-        //procesos desde la fuente de datos.
-        Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL);
-        Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
-
-        //Creamos hilo del planificador a corto plazo que es el objeto encargado
-        //de planificar el uso de CPU de forma eficiente.
-        Runnable ru_planificadorCorto = new PlanificadorCorto(this.monitorPC);
-        Thread th_planificadorCorto = new Thread(ru_planificadorCorto);
-
-        //Creamos los CPU. Esto se podr{ia parametrizar y que se creen N CPUs
-        Runnable ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs);
-        Runnable ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs);
+        //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
+        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs);
+        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs);
         Thread th_cpu1 = new Thread(ru_cpu1);
         Thread th_cpu2 = new Thread(ru_cpu2);
+        
+        //Meto los cpu en un array para pasarlos al Planificador Corto que los
+        //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
+        ICpu[] CPUs = new ICpu[2];
+        CPUs[0] = ru_cpu1;
+        CPUs[1] = ru_cpu2;
+        
+        //Creamos hilo del planificador a corto plazo que es el objeto encargado
+        //de planificar el uso de CPU de forma eficiente.
+        IPlanificadorCorto ru_planificadorCorto = new PlanificadorCorto(this.monitorPC, CPUs);
+        Thread th_planificadorCorto = new Thread(ru_planificadorCorto);
+
+        //Creamos hilos de planificador largo que son los objetos que admiten los
+        //procesos desde la fuente de datos.
+        Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, getFuenteDeDatosProcesos(), ru_planificadorCorto);
+        Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
+
+
 
         try {
             // Arranco todos los hilos. Su primera instruccion es parar a la espera
@@ -97,6 +105,7 @@ public class Reloj implements Runnable {
                         monitorPL.wait();
                     }
                 }
+                
                 // Terminado el planificadorLargo comienza el planificadorCorto
                 synchronized (monitorPC) {
                     monitorPC.set(true);

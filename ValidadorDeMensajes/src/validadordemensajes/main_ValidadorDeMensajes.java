@@ -14,20 +14,26 @@ import datasource.ProcesosDatasource;
  * @author Inaki
  */
 public class main_ValidadorDeMensajes {
-    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        /**
+         * Paramtros *****************************************************
+         */
+        final int INTERVALO_TIEMPO = 1000;
+        final String NOMBRE_RELOJ = "RELOJ-1";
+        // Fin Paramtros *****************************************************
+        
         //Cargamos los datos de prueba en una lista para luego alimentar el sistema
-        IDatasource fuenteDeDatosProcesos = new ProcesosDatasource();
+        final IDatasource fuenteDeDatosProcesos = new ProcesosDatasource();
         
         //Creamos el reloj que sincronizara la simulacion
-        Runnable ru_reloj = new Reloj("Reloj-1", 1000, fuenteDeDatosProcesos);
+        Runnable ru_reloj = new Reloj(NOMBRE_RELOJ, INTERVALO_TIEMPO, fuenteDeDatosProcesos);
         Thread th_reloj = new Thread(ru_reloj);
         
         //Iniciamos la simulacion
         th_reloj.start();
-    }    
+    }
+    
 }

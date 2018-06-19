@@ -9,6 +9,6 @@ package entidades;
  *
  * @author Inaki
  */
-public interface IPlanificadorCorto extends Runnable{
-    public void ingresarProceso(IProceso pproceso);
+public interface IMonitor {
+    
 }

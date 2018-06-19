@@ -5,18 +5,22 @@
  */
 package entidades;
 
+import datasource.IDatasource;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
  * @author Inaki
  */
-public class PlanificadorLargo implements IPlanificadorLargo, Runnable {
+public class PlanificadorLargo implements IPlanificadorLargo {
 
     /**
      * Atributes *****************************************************
      */
     private AtomicBoolean monitorPL;
+    private Reloj reloj;
+    private IDatasource fuenteDeDatosProcesos;
+    private IPlanificadorCorto planificadorCorto;
     // End Atributes **************************************
 
     /**
@@ -29,6 +33,13 @@ public class PlanificadorLargo implements IPlanificadorLargo, Runnable {
      */
     public PlanificadorLargo(AtomicBoolean pmonitorPL) {
         this.monitorPL = pmonitorPL;
+    }
+
+    public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, IDatasource pfuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
+        this.monitorPL = pmonitorPL;
+        this.reloj = preloj;
+        this.fuenteDeDatosProcesos = pfuenteDeDatosProcesos;
+        this.planificadorCorto = pplanificadorCorto;
     }
     // End Constructors ***********************************
 
@@ -51,7 +62,7 @@ public class PlanificadorLargo implements IPlanificadorLargo, Runnable {
                 
                 
                 
-                
+                System.out.println("1 - Tiempo actual: " + this.reloj.getTiempoActual());
                 
                 
                 
@@ -66,6 +77,13 @@ public class PlanificadorLargo implements IPlanificadorLargo, Runnable {
         } catch (Exception e) {
             System.out.println("Algo salio mal en PL: " + e.toString());
         }
+    }
+    
+    /**
+     * 
+     */
+    private void planificar(){
+        
     }
     // End Methods ****************************************
 }

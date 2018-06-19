@@ -12,13 +12,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author Inaki
  */
-public class PlanificadorCorto implements IPlanificadorCorto, Runnable {
+public class PlanificadorCorto implements IPlanificadorCorto {
 
     /**
      * Atributes *****************************************************
      */
     private AtomicBoolean monitorPC;
     private LinkedList[] colas;
+    private final int tamanioQuantum;
+    private final ICpu[] cpus;
     // End Atributes **************************************
 
     /**
@@ -29,8 +31,10 @@ public class PlanificadorCorto implements IPlanificadorCorto, Runnable {
      *
      * @param pmonitorPC
      */
-    public PlanificadorCorto(AtomicBoolean pmonitorPC) {
+    public PlanificadorCorto(AtomicBoolean pmonitorPC, ICpu[] pcpus) {
         this.monitorPC = pmonitorPC;
+        this.tamanioQuantum = 4;
+        this.cpus = pcpus;
     }
     // End Constructors ***********************************
 
@@ -69,4 +73,9 @@ public class PlanificadorCorto implements IPlanificadorCorto, Runnable {
         }
     }
     // End Methods ****************************************
+
+    @Override
+    public void ingresarProceso(IProceso pproceso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

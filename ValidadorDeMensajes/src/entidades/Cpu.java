@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author Inaki
  */
-public class Cpu implements Runnable {
+public class Cpu implements ICpu {
 
     /**
      * Atributes *****************************************************
@@ -57,7 +57,7 @@ public class Cpu implements Runnable {
                 if (this.getProcesoCorriendo() != null) {
                     System.out.println("3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
                 } else {
-                    System.out.println(this.getNombre() + "3 - " + this.getNombre() + " vacio");
+                    System.out.println("3 - " + this.getNombre() + " vacio");
                 }
                 Thread.sleep(1000);
                 
