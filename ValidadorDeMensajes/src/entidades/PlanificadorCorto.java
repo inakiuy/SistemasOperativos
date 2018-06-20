@@ -37,9 +37,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.tamanioQuantum = 4;
         this.cpus = pcpus;
         this.cantProcesosRestantes = 500;
-        this.pilaListas = new LinkedList[5];    // Array de 5, se usaran solo 4, del 1 al 5.
+        this.pilaListas = new LinkedList[6];    // Array de 5, se usaran solo 4, del 1 al 5.
         
-        for ( int i = 1 ; i <= 5 ; i++) {               
+        for ( int i = 1 ; i <= 5 ; i++) {    
+            System.out.println(i);
             pilaListas[i] = new LinkedList<Proceso>();
         }
         

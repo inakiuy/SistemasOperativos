@@ -44,6 +44,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
         this.reloj = preloj; 
         this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
         this.planificadorCorto = pplanificadorCorto;
+        this.listaProcesosPL = new LinkedList<IProceso>();   
     }
     // End Constructors ***********************************
 
@@ -85,7 +86,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private void planificar(){
     
         this.obtenerNuevosProcesos();      
-        while ( this.listaProcesosPL.size() != 0 || this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
+        while ( this.listaProcesosPL.size() != 0 && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
             if ( this.listaProcesosPL.size() != 0 ) {
             IProceso x = this.listaProcesosPL.removeFirst();
             this.planificadorCorto.ingresarProceso(x);
