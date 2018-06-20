@@ -41,7 +41,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.pilaListas = new LinkedList[6];    // Array de 5, se usaran solo 4, del 1 al 5.
         
         for ( int i = 1 ; i < this.pilaListas.length ; i++) {
-            pilaListas[i] = new LinkedList<IProceso>();
+            pilaListas[i] = new LinkedList<>();
         }
     }
     
@@ -64,7 +64,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 }
                 System.out.println("2 - Ejecutando planificador CORTO...");
                 
-                
+                    this.planificar();
                 
                 System.out.println("2 - Fin planificador CORTO.");
                 synchronized (monitorPC) {
@@ -82,35 +82,33 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private void planificar(){
         
         this.asignarProcesosCpusVacios();
-        
+    
     }
+   
     
-    
-    
+   
     private void asignarProcesosCpusVacios() {
             
-            for (int i =0 ; i < this.cpus.length ; i++ ) {                          // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
-            if ( ! this.cpus[i].hayProceso() ){
-                for ( int j = 1; j <= this.pilaListas.length; j++ ) {           // Buscar el primer proceso con mayor prioridad.
-                    if ( ! this.pilaListas[j].isEmpty() ) {
-                        IProceso primero = this.pilaListas[j].removeFirst();
-                        this.cpus[i].setProcesoCorriendo(primero);
+        for (ICpu cpu : this.cpus) {
+            // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
+            if (!cpu.hayProceso()) {
+                for (int i = 1; i <= this.pilaListas.length; i++) {
+                    // Buscar el primer proceso con mayor prioridad.
+                    if (! this.pilaListas[i].isEmpty()) {
+                        IProceso primero = this.pilaListas[i].removeFirst();
+                        cpu.setProcesoCorriendo(primero);
                         break;
-                    }  
+                    }
                 } 
                 break;      //Es necesario este BREAK para el primer for?  -------------
             }  
         }
     }      
-    
-    
-    
-    
-    
+               
     
     @Override
-    public void ingresarProceso(IProceso pproceso) {
-        this.pilaListas[3].addLast(pproceso);        //Esto simula la pila 3
+    public void ingresarProceso(IProceso pproceso, int lista) {
+        this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila 3
         this.cantProcesosRestantes -= 1;
     }
     

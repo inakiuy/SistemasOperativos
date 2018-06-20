@@ -14,6 +14,10 @@ import java.util.LinkedList;
 public interface IProceso {
     public String getNombre();
     public String getTipo();
-    public LinkedList getComportamiento();
+    public LinkedList<Integer> getComportamiento();
     public Long getTiempoDeLlegada();
+    public int getPrioridad();
+    public void setPrioridad(int prioridad);
+    public Boolean getEntradaSalida();
+    public void setEntradaSalida();
 }

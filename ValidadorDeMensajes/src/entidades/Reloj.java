@@ -63,20 +63,13 @@ public class Reloj implements Runnable {
     public void run() {
         //ACA VA LO QUE HACE EL RELOJ
 
-        //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
-        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs);
-        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs);
-        Thread th_cpu1 = new Thread(ru_cpu1);
-        Thread th_cpu2 = new Thread(ru_cpu2);
-        
+     
         //Meto los cpu en un array para pasarlos al Planificador Corto que los
         //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
        
         int n = 2;
         ICpu[] CPUs = new ICpu[n];
-        CPUs[0] = ru_cpu1;
-        CPUs[1] = ru_cpu2;
-        
+      
         //Creamos hilo del planificador a corto plazo que es el objeto encargado
         //de planificar el uso de CPU de forma eficiente.
         IPlanificadorCorto ru_planificadorCorto = new PlanificadorCorto(this.monitorPC, CPUs);
@@ -87,7 +80,15 @@ public class Reloj implements Runnable {
         Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
-
+          //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
+        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs, ru_planificadorCorto);
+        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs, ru_planificadorCorto);
+        Thread th_cpu1 = new Thread(ru_cpu1);
+        Thread th_cpu2 = new Thread(ru_cpu2);
+        
+        CPUs[0] = ru_cpu1;
+        CPUs[1] = ru_cpu2;
+        
 
         try {
             // Arranco todos los hilos. Su primera instruccion es parar a la espera

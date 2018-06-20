@@ -88,7 +88,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
         while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
             if ( ! this.listaProcesosPL.isEmpty() ) {
             IProceso x = this.listaProcesosPL.removeFirst();
-            this.planificadorCorto.ingresarProceso(x);
+            this.planificadorCorto.ingresarProceso(x,3);        // Proceso X en la lista 3    (Van del 1 al 5)
             }
         }      
     }

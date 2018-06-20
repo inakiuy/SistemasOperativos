@@ -16,4 +16,5 @@ interface ICpu extends Runnable{
     public void setProcesoCorriendo(IProceso procesoCorriendo);
     public void borrarProcesoCorriendo();
     public boolean hayProceso();
+    
 }

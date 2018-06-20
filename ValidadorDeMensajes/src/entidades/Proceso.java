@@ -20,10 +20,13 @@ public class Proceso implements IProceso {
     private String nombre;
     private String tipo;
     private LinkedList<Integer> comportamiento;
+    private Boolean EntradaSalida; 
     private Long tiempoDeLlegada;
+    private int prioridad;
+    
     // End Atributes *************************************
 
-    
+      
     /**
      * Constructors ****************************************************
      */
@@ -55,6 +58,9 @@ public class Proceso implements IProceso {
             comportamiento.add(Integer.parseInt(dato));
         }
         this.tiempoDeLlegada = ptiempoDeLlegada;
+        this.prioridad = 3;                     // Prioridad 3 por defecto.
+        this.EntradaSalida = false;             //El primer valor no es una E/S
+        
     }
 
     // End Constructors ***********************************
@@ -72,6 +78,7 @@ public class Proceso implements IProceso {
     /**
      * @return the nombre
      */
+    @Override
     public String getNombre() {
         return nombre;
     }
@@ -79,6 +86,7 @@ public class Proceso implements IProceso {
     /**
      * @return the tipo
      */
+    @Override
     public String getTipo() {
         return tipo;
     }
@@ -86,6 +94,7 @@ public class Proceso implements IProceso {
     /**
      * @return the comportamiento
      */
+    @Override
     public LinkedList getComportamiento() {
         return comportamiento;
     }
@@ -93,12 +102,29 @@ public class Proceso implements IProceso {
     /**
      * @return the tiempoDeLlegada
      */
+    @Override
     public Long getTiempoDeLlegada() {
         return tiempoDeLlegada;
     }
     // End Getters and Setters ****************************    
 
-    Iterator<IProceso> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    @Override
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+    
+    @Override
+    public Boolean getEntradaSalida() {
+        return EntradaSalida;
+    }
+
+    @Override
+    public void setEntradaSalida() {
+        this.EntradaSalida = ! EntradaSalida;
     }
 }

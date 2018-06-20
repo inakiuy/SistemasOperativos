@@ -19,6 +19,8 @@ public class Cpu implements ICpu {
     private String nombre;
     private IProceso procesoCorriendo;
     private AtomicBoolean monitorCPUs;
+    private final IPlanificadorCorto planificadorCorto;
+    
     // End Atributes **************************************
 
     /**
@@ -27,13 +29,16 @@ public class Cpu implements ICpu {
     /**
      *
      * @param pnombre
+     * @param monitorCPUs
+     * @param pPlanificadorCorto
      */
-    public Cpu(String pnombre, AtomicBoolean monitorCPUs) {
+    public Cpu(String pnombre, AtomicBoolean monitorCPUs, IPlanificadorCorto pPlanificadorCorto) {
         this.nombre = pnombre;
         this.monitorCPUs = monitorCPUs;
+        this.planificadorCorto = pPlanificadorCorto;
         this.procesoCorriendo = null;
-        
     }
+    
     // End Constructors ***********************************
 
     /**
@@ -53,19 +58,13 @@ public class Cpu implements ICpu {
                 }
                 System.out.println("3 - Ejecutando ciclo de " + this.getNombre());
                 
-                
-                
-                
                 if (this.getProcesoCorriendo() != null) {
                     System.out.println("3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    this.trabajar();
                 } else {
                     System.out.println("3 - " + this.getNombre() + " vacio");
                 }
                 Thread.sleep(1000);
-                
-                
-                
-                
                 
                 System.out.println("3 - Fin ciclo de " + this.getNombre());
 
@@ -78,6 +77,26 @@ public class Cpu implements ICpu {
             System.out.println("Algo salio mal en CPU + " + this.getNombre() + ": " + e.toString());
         }
     }
+
+
+    private void trabajar() {
+        int x = this.procesoCorriendo.getComportamiento().getFirst();
+        System.out.println(x);
+        if ( x != 1 ) {                                                   // Disminuye en uno el numero del primero.
+            this.procesoCorriendo.getComportamiento().set(0,x-1);
+             System.out.println(this.procesoCorriendo.getComportamiento().getFirst());
+        }
+               
+
+        else {
+            this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia el estado de E/S.
+            this.procesoCorriendo.setEntradaSalida();
+            
+            // Aca tendria que mover el proceso a un estado de bloqueado...   Y ya no seria necesaria el estado EntradaSalida
+            
+        }
+    }
+
     // End Methods ****************************************
 
     /**
@@ -86,6 +105,7 @@ public class Cpu implements ICpu {
     /**
      * @return the nombre
      */
+    @Override
     public String getNombre() {
         return nombre;
     }
@@ -93,6 +113,7 @@ public class Cpu implements ICpu {
     /**
      * @return the procesoCorriendo
      */
+    @Override
     public IProceso getProcesoCorriendo() {
         return procesoCorriendo;
     }
@@ -100,21 +121,21 @@ public class Cpu implements ICpu {
     /**
      * @param procesoCorriendo the procesoCorriendo to set
      */
+    @Override
     public void setProcesoCorriendo(IProceso procesoCorriendo) {
         this.procesoCorriendo = procesoCorriendo;
     }
     
+    @Override
     public void borrarProcesoCorriendo(){
         this.procesoCorriendo = null;
     }
     
     // End Getters and Setters ****************************   
     
+    @Override
     public boolean hayProceso(){
-        if ( this.procesoCorriendo != null ){
-            return true;
-        }
-        else return false;
+        return this.procesoCorriendo != null;
     }
 
 
