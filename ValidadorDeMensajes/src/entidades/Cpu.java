@@ -31,6 +31,8 @@ public class Cpu implements ICpu {
     public Cpu(String pnombre, AtomicBoolean monitorCPUs) {
         this.nombre = pnombre;
         this.monitorCPUs = monitorCPUs;
+        this.procesoCorriendo = null;
+        
     }
     // End Constructors ***********************************
 
@@ -101,5 +103,20 @@ public class Cpu implements ICpu {
     public void setProcesoCorriendo(IProceso procesoCorriendo) {
         this.procesoCorriendo = procesoCorriendo;
     }
+    
+    public void borrarProcesoCorriendo(){
+        this.procesoCorriendo = null;
+    }
+    
     // End Getters and Setters ****************************   
+    
+    public boolean hayProceso(){
+        if ( this.procesoCorriendo != null ){
+            return true;
+        }
+        else return false;
+    }
+
+
+    
 }

@@ -10,5 +10,10 @@ package entidades;
  * @author Inaki
  */
 interface ICpu extends Runnable{
-    
+
+    public String getNombre();
+    public IProceso getProcesoCorriendo();
+    public void setProcesoCorriendo(IProceso procesoCorriendo);
+    public void borrarProcesoCorriendo();
+    public boolean hayProceso();
 }

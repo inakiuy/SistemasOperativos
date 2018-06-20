@@ -8,10 +8,11 @@ package entidades;
 
 import datasource.IDatasource;
 import datasource.ProcesosDatasource;
+import java.lang.reflect.Array;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.ArrayList;
 /**
  *
  * @author Inaki
@@ -70,7 +71,9 @@ public class Reloj implements Runnable {
         
         //Meto los cpu en un array para pasarlos al Planificador Corto que los
         //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
-        ICpu[] CPUs = new ICpu[2];
+       
+        int n = 2;
+        ICpu[] CPUs = new ICpu[n];
         CPUs[0] = ru_cpu1;
         CPUs[1] = ru_cpu2;
         

@@ -64,12 +64,11 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                     }
                 }
                 System.out.println("1 - Ejecutando planificador LARGO...");
-                
-                System.out.println("1 - Tiempo actual: " + this.reloj.getTiempoActual());
-                
+  
                 this.planificar();
                 
                 System.out.println("1 - Fin planificador LARGO");
+  
                 synchronized (monitorPL) {
                     monitorPL.set(false);
                     monitorPL.notify();
@@ -86,8 +85,8 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private void planificar(){
     
         this.obtenerNuevosProcesos();      
-        while ( this.listaProcesosPL.size() != 0 && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
-            if ( this.listaProcesosPL.size() != 0 ) {
+        while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
+            if ( ! this.listaProcesosPL.isEmpty() ) {
             IProceso x = this.listaProcesosPL.removeFirst();
             this.planificadorCorto.ingresarProceso(x);
             }
