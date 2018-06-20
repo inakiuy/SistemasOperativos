@@ -49,7 +49,7 @@ public class ProcesosDatasource implements IDatasource{
     // End Constructors ***********************************
 
     private void insertarOrdenado(Proceso proc) { 
-        if( listaProcesos.size() != 0 ){            
+        if( !listaProcesos.isEmpty() ){            
             if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
                 listaProcesos.addLast(proc);
             }
@@ -85,6 +85,7 @@ public class ProcesosDatasource implements IDatasource{
     
      /**
       * 
+     * @param tiempo
       * @return 
       */
     
@@ -106,11 +107,4 @@ public class ProcesosDatasource implements IDatasource{
      public LinkedList<IProceso> getListaProcesos() {
         return listaProcesos;
     }
-
-
-    @Override
-    public IProceso getPrimerProc() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

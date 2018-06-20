@@ -60,7 +60,9 @@ public class Cpu implements ICpu {
                 
                 if (this.getProcesoCorriendo() != null) {
                     System.out.println("3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    
                     this.trabajar();
+                    
                 } else {
                     System.out.println("3 - " + this.getNombre() + " vacio");
                 }
@@ -81,16 +83,15 @@ public class Cpu implements ICpu {
 
     private void trabajar() {
         int x = this.procesoCorriendo.getComportamiento().getFirst();
-        System.out.println(x);
         if ( x != 1 ) {                                                   // Disminuye en uno el numero del primero.
             this.procesoCorriendo.getComportamiento().set(0,x-1);
-             System.out.println(this.procesoCorriendo.getComportamiento().getFirst());
         }
                
 
         else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia el estado de E/S.
-            this.procesoCorriendo.setEntradaSalida();
+            this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);            //Lo pasamos a la lista bloqueado del PC.
+            this.procesoCorriendo = null;                                                           // Se declara que no hay proceso en el CPU.
             
             // Aca tendria que mover el proceso a un estado de bloqueado...   Y ya no seria necesaria el estado EntradaSalida
             

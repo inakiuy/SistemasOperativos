@@ -20,7 +20,6 @@ public class Proceso implements IProceso {
     private String nombre;
     private String tipo;
     private LinkedList<Integer> comportamiento;
-    private Boolean EntradaSalida; 
     private Long tiempoDeLlegada;
     private int prioridad;
     
@@ -59,9 +58,7 @@ public class Proceso implements IProceso {
         }
         this.tiempoDeLlegada = ptiempoDeLlegada;
         this.prioridad = 3;                     // Prioridad 3 por defecto.
-        this.EntradaSalida = false;             //El primer valor no es una E/S
-        
-    }
+      }
 
     // End Constructors ***********************************
     
@@ -117,14 +114,4 @@ public class Proceso implements IProceso {
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
-    
-    @Override
-    public Boolean getEntradaSalida() {
-        return EntradaSalida;
-    }
-
-    @Override
-    public void setEntradaSalida() {
-        this.EntradaSalida = ! EntradaSalida;
-    }
-}
+ }

@@ -6,6 +6,7 @@
 package entidades;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -21,6 +22,8 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private int cantProcesosRestantes;
     private AtomicBoolean monitorPC;
     private LinkedList<IProceso>[] pilaListas;
+    private LinkedList<IProceso> listaBloqueados;
+
     private final int tamanioQuantum;       // Lo deberia de saber el Proceso, o el proceso saber en si cuantos cuantums va el?
     private final ICpu[] cpus;              //FINAL?? 
     // End Atributes **************************************
@@ -38,12 +41,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.tamanioQuantum = 4;
         this.cpus = pcpus;
         this.cantProcesosRestantes = 500;
+        
         this.pilaListas = new LinkedList[6];    // Array de 5, se usaran solo 4, del 1 al 5.
+        this.listaBloqueados = new LinkedList();
         
         for ( int i = 1 ; i < this.pilaListas.length ; i++) {
             pilaListas[i] = new LinkedList<>();
         }
     }
+
     
     // End Constructors ***********************************
 
@@ -80,12 +86,41 @@ public class PlanificadorCorto implements IPlanificadorCorto {
 
     
     private void planificar(){
-        
+        //PRIMERO
         this.asignarProcesosCpusVacios();
     
-    }
+        // Habria que chequear luego de que los CPU trabajen, si alguno quedo vacio, para asignarle uno nuevamente COMO HABIAMOS HABLADO.
+        
+        
+        
+        //ULTIMO
+        this.actualizarComportamientoProcesoBloqueado();
+     }
    
     
+    // FALTA HACER CHEQUEOS EN TODOS LOS QUE SAQUEMOS removeFirst, QUE NO SEA EL ULTIMO ELEMENTO --------------------------------- En algunos.
+    
+    private void actualizarComportamientoProcesoBloqueado() {
+        
+        Iterator <IProceso> iter = listaBloqueados.iterator();            
+        for(int i = 0; i < listaBloqueados.size(); i++) {
+            if ( iter.hasNext() ){                              //Iterador de java
+                Proceso procesoSeleccionado = (Proceso) iter.next();
+                if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() == 1){                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
+                    procesoSeleccionado.getComportamiento().removeFirst();
+                    // Aca iria algo asi como If procesoSeleccionado.getComportamiento() !0 null
+                    if ( procesoSeleccionado.getComportamiento() != null ) {
+                        this.ingresarProceso(procesoSeleccionado,procesoSeleccionado.getPrioridad());
+                    }
+                    else {}         // DETRUIR EL OBJETO de ESE proceso.
+                }
+                else {
+                    int nuevoValor = (Integer) procesoSeleccionado.getComportamiento().getFirst() - 1;
+                    procesoSeleccionado.getComportamiento().set(i,nuevoValor);
+                }
+            }
+        }
+    }
    
     private void asignarProcesosCpusVacios() {
             
@@ -100,16 +135,29 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         break;
                     }
                 } 
-                break;      //Es necesario este BREAK para el primer for?  -------------
             }  
         }
     }      
-               
+     
     
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
         this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila 3
         this.cantProcesosRestantes -= 1;
+    }
+    
+    @Override
+    public void ingresarProcesoListaBloqueados(IProceso proceso) {
+        Iterator <IProceso> iter = listaBloqueados.iterator();            
+        for(int i = 0; i < listaBloqueados.size(); i++) {
+            if ( iter.hasNext() ){                              //Iterador de java
+                Proceso procesoSeleccionado = (Proceso) iter.next();
+                if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
+                    listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
+                    break;
+                }
+            }
+        }   
     }
     
     @Override
@@ -141,4 +189,16 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     public void setPilaListas(LinkedList[] pilaListas) {
         this.pilaListas = pilaListas;
     }
+    
+     @Override
+    public LinkedList<IProceso> getListaBloqueados() {
+        return listaBloqueados;
+    }
+
+    @Override
+    public void setListaBloqueados(LinkedList<IProceso> listaBloqueados) {
+        this.listaBloqueados = listaBloqueados;
+    }
+    
+    
 }

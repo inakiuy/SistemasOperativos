@@ -12,6 +12,5 @@ import entidades.IProceso;
  * @author Inaki
  */
 public interface IDatasource {
-    public IProceso getPrimerProc();
     public IProceso getPrimerProcYEliminar(long tiempo);
 }

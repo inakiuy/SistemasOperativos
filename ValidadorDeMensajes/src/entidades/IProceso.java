@@ -18,6 +18,4 @@ public interface IProceso {
     public Long getTiempoDeLlegada();
     public int getPrioridad();
     public void setPrioridad(int prioridad);
-    public Boolean getEntradaSalida();
-    public void setEntradaSalida();
 }
