@@ -5,6 +5,7 @@
  */
 package entidades;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -96,4 +97,8 @@ public class Proceso implements IProceso {
         return tiempoDeLlegada;
     }
     // End Getters and Setters ****************************    
+
+    Iterator<IProceso> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

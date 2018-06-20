@@ -6,6 +6,9 @@
 package entidades;
 
 import datasource.IDatasource;
+import datasource.ProcesosDatasource;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -21,6 +24,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private Reloj reloj;
     private IDatasource fuenteDeDatosProcesos;
     private IPlanificadorCorto planificadorCorto;
+    private LinkedList<IProceso> listaProcesosPL;   
     // End Atributes **************************************
 
     /**
@@ -35,10 +39,10 @@ public class PlanificadorLargo implements IPlanificadorLargo {
         this.monitorPL = pmonitorPL;
     }
 
-    public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, IDatasource pfuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
+    public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, ProcesosDatasource pFuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
         this.monitorPL = pmonitorPL;
-        this.reloj = preloj;
-        this.fuenteDeDatosProcesos = pfuenteDeDatosProcesos;
+        this.reloj = preloj; 
+        this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
         this.planificadorCorto = pplanificadorCorto;
     }
     // End Constructors ***********************************
@@ -60,13 +64,9 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                 }
                 System.out.println("1 - Ejecutando planificador LARGO...");
                 
-                
-                
                 System.out.println("1 - Tiempo actual: " + this.reloj.getTiempoActual());
                 
-                
-                
-                
+                this.planificar();
                 
                 System.out.println("1 - Fin planificador LARGO");
                 synchronized (monitorPL) {
@@ -83,7 +83,27 @@ public class PlanificadorLargo implements IPlanificadorLargo {
      * 
      */
     private void planificar(){
+    
+        this.obtenerNuevosProcesos();      
+        while ( this.listaProcesosPL.size() != 0 || this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
+            if ( this.listaProcesosPL.size() != 0 ) {
+            IProceso x = this.listaProcesosPL.removeFirst();
+            this.planificadorCorto.ingresarProceso(x);
+            }
+        }      
+    }
+    
+    private void obtenerNuevosProcesos(){
         
+        boolean hayProcesos = true;
+        
+        while ( hayProcesos ) {
+            IProceso x = this.fuenteDeDatosProcesos.getPrimerProcYEliminar( this.reloj.getTiempoActual() );
+            if ( x != null ) {
+                this.listaProcesosPL.addLast(x);
+            }
+            else { hayProcesos = false; }
+        }
     }
     // End Methods ****************************************
 }

@@ -7,6 +7,7 @@
 package entidades;
 
 import datasource.IDatasource;
+import datasource.ProcesosDatasource;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ public class Reloj implements Runnable {
     private String nombre;
     private long intervaloDeTiempo;
     private Long tiempoActual;
-    private IDatasource fuenteDeDatosProcesos;
+    private ProcesosDatasource datos;
     private AtomicBoolean monitorPL;
     private AtomicBoolean monitorPC;
     private AtomicBoolean monitorCPUs;
@@ -40,11 +41,11 @@ public class Reloj implements Runnable {
      * @param pintervalo
      * @param pFuenteDeDatosProcesos
      */
-    public Reloj(String pnombre, int pintervalo, IDatasource pFuenteDeDatosProcesos) {
+    public Reloj(String pnombre, int pintervalo, ProcesosDatasource pDatos) {
         this.nombre = pnombre;
         this.intervaloDeTiempo = pintervalo;
         this.tiempoActual = new Long(0);
-        this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
+        this.datos = pDatos;
         this.monitorPL = new AtomicBoolean();
         this.monitorPC = new AtomicBoolean();
         this.monitorCPUs = new AtomicBoolean();
@@ -80,7 +81,7 @@ public class Reloj implements Runnable {
 
         //Creamos hilos de planificador largo que son los objetos que admiten los
         //procesos desde la fuente de datos.
-        Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, getFuenteDeDatosProcesos(), ru_planificadorCorto);
+        Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
 
@@ -165,8 +166,6 @@ public class Reloj implements Runnable {
     /**
      * @return the fuenteDeDatosProcesos
      */
-    public IDatasource getFuenteDeDatosProcesos() {
-        return fuenteDeDatosProcesos;
-    }
+    
     // End Getters and Setters ****************************
 }

@@ -13,4 +13,5 @@ import entidades.IProceso;
  */
 public interface IDatasource {
     public IProceso getPrimerProc();
+    public IProceso getPrimerProcYEliminar(long tiempo);
 }

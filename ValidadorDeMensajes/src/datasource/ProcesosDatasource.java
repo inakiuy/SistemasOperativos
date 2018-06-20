@@ -19,10 +19,10 @@ public class ProcesosDatasource implements IDatasource{
      * Atributes
      * *****************************************************
      */
-    private LinkedList<IProceso> listaProcesos;
+    private LinkedList<IProceso> listaProcesos;             //Procesos esperando ser recibidos por el Planificador Largo
+    
     private String RUTA_DATOS = "./src/datos/procesos.txt";
     // End Atributes *************************************
-
     
     /**
      * Constructors
@@ -48,7 +48,6 @@ public class ProcesosDatasource implements IDatasource{
     }
     // End Constructors ***********************************
 
-    
     private void insertarOrdenado(Proceso proc) { 
         if( listaProcesos.size() != 0 ){            
             if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
@@ -56,7 +55,7 @@ public class ProcesosDatasource implements IDatasource{
             }
             else{
                 Iterator <IProceso> iter = listaProcesos.iterator();            
-                for(int i = 0; i <= listaProcesos.size(); i++) {
+                for(int i = 0; i < listaProcesos.size(); i++) {
                     if ( iter.hasNext() ){                              //Iterador de java
                         Proceso procesoSeleccionado = (Proceso) iter.next();
                         if ( proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada() ){
@@ -88,8 +87,30 @@ public class ProcesosDatasource implements IDatasource{
       * 
       * @return 
       */
-    public IProceso getPrimerProc(){
-        return this.listaProcesos.getFirst();
+    
+    @Override
+    public IProceso getPrimerProcYEliminar(long tiempo){
+        if ( this.listaProcesos.getFirst().getTiempoDeLlegada() == tiempo ){
+            return this.listaProcesos.removeFirst();
+        }
+        else return null;
     }
+    
+   /* public IProceso removePrimerProc(){
+        return this.listaProcesos.removeFirst();
+    }*/
+    
+    
+
     // End Getters and Setters **************************** 
+     public LinkedList<IProceso> getListaProcesos() {
+        return listaProcesos;
+    }
+
+
+    @Override
+    public IProceso getPrimerProc() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

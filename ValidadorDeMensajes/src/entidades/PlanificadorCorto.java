@@ -17,10 +17,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     /**
      * Atributes *****************************************************
      */
+    private int cantProcesosRestantes;
     private AtomicBoolean monitorPC;
-    private LinkedList[] colas;
+    private LinkedList[] pilaListas;
     private final int tamanioQuantum;
-    private final ICpu[] cpus;
+    private final ICpu[] cpus;              //FINAL?? 
     // End Atributes **************************************
 
     /**
@@ -35,7 +36,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.monitorPC = pmonitorPC;
         this.tamanioQuantum = 4;
         this.cpus = pcpus;
+        this.cantProcesosRestantes = 500;
+        this.pilaListas = new LinkedList[5];    // Array de 5, se usaran solo 4, del 1 al 5.
+        
+        for ( int i = 1 ; i <= 5 ; i++) {               
+            pilaListas[i] = new LinkedList<Proceso>();
+        }
+        
     }
+    
     // End Constructors ***********************************
 
     /**
@@ -56,12 +65,6 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 System.out.println("2 - Ejecutando planificador CORTO...");
                 
                 
-                
-                
-                
-                
-                
-
                 System.out.println("2 - Fin planificador CORTO.");
                 synchronized (monitorPC) {
                     monitorPC.set(false);
@@ -76,6 +79,31 @@ public class PlanificadorCorto implements IPlanificadorCorto {
 
     @Override
     public void ingresarProceso(IProceso pproceso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pilaListas[3].addLast(pproceso);        //Esto simula la pila 3
+        this.cantProcesosRestantes -= 1;
+    }
+    
+    public int getCantProcesosRestantes() {
+        return cantProcesosRestantes;
+    }
+
+    public void setCantProcesosRestantes(int cantProcesosRestantes) {
+        this.cantProcesosRestantes -= cantProcesosRestantes;
+    }
+
+    public AtomicBoolean getMonitorPC() {
+        return monitorPC;
+    }
+
+    public void setMonitorPC(AtomicBoolean monitorPC) {
+        this.monitorPC = monitorPC;
+    }
+
+    public LinkedList[] getPilaListas() {
+        return pilaListas;
+    }
+
+    public void setPilaListas(LinkedList[] pilaListas) {
+        this.pilaListas = pilaListas;
     }
 }
