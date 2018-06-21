@@ -56,19 +56,22 @@ public class Cpu implements ICpu {
                         monitorCPUs.wait();
                     }
                 }
-                System.out.println("3 - Ejecutando ciclo de " + this.getNombre());
+
+                System.out.println("      3 - Ejecutando ciclo de " + this.getNombre());
 
                 if (this.getProcesoCorriendo() != null) {
-                    System.out.println("3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    System.out.println("      3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
 
                     this.trabajar();
+                    
+                    // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
 
                 } else {
-                    System.out.println("3 - " + this.getNombre() + " vacio");
+                    System.out.println("      3 - " + this.getNombre() + " vacio");
                 }
                 Thread.sleep(1000);
 
-                System.out.println("3 - Fin ciclo de " + this.getNombre());
+                System.out.println("      3 - Fin ciclo de " + this.getNombre());
 
                 synchronized (monitorCPUs) {
                     monitorCPUs.set(false);
@@ -91,9 +94,7 @@ public class Cpu implements ICpu {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
             this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);            //Lo pasamos a la lista bloqueado del PC.
             this.procesoCorriendo = null;                                                           // Se declara que no hay proceso en el CPU.
-
-            // Aca tendria que mover el proceso a un estado de bloqueado...   Y ya no seria necesaria el estado EntradaSalida
-        }
+          }
     }
 
     // End Methods ****************************************

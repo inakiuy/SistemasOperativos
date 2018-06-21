@@ -97,7 +97,7 @@ public class Reloj implements Runnable {
             th_cpu2.start();
 
             // Para test hacemos solo 3 ciclos
-            while (this.getTiempoActual() < 3000) {
+            while (this.getTiempoActual() < 30000) {
                 System.out.println("0 - TIEMPO SIMULADO: " + this.getTiempoActual() + " - thread: " + Thread.currentThread().getName());
                 // Arranca a trabajar el planificador a largo plazo
                 synchronized (monitorPL) {
@@ -109,7 +109,7 @@ public class Reloj implements Runnable {
                     }
                 }
                 
-                // Terminado el planificadorLargo comienza el planificadorCorto
+                // Terminado el planificadorLargo comienza el planificadorCorto         //Aca asgina procesos a las CPu vacias.
                 synchronized (monitorPC) {
                     monitorPC.set(true);
                     monitorPC.notify();
@@ -126,6 +126,16 @@ public class Reloj implements Runnable {
                     while (monitorCPUs.get()) {
                         // El hilo reloj espera nuevamente
                         monitorCPUs.wait();
+                    }
+                }
+                
+                 // Terminado el procesamiento comienza el planificadorCorto NUEVAMENTE         // Aca hace todo el trabajo restante.
+                synchronized (monitorPC) {
+                    monitorPC.set(true);
+                    monitorPC.notify();
+                    while (monitorPC.get()) {
+                        // El hilo reloj espera nuevamente
+                        monitorPC.wait();
                     }
                 }
                 
@@ -162,7 +172,7 @@ public class Reloj implements Runnable {
      * @return the tiempoActual
      */
     public long getTiempoActual() {
-        return tiempoActual;
+        return tiempoActual;       //Ya que hay que pasarlo a un entero por la entrada de datos.
     }    
     // End Getters and Setters ****************************
 }

@@ -85,7 +85,7 @@ public class ProcesosDatasource implements IDatasource {
     @Override
     public IProceso getPrimerProcYEliminar(long tiempo) {
         IProceso proceso = null;
-        if (this.listaProcesos.getFirst().getTiempoDeLlegada() == tiempo) {
+        if ( !this.listaProcesos.isEmpty() && this.listaProcesos.getFirst().getTiempoDeLlegada() == tiempo) {
             proceso = this.listaProcesos.removeFirst();
         }
         return proceso;

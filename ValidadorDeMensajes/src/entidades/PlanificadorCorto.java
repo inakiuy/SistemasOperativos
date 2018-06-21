@@ -25,6 +25,8 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private final int tamanioQuantum;       // Lo deberia de saber el Proceso, o el proceso saber en si cuantos cuantums va el?
     private final ICpu[] cpus;              //FINAL??
     private final Integer CANTIDAD_DE_COLAS = 5;
+    
+    private Boolean faseAsignarProcCPUs = true;
     // End Atributes **************************************
 
     
@@ -65,11 +67,27 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         monitorPC.wait();
                     }
                 }
-                System.out.println("    2 - Ejecutando planificador CORTO...");
+                                
+                try {
+                    if ( this.faseAsignarProcCPUs){
+                        //PRIMERO
+                        System.out.println("    2 - Ejecutando planificador CORTO...");
+                        this.asignarProcesosCpusVacios();
+                        System.out.println("    2 - Fin planificador CORTO.");
+                    }
+                    else{
+                        System.out.println("        4 - Ejecutando planificador CORTO...");
+                        this.planificar();
+                        System.out.println("        4 - Fin planificador CORTO.");
+                    }
+                }
+                catch (Exception e) {
+                }
+                finally {
+                    this.faseAsignarProcCPUs = ! this.faseAsignarProcCPUs;
+                }
                 
-                planificar();
                 
-                System.out.println("    2 - Fin planificador CORTO.");
                 synchronized (monitorPC) {
                     monitorPC.set(false);
                     monitorPC.notify();
@@ -84,13 +102,8 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * 
      */
     private void planificar(){
-        //PRIMERO
-        this.asignarProcesosCpusVacios();
-    
-        // Habria que chequear luego de que los CPU trabajen, si alguno quedo vacio, para asignarle uno nuevamente COMO HABIAMOS HABLADO.
-        
-        
-        
+         
+        System.out.println("        4 - Estoy planificando.");
         //ULTIMO
         this.actualizarComportamientoProcesoBloqueado();
      }
@@ -108,11 +121,14 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 Proceso procesoSeleccionado = (Proceso) iter.next();
                 if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() == 1){                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                     procesoSeleccionado.getComportamiento().removeFirst();
-                    // Aca iria algo asi como If procesoSeleccionado.getComportamiento() !0 null
                     if ( procesoSeleccionado.getComportamiento() != null ) {
-                        this.ingresarProceso(procesoSeleccionado,procesoSeleccionado.getPrioridad());
+                        IProceso p = this.listaBloqueados.remove(i);  //  Lo remuve de la lista bloqueada.
+                        this.ingresarProceso(p,p.getPrioridad());         // Lo agrega a la cola.
                     }
-                    else {}         // DETRUIR EL OBJETO de ESE proceso.
+                    else {
+                        this.listaBloqueados.remove(i);
+                        // FALTA ----------------- DETRUIR EL OBJETO de ESE proceso.
+                    }         
                 }
                 else {
                     int nuevoValor = (Integer) procesoSeleccionado.getComportamiento().getFirst() - 1;
@@ -125,11 +141,12 @@ public class PlanificadorCorto implements IPlanificadorCorto {
    /**
     * 
     */
-    private void asignarProcesosCpusVacios() {            
+    private void asignarProcesosCpusVacios() {    
+        System.out.println("    2 - Estoy asignando procesos a CPU`s vacios.");
         for (ICpu cpu : this.cpus) {
             // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
             if (!cpu.hayProceso()) {
-                for (int i = 1; i <= this.pilaListas.length; i++) {
+                for (int i = 1; i < this.pilaListas.length; i++) {
                     // Buscar el primer proceso con mayor prioridad.
                     if (! this.pilaListas[i].isEmpty()) {
                         IProceso primero = this.pilaListas[i].removeFirst();
@@ -148,7 +165,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
-        this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila 3
+        this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila X, por defecto deberia ser la 3
         this.cantProcesosRestantes -= 1;
     }
     
@@ -158,16 +175,21 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void ingresarProcesoListaBloqueados(IProceso proceso) {
-        Iterator <IProceso> iter = listaBloqueados.iterator();            
-        for(int i = 0; i < listaBloqueados.size(); i++) {
-            if ( iter.hasNext() ){                              //Iterador de java
-                Proceso procesoSeleccionado = (Proceso) iter.next();
-                if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
-                    listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
-                    break;
+        if ( !this.listaBloqueados.isEmpty() ) {
+            Iterator <IProceso> iter = listaBloqueados.iterator();            
+            for(int i = 0; i < listaBloqueados.size(); i++) {
+                if ( iter.hasNext() ){                              //Iterador de java
+                    Proceso procesoSeleccionado = (Proceso) iter.next();
+                    if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
+                        listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
+                        break;
+                    }
                 }
-            }
-        }   
+            }  
+        }
+        else {
+            listaBloqueados.addLast(proceso);  
+        }
     }
     // End Methods ****************************************
     

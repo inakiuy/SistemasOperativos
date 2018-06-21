@@ -99,7 +99,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private void obtenerNuevosProcesos(){        
         boolean hayProcesos = true; //ojo que esto no es seguro si llegamos a crear varios hilos de planificador largo
         while ( hayProcesos ) {
-            IProceso proceso = this.fuenteDeDatosProcesos.getPrimerProcYEliminar( this.reloj.getTiempoActual() );
+            IProceso proceso = this.fuenteDeDatosProcesos.getPrimerProcYEliminar( this.reloj.getTiempoActual() / 1000 );
             if ( proceso != null ) {
                 this.listaProcesosPL.addLast(proceso);
             }
