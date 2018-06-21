@@ -88,13 +88,28 @@ public class Cpu implements ICpu {
      */
     private void trabajar() {
         int x = this.procesoCorriendo.getComportamiento().getFirst();
-        if (x != 1) {                                                   // Disminuye en uno el numero del primero.
-            this.procesoCorriendo.getComportamiento().set(0, x - 1);
+        int y =this.planificadorCorto.getTamanioQuantum();
+        int z = this.procesoCorriendo.getCantQuantums();
+        
+        if ((x-y)>1){
+            //llega al quantum
+            if (z >= 2) {
+                this.procesoCorriendo.setFeedback(this.procesoCorriendo.getFeedback()+2);
+            }
+            this.procesoCorriendo.setCantQuantums(this.procesoCorriendo.getCantQuantums()+1);
+            this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
+            this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
         } else {
-            this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
-            this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);            //Lo pasamos a la lista bloqueado del PC.
-            this.procesoCorriendo = null;                                                           // Se declara que no hay proceso en el CPU.
-          }
+            if (x != 1) {                                                   // Disminuye en uno el numero del primero.
+                this.procesoCorriendo.getComportamiento().set(0, x - 1);
+            } else {
+                this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
+                this.procesoCorriendo.setFeedback(this.procesoCorriendo.getFeedback()-1);
+                this.procesoCorriendo.setEntradaSalida(true);
+                this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
+                this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
+            }
+        }
     }
 
     // End Methods ****************************************

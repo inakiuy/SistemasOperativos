@@ -20,4 +20,5 @@ public interface IPlanificadorCorto extends Runnable{
     public LinkedList[] getPilaListas();
     public LinkedList<IProceso> getListaBloqueados();
     public void ingresarProcesoListaBloqueados(IProceso proceso);
+    public int getTamanioQuantum();
 }

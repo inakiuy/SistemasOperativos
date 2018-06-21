@@ -123,6 +123,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                     procesoSeleccionado.getComportamiento().removeFirst();
                     if ( procesoSeleccionado.getComportamiento() != null ) {
                         IProceso p = this.listaBloqueados.remove(i);  //  Lo remuve de la lista bloqueada.
+                        int prioridad = 3 - (p.getEnvejecimiento() % 5) + (p.getFeedback() % 2);
+                        if (p.getEntradaSalida()){
+                            prioridad = prioridad + 2;
+                        }
+                        if(prioridad == 0){
+                            p.setPrioridad(1);
+                        }else{
+                            p.setPrioridad(prioridad);
+                        }
                         this.ingresarProceso(p,p.getPrioridad());         // Lo agrega a la cola.
                     }
                     else {
@@ -237,4 +246,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     public LinkedList<IProceso> getListaBloqueados() {
         return listaBloqueados;
     }
+
+    public int getTamanioQuantum() {
+        return tamanioQuantum;
+    }
+    
 }

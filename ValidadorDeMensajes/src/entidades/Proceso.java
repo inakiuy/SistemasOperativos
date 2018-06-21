@@ -22,6 +22,10 @@ public class Proceso implements IProceso {
     private LinkedList<Integer> comportamiento;
     private Long tiempoDeLlegada;
     private int prioridad;
+    private int cantQuantums;
+    private int feedback;
+    private int envejecimiento;
+    private Boolean entradaSalida;
     
     // End Atributes *************************************
 
@@ -58,6 +62,10 @@ public class Proceso implements IProceso {
         }
         this.tiempoDeLlegada = ptiempoDeLlegada;
         this.prioridad = 3;                     // Prioridad 3 por defecto.
+        this.cantQuantums = 0;
+        this.feedback = 0;
+        this.envejecimiento = 0;
+        this.entradaSalida = false;
       }
 
     // End Constructors ***********************************
@@ -114,4 +122,46 @@ public class Proceso implements IProceso {
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
+
+    @Override
+    public int getCantQuantums() {
+        return cantQuantums;
+    }
+
+    @Override
+    public void setCantQuantums(int cantQuantums) {
+        this.cantQuantums = cantQuantums;
+    }
+
+    @Override
+    public int getFeedback() {
+        return feedback;
+    }
+
+    @Override
+    public void setFeedback(int feedback) {
+        this.feedback = feedback;
+    }
+
+    @Override
+    public int getEnvejecimiento() {
+        return envejecimiento;
+    }
+
+    @Override
+    public void setEnvejecimiento(int envejecimiento) {
+        this.envejecimiento = envejecimiento;
+    }
+
+    @Override
+    public Boolean getEntradaSalida() {
+        return entradaSalida;
+    }
+
+    @Override
+    public void setEntradaSalida(Boolean entradaSalida) {
+        this.entradaSalida = entradaSalida;
+    }
+    
+    
  }

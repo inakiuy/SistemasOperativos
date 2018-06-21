@@ -18,4 +18,12 @@ public interface IProceso {
     public Long getTiempoDeLlegada();
     public int getPrioridad();
     public void setPrioridad(int prioridad);
+    public int getCantQuantums();
+    public void setCantQuantums(int cantQuantums);
+    public int getFeedback();
+    public void setFeedback(int feedback);
+    public int getEnvejecimiento();
+    public void setEnvejecimiento(int envejecimiento);
+    public Boolean getEntradaSalida();
+    public void setEntradaSalida(Boolean entradaSalida);
 }
