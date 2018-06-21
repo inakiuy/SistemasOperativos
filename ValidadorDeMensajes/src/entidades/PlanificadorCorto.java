@@ -5,7 +5,6 @@
  */
 package entidades;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -19,15 +18,16 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     /**
      * Atributes *****************************************************
      */
-    private int cantProcesosRestantes;
-    private AtomicBoolean monitorPC;
+    private Integer cantProcesosRestantes;
+    private final AtomicBoolean monitorPC;
     private LinkedList<IProceso>[] pilaListas;
     private LinkedList<IProceso> listaBloqueados;
-
     private final int tamanioQuantum;       // Lo deberia de saber el Proceso, o el proceso saber en si cuantos cuantums va el?
-    private final ICpu[] cpus;              //FINAL?? 
+    private final ICpu[] cpus;              //FINAL??
+    private final Integer CANTIDAD_DE_COLAS = 5;
     // End Atributes **************************************
 
+    
     /**
      * Constructors ****************************************************
      */
@@ -35,22 +35,19 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * Constructor basico
      *
      * @param pmonitorPC
+     * @param pcpus
      */
     public PlanificadorCorto(AtomicBoolean pmonitorPC, ICpu[] pcpus) {
         this.monitorPC = pmonitorPC;
         this.tamanioQuantum = 4;
         this.cpus = pcpus;
         this.cantProcesosRestantes = 500;
-        
-        this.pilaListas = new LinkedList[6];    // Array de 5, se usaran solo 4, del 1 al 5.
-        this.listaBloqueados = new LinkedList();
-        
+        this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS];    // Array de 5, se usaran solo 4, del 1 al 5.
+        this.listaBloqueados = new LinkedList();        
         for ( int i = 1 ; i < this.pilaListas.length ; i++) {
             pilaListas[i] = new LinkedList<>();
         }
-    }
-
-    
+    }    
     // End Constructors ***********************************
 
     /**
@@ -68,11 +65,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         monitorPC.wait();
                     }
                 }
-                System.out.println("2 - Ejecutando planificador CORTO...");
+                System.out.println("    2 - Ejecutando planificador CORTO...");
                 
-                    this.planificar();
+                planificar();
                 
-                System.out.println("2 - Fin planificador CORTO.");
+                System.out.println("    2 - Fin planificador CORTO.");
                 synchronized (monitorPC) {
                     monitorPC.set(false);
                     monitorPC.notify();
@@ -82,9 +79,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             System.out.println("Algo salio mal en PC: " + e.toString());
         }
     }
-    // End Methods ****************************************
 
-    
+    /**
+     * 
+     */
     private void planificar(){
         //PRIMERO
         this.asignarProcesosCpusVacios();
@@ -99,9 +97,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
    
     
     // FALTA HACER CHEQUEOS EN TODOS LOS QUE SAQUEMOS removeFirst, QUE NO SEA EL ULTIMO ELEMENTO --------------------------------- En algunos.
-    
-    private void actualizarComportamientoProcesoBloqueado() {
-        
+
+    /**
+     * 
+     */
+    private void actualizarComportamientoProcesoBloqueado() {        
         Iterator <IProceso> iter = listaBloqueados.iterator();            
         for(int i = 0; i < listaBloqueados.size(); i++) {
             if ( iter.hasNext() ){                              //Iterador de java
@@ -121,9 +121,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         }
     }
-   
-    private void asignarProcesosCpusVacios() {
-            
+    
+   /**
+    * 
+    */
+    private void asignarProcesosCpusVacios() {            
         for (ICpu cpu : this.cpus) {
             // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
             if (!cpu.hayProceso()) {
@@ -139,13 +141,21 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         }
     }      
      
-    
+    /**
+     * 
+     * @param pproceso
+     * @param lista 
+     */
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
         this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila 3
         this.cantProcesosRestantes -= 1;
     }
     
+    /**
+     * 
+     * @param proceso 
+     */
     @Override
     public void ingresarProcesoListaBloqueados(IProceso proceso) {
         Iterator <IProceso> iter = listaBloqueados.iterator();            
@@ -159,46 +169,50 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         }   
     }
+    // End Methods ****************************************
     
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int getCantProcesosRestantes() {
         return cantProcesosRestantes;
     }
-
+    
+    /**
+     * 
+     * @param cantProcesosRestantes 
+     */
     @Override
     public void setCantProcesosRestantes(int cantProcesosRestantes) {
         this.cantProcesosRestantes -= cantProcesosRestantes;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public AtomicBoolean getMonitorPC() {
         return monitorPC;
     }
 
-    @Override
-    public void setMonitorPC(AtomicBoolean monitorPC) {
-        this.monitorPC = monitorPC;
-    }
-
+    /**
+     * 
+     * @return 
+     */
     @Override
     public LinkedList[] getPilaListas() {
         return pilaListas;
     }
-
-    @Override
-    public void setPilaListas(LinkedList[] pilaListas) {
-        this.pilaListas = pilaListas;
-    }
     
+    /**
+     * 
+     * @return 
+     */
      @Override
     public LinkedList<IProceso> getListaBloqueados() {
         return listaBloqueados;
     }
-
-    @Override
-    public void setListaBloqueados(LinkedList<IProceso> listaBloqueados) {
-        this.listaBloqueados = listaBloqueados;
-    }
-    
-    
 }

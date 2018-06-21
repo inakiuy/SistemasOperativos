@@ -7,7 +7,6 @@ package entidades;
 
 import datasource.IDatasource;
 import datasource.ProcesosDatasource;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,7 +19,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     /**
      * Atributes *****************************************************
      */
-    private AtomicBoolean monitorPL;
+    private final AtomicBoolean monitorPL;
     private Reloj reloj;
     private IDatasource fuenteDeDatosProcesos;
     private IPlanificadorCorto planificadorCorto;
@@ -34,17 +33,16 @@ public class PlanificadorLargo implements IPlanificadorLargo {
      * Constructor con objeto sincronizador
      *
      * @param pmonitorPL
+     * @param preloj
+     * @param pFuenteDeDatosProcesos
+     * @param pplanificadorCorto
      */
-    public PlanificadorLargo(AtomicBoolean pmonitorPL) {
-        this.monitorPL = pmonitorPL;
-    }
-
     public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, ProcesosDatasource pFuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
         this.monitorPL = pmonitorPL;
         this.reloj = preloj; 
         this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
         this.planificadorCorto = pplanificadorCorto;
-        this.listaProcesosPL = new LinkedList<IProceso>();   
+        this.listaProcesosPL = new LinkedList<>();   
     }
     // End Constructors ***********************************
 
@@ -63,11 +61,11 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                         monitorPL.wait();
                     }
                 }
-                System.out.println("1 - Ejecutando planificador LARGO...");
+                System.out.println("  1 - Ejecutando planificador LARGO...");
   
-                this.planificar();
+                planificar();
                 
-                System.out.println("1 - Fin planificador LARGO");
+                System.out.println("  1 - Fin planificador LARGO");
   
                 synchronized (monitorPL) {
                     monitorPL.set(false);
@@ -80,27 +78,30 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     }
     
     /**
-     * 
+     * Toma los procesos que llegan en el tiempo actual y planifica si puede entrar
+     * el proceso al planificador corto.
+     * Ojo que este metodo tampoco es seguro para multihilos
      */
-    private void planificar(){
-    
+    private void planificar(){    
         this.obtenerNuevosProcesos();      
         while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
             if ( ! this.listaProcesosPL.isEmpty() ) {
-            IProceso x = this.listaProcesosPL.removeFirst();
-            this.planificadorCorto.ingresarProceso(x,3);        // Proceso X en la lista 3    (Van del 1 al 5)
+            IProceso proceso = this.listaProcesosPL.removeFirst();
+            this.planificadorCorto.ingresarProceso(proceso,3);        // Proceso X en la lista 3    (Van del 1 al 5)
             }
         }      
     }
     
-    private void obtenerNuevosProcesos(){
-        
-        boolean hayProcesos = true;
-        
+    /**
+     * Obtiene todos los procesos que llegaron en el tiempo actual y los inserta en una
+     * lista para trabajarlos.
+     */
+    private void obtenerNuevosProcesos(){        
+        boolean hayProcesos = true; //ojo que esto no es seguro si llegamos a crear varios hilos de planificador largo
         while ( hayProcesos ) {
-            IProceso x = this.fuenteDeDatosProcesos.getPrimerProcYEliminar( this.reloj.getTiempoActual() );
-            if ( x != null ) {
-                this.listaProcesosPL.addLast(x);
+            IProceso proceso = this.fuenteDeDatosProcesos.getPrimerProcYEliminar( this.reloj.getTiempoActual() );
+            if ( proceso != null ) {
+                this.listaProcesosPL.addLast(proceso);
             }
             else { hayProcesos = false; }
         }

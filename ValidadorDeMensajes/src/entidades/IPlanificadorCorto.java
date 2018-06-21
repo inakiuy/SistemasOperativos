@@ -17,10 +17,7 @@ public interface IPlanificadorCorto extends Runnable{
     public int getCantProcesosRestantes();
     public void setCantProcesosRestantes(int cantProcesosRestantes);
     public AtomicBoolean getMonitorPC();
-    public void setMonitorPC(AtomicBoolean monitorPC);
     public LinkedList[] getPilaListas();
-    public void setPilaListas(LinkedList[] pilaListas);
     public LinkedList<IProceso> getListaBloqueados();
-    public void setListaBloqueados(LinkedList<IProceso> listaBloqueados);
     public void ingresarProcesoListaBloqueados(IProceso proceso);
 }

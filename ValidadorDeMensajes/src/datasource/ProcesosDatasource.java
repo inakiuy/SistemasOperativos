@@ -14,29 +14,27 @@ import entidades.Proceso;
  *
  * @author Inaki
  */
-public class ProcesosDatasource implements IDatasource{
+public class ProcesosDatasource implements IDatasource {
+
     /**
-     * Atributes
-     * *****************************************************
+     * Atributes *****************************************************
      */
     private LinkedList<IProceso> listaProcesos;             //Procesos esperando ser recibidos por el Planificador Largo
-    
+
     private String RUTA_DATOS = "./src/datos/procesos.txt";
     // End Atributes *************************************
-    
+
     /**
-     * Constructors
-     * ****************************************************
+     * Constructors ****************************************************
      */
-    
     /**
      * Constructor de la fuente de datos. Al inicializarse se cargan los datos
      * en una lista
      */
-    public ProcesosDatasource(){
+    public ProcesosDatasource() {
         this.listaProcesos = new LinkedList<>();
         String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, true);  //Hay que ignorar la cabeza
-        for (String dato : datos_csv){
+        for (String dato : datos_csv) {
             String[] datos_proc = dato.split(";");
             String proc_nombre = datos_proc[0];
             String proc_tipo = datos_proc[1];
@@ -48,63 +46,57 @@ public class ProcesosDatasource implements IDatasource{
     }
     // End Constructors ***********************************
 
-    private void insertarOrdenado(Proceso proc) { 
-        if( !listaProcesos.isEmpty() ){            
-            if ( proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()){
+    /**
+     * Methods ****************************************************
+     */
+    
+    /**
+     * Inserta de manera ordenada por tiempo de llegada
+     * @param proc 
+     */
+    private void insertarOrdenado(Proceso proc) {
+        if (!listaProcesos.isEmpty()) {
+            if (proc.getTiempoDeLlegada() >= listaProcesos.getLast().getTiempoDeLlegada()) {
                 listaProcesos.addLast(proc);
-            }
-            else{
-                Iterator <IProceso> iter = listaProcesos.iterator();            
-                for(int i = 0; i < listaProcesos.size(); i++) {
-                    if ( iter.hasNext() ){                              //Iterador de java
+            } else {
+                Iterator<IProceso> iter = listaProcesos.iterator();
+                for (int i = 0; i < listaProcesos.size(); i++) {
+                    if (iter.hasNext()) {                              //Iterador de java
                         Proceso procesoSeleccionado = (Proceso) iter.next();
-                        if ( proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada() ){
-                            listaProcesos.add(i-1,proc);            //Agrega al anteriro, ya que se paso por uno.
+                        if (proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada()) {
+                            listaProcesos.add(i - 1, proc);            //Agrega al anteriro, ya que se paso por uno.
                             break;
                         }
                     }
-                }   
+                }
             }
-        }
-        else{
+        } else {
             listaProcesos.addLast(proc);
         }
     }
-    
+
     /**
-     * Methods
-     * ****************************************************
+     * Obtiene el proximo proseso en llegar en el tiempo indicado por el
+     * parametro.
+     * 
+     * @param tiempo
+     * @return
      */
+    @Override
+    public IProceso getPrimerProcYEliminar(long tiempo) {
+        IProceso proceso = null;
+        if (this.listaProcesos.getFirst().getTiempoDeLlegada() == tiempo) {
+            proceso = this.listaProcesos.removeFirst();
+        }
+        return proceso;
+    }
     // End Methods ****************************************
 
-    
     /**
-     * Getters and Setters
-     * ****************************************************
+     * Getters and Setters ****************************************************
      */
-    
-     /**
-      * 
-     * @param tiempo
-      * @return 
-      */
-    
-    @Override
-    public IProceso getPrimerProcYEliminar(long tiempo){
-        if ( this.listaProcesos.getFirst().getTiempoDeLlegada() == tiempo ){
-            return this.listaProcesos.removeFirst();
-        }
-        else return null;
-    }
-    
-   /* public IProceso removePrimerProc(){
-        return this.listaProcesos.removeFirst();
-    }*/
-    
-    
-
-    // End Getters and Setters **************************** 
-     public LinkedList<IProceso> getListaProcesos() {
+    public LinkedList<IProceso> getListaProcesos() {
         return listaProcesos;
     }
+    // End Getters and Setters **************************** 
 }

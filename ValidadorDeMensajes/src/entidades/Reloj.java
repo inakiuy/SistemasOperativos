@@ -6,13 +6,11 @@
  */
 package entidades;
 
-import datasource.IDatasource;
 import datasource.ProcesosDatasource;
-import java.lang.reflect.Array;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
+
 /**
  *
  * @author Inaki
@@ -40,7 +38,7 @@ public class Reloj implements Runnable {
      *
      * @param pnombre
      * @param pintervalo
-     * @param pFuenteDeDatosProcesos
+     * @param pDatos
      */
     public Reloj(String pnombre, int pintervalo, ProcesosDatasource pDatos) {
         this.nombre = pnombre;
@@ -165,11 +163,6 @@ public class Reloj implements Runnable {
      */
     public long getTiempoActual() {
         return tiempoActual;
-    }
-
-    /**
-     * @return the fuenteDeDatosProcesos
-     */
-    
+    }    
     // End Getters and Setters ****************************
 }
