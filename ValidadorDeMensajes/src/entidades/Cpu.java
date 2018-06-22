@@ -62,7 +62,7 @@ public class Cpu implements ICpu {
                 if (this.getProcesoCorriendo() != null) {
                     System.out.println("      3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
 
-                    this.trabajar();
+                     this.trabajar();
                     
                     // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
 
@@ -86,8 +86,10 @@ public class Cpu implements ICpu {
     /**
      * Realiza trabajo sobre el proceso cargado
      */
-    private void trabajar() {
+/*    private void trabajar() {
+        
         int x = this.procesoCorriendo.getComportamiento().getFirst();
+        
         int y =this.planificadorCorto.getTamanioQuantum();
         int z = this.procesoCorriendo.getCantQuantums();
         
@@ -110,8 +112,23 @@ public class Cpu implements ICpu {
                 this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
             }
         }
-    }
+    }*/
 
+    private void trabajar() {
+        
+        int x = this.procesoCorriendo.getComportamiento().getFirst();
+    
+        if (x != 1) {                                                   // Disminuye en uno el numero del primero.
+            this.procesoCorriendo.getComportamiento().set(0, x - 1);
+        } else {
+            this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
+            
+            this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
+            this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
+        }
+    }
+    
+    
     // End Methods ****************************************
     /**
      * Getters and Setters ****************************************************

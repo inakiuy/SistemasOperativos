@@ -184,17 +184,29 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void ingresarProcesoListaBloqueados(IProceso proceso) {
-        if ( !this.listaBloqueados.isEmpty() ) {
+        System.out.println(listaBloqueados.size());
+        if ( !(this.listaBloqueados.isEmpty())) {
             Iterator <IProceso> iter = listaBloqueados.iterator();            
             for(int i = 0; i < listaBloqueados.size(); i++) {
+            System.out.println(i);
                 if ( iter.hasNext() ){                              //Iterador de java
-                    Proceso procesoSeleccionado = (Proceso) iter.next();
-                    if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
-                        listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
+                 Proceso procesoSeleccionado = (Proceso) iter.next();
+                    if (i == (listaBloqueados.size() - 1) ) {               
+                        listaBloqueados.addLast(proceso);               //Agrega al final.
                         break;
                     }
+                    else if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
+                        if (i == 0) {
+                            listaBloqueados.addFirst(proceso);              //Agrega al principio.
+                            break;
+                        }
+                        else {
+                            listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
+                            break;
+                        }
+                    }
                 }
-            }  
+            }
         }
         else {
             listaBloqueados.addLast(proceso);  
