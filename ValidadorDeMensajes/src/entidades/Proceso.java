@@ -16,14 +16,15 @@ public class Proceso implements IProceso {
     /**
      * Atributes *****************************************************
      */
-    private String nombre;
-    private String tipo;
+    private final String nombre;
+    private final String tipo;
     private LinkedList<Integer> comportamiento;
     private Long tiempoDeLlegada;
+    private int prioridadInicial;
     private int prioridad;
-    private int cantQuantums;
+    private int cantCiclosEjecutando;
+    private int cantCiclosEsperando;
     private int feedback;
-    private int envejecimiento;
     private Boolean entradaSalida;
     
     // End Atributes *************************************
@@ -52,6 +53,7 @@ public class Proceso implements IProceso {
      * @param ptiempoDeLlegada
      */
     public Proceso(String pnombre, String ptipo, String pComportamiento, Long ptiempoDeLlegada) {
+        this.prioridadInicial = 3;
         this.nombre = pnombre;
         this.tipo = ptipo;
         this.comportamiento = new LinkedList();
@@ -61,9 +63,9 @@ public class Proceso implements IProceso {
         }
         this.tiempoDeLlegada = ptiempoDeLlegada;
         this.prioridad = 3;                     // Prioridad 3 por defecto.
-        this.cantQuantums = 0;
+        this.cantCiclosEjecutando = 0;
+        this.cantCiclosEsperando = 0;
         this.feedback = 0;
-        this.envejecimiento = 0;
         this.entradaSalida = false;
       }
 
@@ -123,16 +125,6 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getCantQuantums() {
-        return cantQuantums;
-    }
-
-    @Override
-    public void setCantQuantums(int cantQuantums) {
-        this.cantQuantums = cantQuantums;
-    }
-
-    @Override
     public int getFeedback() {
         return feedback;
     }
@@ -140,16 +132,6 @@ public class Proceso implements IProceso {
     @Override
     public void setFeedback(int feedback) {
         this.feedback = feedback;
-    }
-
-    @Override
-    public int getEnvejecimiento() {
-        return envejecimiento;
-    }
-
-    @Override
-    public void setEnvejecimiento(int envejecimiento) {
-        this.envejecimiento = envejecimiento;
     }
 
     @Override
@@ -161,6 +143,44 @@ public class Proceso implements IProceso {
     public void setEntradaSalida(Boolean entradaSalida) {
         this.entradaSalida = entradaSalida;
     }
-    
-    
+
+    @Override
+    public int getCantCiclosEjecutando() {
+        return cantCiclosEjecutando;
+    }
+
+    @Override
+    public void setCantCiclosEjecutando(int cantCiclosEjecutando) {
+        this.cantCiclosEjecutando = cantCiclosEjecutando;
+    }
+
+    @Override
+    public int getCantCiclosEsperando() {
+        return cantCiclosEsperando;
+    }
+
+    @Override
+    public void setCantCiclosEsperando(int cantCiclosEsperando) {
+        this.cantCiclosEsperando = cantCiclosEsperando;
+    }
+
+    @Override
+    public int getPrioridadInicial() {
+        return this.prioridadInicial;
+    }
+
+    @Override
+    public void sumarUnoFeedback() {
+        this.feedback += 1;
+    }
+
+    @Override
+    public void sumarUnoCiclosEsperando() {
+        this.cantCiclosEsperando += 1;
+    }
+
+    @Override
+    public void sumarUnoCiclosEjecutando() {
+        this.cantCiclosEjecutando += 1;
+    }
  }

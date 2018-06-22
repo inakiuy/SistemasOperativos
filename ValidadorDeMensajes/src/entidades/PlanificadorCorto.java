@@ -195,8 +195,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
+        this.restarUnoProcesosRestantes();
         this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila X, por defecto deberia ser la 3
-        this.cantProcesosRestantes -= 1;
+        this.restarUnoProcesosRestantes();
     }
 
     /**
@@ -205,6 +206,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public synchronized void ingresarProcesoListaBloqueados(IProceso proceso) {
+        this.sumarUnoProcesosRestantes();
         if (this.listaBloqueados.size() > 0) {
             Iterator<IProceso> iter = listaBloqueados.iterator();
             for (int i = 0; i < listaBloqueados.size(); i++) {
@@ -213,7 +215,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                     if (i == (listaBloqueados.size() - 1)) {
                         listaBloqueados.addLast(proceso);               //Agrega al final.
                         break;
-                    } else if ((Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst()) {
+                    } else if ( procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst()) {
                         if (i == 0) {
                             listaBloqueados.addFirst(proceso);              //Agrega al principio.
                             break;
@@ -276,8 +278,46 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     }
 
     @Override
-    public int getTamanioQuantum() {
-        return tamanioQuantum;
+    public void restarUnoProcesosRestantes(){
+        this.cantProcesosRestantes -= 1;
+    }
+ 
+    @Override
+    public void sumarUnoProcesosRestantes(){
+        this.cantProcesosRestantes += 1;
     }
 
+    @Override
+    public int getTamanioQuantum() {
+        return this.tamanioQuantum;
+    }
+    
+    public void formulaRecalcularPrioridad(IProceso pproceso){
+    
+        //  5 quantums = 20 ciclos
+        int prioridadBase = pproceso.getPrioridadInicial();
+        int envejecimiento = (pproceso.getCantCiclosEsperando() / this.tamanioQuantum) % 5;
+        int feedback = (pproceso.getCantCiclosEjecutando() / this.tamanioQuantum) % 2;
+
+        int prioridadNueva = prioridadBase - envejecimiento + feedback;
+        
+        if ( prioridadNueva <= 0 )
+            pproceso.setPrioridad(1);
+        else if (prioridadNueva >= this.CANTIDAD_DE_COLAS)
+            pproceso.setPrioridad(this.CANTIDAD_DE_COLAS);
+        else
+            pproceso.setPrioridad(prioridadNueva);
+    }
+    
+      /*          int prioridad = 3 - (p.getEnvejecimiento() % 5) + (p.getFeedback() % 2);
+                        if (p.getEntradaSalida()) {
+                            prioridad = prioridad + 2;
+                        }
+                        if (prioridad == 0) {
+                            p.setPrioridad(1);
+                        } else {
+                            p.setPrioridad(prioridad);
+                        }                                                   */
+                    
+    
 }

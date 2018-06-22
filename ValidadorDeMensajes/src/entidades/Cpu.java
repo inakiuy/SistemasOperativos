@@ -16,7 +16,7 @@ public class Cpu implements ICpu {
     /**
      * Atributes *****************************************************
      */
-    private String nombre;
+    private final String nombre;
     private IProceso procesoCorriendo;
     private AtomicBoolean monitorCPUs;
     private final IPlanificadorCorto planificadorCorto;
@@ -124,7 +124,6 @@ public class Cpu implements ICpu {
             }
             this.procesoCorriendo = null;    
         }
-       
     }
 
     // End Methods ****************************************

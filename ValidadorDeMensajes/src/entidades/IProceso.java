@@ -17,13 +17,22 @@ public interface IProceso {
     public LinkedList<Integer> getComportamiento();
     public Long getTiempoDeLlegada();
     public int getPrioridad();
-    public void setPrioridad(int prioridad);
-    public int getCantQuantums();
-    public void setCantQuantums(int cantQuantums);
     public int getFeedback();
-    public void setFeedback(int feedback);
-    public int getEnvejecimiento();
-    public void setEnvejecimiento(int envejecimiento);
+    public int getCantCiclosEjecutando();
+    public int getCantCiclosEsperando();
+    public int getPrioridadInicial();
     public Boolean getEntradaSalida();
+    
+    public void setPrioridad(int prioridad);
+    public void setFeedback(int feedback);
     public void setEntradaSalida(Boolean entradaSalida);
+    public void setCantCiclosEjecutando(int cantCiclosEjecutando);
+    public void setCantCiclosEsperando(int cantCiclosEsperando);
+    
+    
+    public void sumarUnoFeedback();
+    public void sumarUnoCiclosEsperando();
+    public void sumarUnoCiclosEjecutando();
+
+    
 }
