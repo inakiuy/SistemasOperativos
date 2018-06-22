@@ -6,7 +6,7 @@
  */
 package entidades;
 
-import datasource.ProcesosDatasource;
+import datasource.IDatasource;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,10 +23,11 @@ public class Reloj implements Runnable {
     private String nombre;
     private long intervaloDeTiempo;
     private Long tiempoActual;
-    private ProcesosDatasource datos;
+    private IDatasource datos;
     private AtomicBoolean monitorPL;
     private AtomicBoolean monitorPC;
     private AtomicBoolean monitorCPUs;
+    private final Integer CANTIDAD_CPUS = 2;
     // End Atributes **************************************
 
     /**
@@ -40,7 +41,7 @@ public class Reloj implements Runnable {
      * @param pintervalo
      * @param pDatos
      */
-    public Reloj(String pnombre, int pintervalo, ProcesosDatasource pDatos) {
+    public Reloj(String pnombre, int pintervalo, IDatasource pDatos) {
         this.nombre = pnombre;
         this.intervaloDeTiempo = pintervalo;
         this.tiempoActual = new Long(0);
@@ -65,8 +66,7 @@ public class Reloj implements Runnable {
         //Meto los cpu en un array para pasarlos al Planificador Corto que los
         //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
        
-        int n = 2;
-        ICpu[] CPUs = new ICpu[n];
+        ICpu[] CPUs = new ICpu[CANTIDAD_CPUS];
       
         //Creamos hilo del planificador a corto plazo que es el objeto encargado
         //de planificar el uso de CPU de forma eficiente.
@@ -75,7 +75,7 @@ public class Reloj implements Runnable {
 
         //Creamos hilos de planificador largo que son los objetos que admiten los
         //procesos desde la fuente de datos.
-        Runnable ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
+        IPlanificadorLargo ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
           //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
@@ -141,7 +141,7 @@ public class Reloj implements Runnable {
                 
                 //Ultima orden antes de comenzar otro ciclo. Aumentar el tiempo.
                 this.tiempoActual = this.getTiempoActual() + this.getIntervaloDeTiempo();
-                Thread.sleep(1000);
+                Thread.sleep(200);
             }
         } catch (InterruptedException ex) {
             System.out.println(" :( Algo salio mal en el reloj...");

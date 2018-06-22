@@ -21,8 +21,7 @@ public class Cpu implements ICpu {
     private AtomicBoolean monitorCPUs;
     private final IPlanificadorCorto planificadorCorto;
     // End Atributes **************************************
-    
-    
+
     /**
      * Constructors ****************************************************
      */
@@ -39,8 +38,7 @@ public class Cpu implements ICpu {
         this.procesoCorriendo = null;
     }
     // End Constructors ***********************************
-    
-    
+
     /**
      * Methods ****************************************************
      */
@@ -57,21 +55,20 @@ public class Cpu implements ICpu {
                     }
                 }
 
-                System.out.println("      3 - Ejecutando ciclo de " + this.getNombre());
+                System.out.println("      5 - Ejecutando ciclo de " + this.getNombre());
 
                 if (this.getProcesoCorriendo() != null) {
-                    System.out.println("      3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    System.out.println("      5 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
 
-                     this.trabajar();
-                    
+                    this.trabajar();
+
                     // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
-
                 } else {
-                    System.out.println("      3 - " + this.getNombre() + " vacio");
+                    System.out.println("      5 - " + this.getNombre() + " vacio");
                 }
-                Thread.sleep(1000);
+                Thread.sleep(200);
 
-                System.out.println("      3 - Fin ciclo de " + this.getNombre());
+                System.out.println("      5 - Fin ciclo de " + this.getNombre());
 
                 synchronized (monitorCPUs) {
                     monitorCPUs.set(false);
@@ -82,11 +79,11 @@ public class Cpu implements ICpu {
             System.out.println("Algo salio mal en CPU + " + this.getNombre() + ": " + e.toString());
         }
     }
-    
+
     /**
      * Realiza trabajo sobre el proceso cargado
      */
-/*    private void trabajar() {
+    /*    private void trabajar() {
         
         int x = this.procesoCorriendo.getComportamiento().getFirst();
         
@@ -113,22 +110,20 @@ public class Cpu implements ICpu {
             }
         }
     }*/
-
     private void trabajar() {
-        
-        int x = this.procesoCorriendo.getComportamiento().getFirst();
-    
-        if (x != 1) {                                                   // Disminuye en uno el numero del primero.
-            this.procesoCorriendo.getComportamiento().set(0, x - 1);
+
+        int comportamientoProceso = this.procesoCorriendo.getComportamiento().getFirst();
+
+        if (comportamientoProceso != 1) {                                                   // Disminuye en uno el numero del primero.
+            this.procesoCorriendo.getComportamiento().set(0, comportamientoProceso - 1);
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
-            
+
             this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
             this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
         }
     }
-    
-    
+
     // End Methods ****************************************
     /**
      * Getters and Setters ****************************************************

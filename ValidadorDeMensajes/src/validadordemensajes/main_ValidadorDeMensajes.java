@@ -26,7 +26,7 @@ public class main_ValidadorDeMensajes {
         // Fin Paramtros *****************************************************
         
         //Cargamos los datos de prueba en una lista para luego alimentar el sistema
-        final ProcesosDatasource datos = new ProcesosDatasource();
+        final IDatasource datos = new ProcesosDatasource();
         
         //Creamos el reloj que sincronizara la simulacion
         Runnable ru_reloj = new Reloj(NOMBRE_RELOJ, INTERVALO_TIEMPO, datos);

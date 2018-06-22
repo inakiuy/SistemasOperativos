@@ -6,7 +6,6 @@
 package entidades;
 
 import datasource.IDatasource;
-import datasource.ProcesosDatasource;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -37,7 +36,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
      * @param pFuenteDeDatosProcesos
      * @param pplanificadorCorto
      */
-    public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, ProcesosDatasource pFuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
+    public PlanificadorLargo(AtomicBoolean pmonitorPL, Reloj preloj, IDatasource pFuenteDeDatosProcesos, IPlanificadorCorto pplanificadorCorto) {
         this.monitorPL = pmonitorPL;
         this.reloj = preloj; 
         this.fuenteDeDatosProcesos = pFuenteDeDatosProcesos;
@@ -65,6 +64,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
   
                 planificar();
                 
+                Thread.sleep(200);
                 System.out.println("  1 - Fin planificador LARGO");
   
                 synchronized (monitorPL) {
@@ -84,11 +84,9 @@ public class PlanificadorLargo implements IPlanificadorLargo {
      */
     private void planificar(){    
         this.obtenerNuevosProcesos();      
-        while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() != 0 ) {
-            if ( ! this.listaProcesosPL.isEmpty() ) {
+        while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() > 0 ) {
             IProceso proceso = this.listaProcesosPL.removeFirst();
             this.planificadorCorto.ingresarProceso(proceso,3);        // Proceso X en la lista 3    (Van del 1 al 5)
-            }
         }      
     }
     

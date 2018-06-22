@@ -22,14 +22,12 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private final AtomicBoolean monitorPC;
     private LinkedList<IProceso>[] pilaListas;
     private LinkedList<IProceso> listaBloqueados;
-    private final int tamanioQuantum;       // Lo deberia de saber el Proceso, o el proceso saber en si cuantos cuantums va el?
-    private final ICpu[] cpus;              //FINAL??
+    private final int tamanioQuantum;
+    private final ICpu[] cpus;
     private final Integer CANTIDAD_DE_COLAS = 5;
-    
-    private Boolean faseAsignarProcCPUs = true;
+    private Boolean cargarCPUs = true;
     // End Atributes **************************************
 
-    
     /**
      * Constructors ****************************************************
      */
@@ -45,11 +43,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.cpus = pcpus;
         this.cantProcesosRestantes = 500;
         this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS];    // Array de 5, se usaran solo 4, del 1 al 5.
-        this.listaBloqueados = new LinkedList();        
-        for ( int i = 1 ; i < this.pilaListas.length ; i++) {
+        this.listaBloqueados = new LinkedList();
+        for (int i = 1; i < this.pilaListas.length; i++) {
             pilaListas[i] = new LinkedList<>();
         }
-    }    
+    }
     // End Constructors ***********************************
 
     /**
@@ -67,27 +65,17 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         monitorPC.wait();
                     }
                 }
-                                
-                try {
-                    if ( this.faseAsignarProcCPUs){
-                        //PRIMERO
-                        System.out.println("    2 - Ejecutando planificador CORTO...");
-                        this.asignarProcesosCpusVacios();
-                        System.out.println("    2 - Fin planificador CORTO.");
-                    }
-                    else{
-                        System.out.println("        4 - Ejecutando planificador CORTO...");
-                        this.planificar();
-                        System.out.println("        4 - Fin planificador CORTO.");
-                    }
+                if (this.cargarCPUs) {
+                    //PRIMERO
+                    System.out.println("    2 - Ejecutando planificador CORTO...");
+                    this.asignarProcesosCpusVacios();
+                    System.out.println("    2 - Fin planificador CORTO.");
+                } else {
+                    System.out.println("    4 - Ejecutando planificador CORTO...");
+                    this.planificar();
+                    System.out.println("    4 - Fin planificador CORTO.");
                 }
-                catch (Exception e) {
-                }
-                finally {
-                    this.faseAsignarProcCPUs = ! this.faseAsignarProcCPUs;
-                }
-                
-                
+                Thread.sleep(200);
                 synchronized (monitorPC) {
                     monitorPC.set(false);
                     monitorPC.notify();
@@ -95,144 +83,140 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         } catch (Exception e) {
             System.out.println("Algo salio mal en PC: " + e.toString());
+        } finally {
+            this.cargarCPUs = !this.cargarCPUs;
         }
     }
 
     /**
-     * 
+     *
      */
-    private void planificar(){
-         
-        System.out.println("        4 - Estoy planificando.");
+    private void planificar() {
+        System.out.println("    4 - Estoy planificando.");
         //ULTIMO
         this.actualizarComportamientoProcesoBloqueado();
-     }
-   
-    
-    // FALTA HACER CHEQUEOS EN TODOS LOS QUE SAQUEMOS removeFirst, QUE NO SEA EL ULTIMO ELEMENTO --------------------------------- En algunos.
+    }
 
+    // FALTA HACER CHEQUEOS EN TODOS LOS QUE SAQUEMOS removeFirst, QUE NO SEA EL ULTIMO ELEMENTO --------------------------------- En algunos.
     /**
-     * 
+     *
      */
-    private void actualizarComportamientoProcesoBloqueado() {        
-        Iterator <IProceso> iter = listaBloqueados.iterator();            
-        for(int i = 0; i < listaBloqueados.size(); i++) {
-            if ( iter.hasNext() ){                              //Iterador de java
+    private void actualizarComportamientoProcesoBloqueado() {
+        Iterator<IProceso> iter = listaBloqueados.iterator();
+        for (int i = 0; i < listaBloqueados.size(); i++) {
+            if (iter.hasNext()) {                              //Iterador de java
                 Proceso procesoSeleccionado = (Proceso) iter.next();
-                if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() == 1){                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
+                if ((Integer) procesoSeleccionado.getComportamiento().getFirst() == 1) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                     procesoSeleccionado.getComportamiento().removeFirst();
-                    if ( procesoSeleccionado.getComportamiento() != null ) {
+                    if (procesoSeleccionado.getComportamiento() != null) {
                         IProceso p = this.listaBloqueados.remove(i);  //  Lo remuve de la lista bloqueada.
                         int prioridad = 3 - (p.getEnvejecimiento() % 5) + (p.getFeedback() % 2);
-                        if (p.getEntradaSalida()){
+                        if (p.getEntradaSalida()) {
                             prioridad = prioridad + 2;
                         }
-                        if(prioridad == 0){
+                        if (prioridad == 0) {
                             p.setPrioridad(1);
-                        }else{
+                        } else {
                             p.setPrioridad(prioridad);
                         }
-                        this.ingresarProceso(p,p.getPrioridad());         // Lo agrega a la cola.
-                    }
-                    else {
+                        this.ingresarProceso(p, p.getPrioridad());         // Lo agrega a la cola.
+                    } else {
                         this.listaBloqueados.remove(i);
                         // FALTA ----------------- DETRUIR EL OBJETO de ESE proceso.
-                    }         
-                }
-                else {
+                        // Los objetos no se destruyen. Se eliminan las referencias y cuando esta huerfano
+                        // pasa el garbagecollector y lo borra de la memoria
+                    }
+                } else {
                     int nuevoValor = (Integer) procesoSeleccionado.getComportamiento().getFirst() - 1;
-                    procesoSeleccionado.getComportamiento().set(i,nuevoValor);
+                    procesoSeleccionado.getComportamiento().set(i, nuevoValor);
                 }
             }
         }
     }
-    
-   /**
-    * 
-    */
-    private void asignarProcesosCpusVacios() {    
-        System.out.println("    2 - Estoy asignando procesos a CPU`s vacios.");
+
+    /**
+     *
+     */
+    private void asignarProcesosCpusVacios() {
+        System.out.println("      3 - Estoy asignando procesos a CPU`s vacios.");
         for (ICpu cpu : this.cpus) {
             // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
             if (!cpu.hayProceso()) {
                 for (int i = 1; i < this.pilaListas.length; i++) {
                     // Buscar el primer proceso con mayor prioridad.
-                    if (! this.pilaListas[i].isEmpty()) {
+                    if (!this.pilaListas[i].isEmpty()) {
                         IProceso primero = this.pilaListas[i].removeFirst();
                         cpu.setProcesoCorriendo(primero);
                         break;
                     }
-                } 
-            }  
+                }
+            }
         }
-    }      
-     
+    }
+
     /**
-     * 
+     *
      * @param pproceso
-     * @param lista 
+     * @param lista
      */
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
         this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila X, por defecto deberia ser la 3
         this.cantProcesosRestantes -= 1;
     }
-    
+
     /**
-     * 
-     * @param proceso 
+     *
+     * @param proceso
      */
     @Override
-    public void ingresarProcesoListaBloqueados(IProceso proceso) {
-        if ( this.listaBloqueados.size() != 0  ) {
-            Iterator <IProceso> iter = listaBloqueados.iterator();
-            for(int i = 0; i < listaBloqueados.size(); i++) {
-                if ( iter.hasNext() ){                              //Iterador de java
-                 Proceso procesoSeleccionado = (Proceso) iter.next();
-                    if (i == (listaBloqueados.size() - 1) ) {               
+    public synchronized void ingresarProcesoListaBloqueados(IProceso proceso) {
+        if (this.listaBloqueados.size() > 0) {
+            Iterator<IProceso> iter = listaBloqueados.iterator();
+            for (int i = 0; i < listaBloqueados.size(); i++) {
+                if (iter.hasNext()) {                              //Iterador de java
+                    Proceso procesoSeleccionado = (Proceso) iter.next();
+                    if (i == (listaBloqueados.size() - 1)) {
                         listaBloqueados.addLast(proceso);               //Agrega al final.
                         break;
-                    }
-                    else if ( (Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst() ){
+                    } else if ((Integer) procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst()) {
                         if (i == 0) {
                             listaBloqueados.addFirst(proceso);              //Agrega al principio.
                             break;
-                        }
-                        else {
-                            listaBloqueados.add(i-1,proceso);            //Agrega al anteriro, ya que se paso por uno.
+                        } else {
+                            listaBloqueados.add(i - 1, proceso);            //Agrega al anteriro, ya que se paso por uno.
                             break;
                         }
                     }
                 }
             }
-        }
-        else {
-            listaBloqueados.addLast(proceso);  
+        } else {
+            listaBloqueados.addLast(proceso);
         }
     }
     // End Methods ****************************************
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int getCantProcesosRestantes() {
         return cantProcesosRestantes;
     }
-    
+
     /**
-     * 
-     * @param cantProcesosRestantes 
+     *
+     * @param cantProcesosRestantes
      */
     @Override
     public void setCantProcesosRestantes(int cantProcesosRestantes) {
         this.cantProcesosRestantes -= cantProcesosRestantes;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public AtomicBoolean getMonitorPC() {
@@ -240,19 +224,19 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public LinkedList[] getPilaListas() {
         return pilaListas;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-     @Override
+    @Override
     public LinkedList<IProceso> getListaBloqueados() {
         return listaBloqueados;
     }
@@ -261,5 +245,5 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     public int getTamanioQuantum() {
         return tamanioQuantum;
     }
-    
+
 }
