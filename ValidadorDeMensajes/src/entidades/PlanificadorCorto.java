@@ -184,11 +184,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void ingresarProcesoListaBloqueados(IProceso proceso) {
-        System.out.println(listaBloqueados.size());
-        if ( !(this.listaBloqueados.isEmpty())) {
-            Iterator <IProceso> iter = listaBloqueados.iterator();            
+        if ( this.listaBloqueados.size() != 0  ) {
+            Iterator <IProceso> iter = listaBloqueados.iterator();
             for(int i = 0; i < listaBloqueados.size(); i++) {
-            System.out.println(i);
                 if ( iter.hasNext() ){                              //Iterador de java
                  Proceso procesoSeleccionado = (Proceso) iter.next();
                     if (i == (listaBloqueados.size() - 1) ) {               
@@ -259,6 +257,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         return listaBloqueados;
     }
 
+    @Override
     public int getTamanioQuantum() {
         return tamanioQuantum;
     }
