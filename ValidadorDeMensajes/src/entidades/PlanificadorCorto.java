@@ -65,26 +65,30 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         monitorPC.wait();
                     }
                 }
-                if (this.cargarCPUs) {
-                    //PRIMERO
-                    System.out.println("    2 - Ejecutando planificador CORTO...");
-                    this.asignarProcesosCpusVacios();
-                    System.out.println("    2 - Fin planificador CORTO.");
-                } else {
-                    System.out.println("    4 - Ejecutando planificador CORTO...");
-                    this.planificar();
-                    System.out.println("    4 - Fin planificador CORTO.");
-                }
-                Thread.sleep(200);
-                synchronized (monitorPC) {
-                    monitorPC.set(false);
-                    monitorPC.notify();
+                try {
+                    if (this.cargarCPUs) {
+                        //PRIMERO
+                        System.out.println("    2 - Ejecutando planificador CORTO...");
+                        this.asignarProcesosCpusVacios();
+                        System.out.println("    2 - Fin planificador CORTO.");
+                    } else {
+                        System.out.println("    4 - Ejecutando planificador CORTO...");
+                        this.planificar();
+                        System.out.println("    4 - Fin planificador CORTO.");
+                    }
+                    Thread.sleep(200);
+                    synchronized (monitorPC) {
+                        monitorPC.set(false);
+                        monitorPC.notify();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Algo salio mal en PC: " + e.toString());
+                }finally {
+                    this.cargarCPUs = !this.cargarCPUs;
                 }
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             System.out.println("Algo salio mal en PC: " + e.toString());
-        } finally {
-            this.cargarCPUs = !this.cargarCPUs;
         }
     }
 
@@ -94,6 +98,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private void planificar() {
         System.out.println("    4 - Estoy planificando.");
         //ULTIMO
+        
         this.actualizarComportamientoProcesoBloqueado();
     }
 
@@ -102,26 +107,40 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      *
      */
     private void actualizarComportamientoProcesoBloqueado() {
+        if ( this.listaBloqueados.size() != 0 ) {
+            Iterator<IProceso> iter = listaBloqueados.iterator();
+            while(iter.hasNext()) {
+                IProceso procesoSeleccionado = (IProceso) iter.next();
+                    if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
+                        procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
+                        if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
+                            this.ingresarProceso(procesoSeleccionado, procesoSeleccionado.getPrioridad());         // Lo agrega a la cola.
+                            iter.remove();
+                        } else {
+                            iter.remove(); 
+                        }
+                    } else {
+                        Integer nuevoValor = procesoSeleccionado.getComportamiento().getFirst() - 1;
+                        procesoSeleccionado.getComportamiento().set(0, nuevoValor);
+                    }
+                }
+        }
+    }
+    
+    /*
+     {
+        
         Iterator<IProceso> iter = listaBloqueados.iterator();
         for (int i = 0; i < listaBloqueados.size(); i++) {
             if (iter.hasNext()) {                              //Iterador de java
                 Proceso procesoSeleccionado = (Proceso) iter.next();
-                if ((Integer) procesoSeleccionado.getComportamiento().getFirst() == 1) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
-                    procesoSeleccionado.getComportamiento().removeFirst();
-                    if (procesoSeleccionado.getComportamiento() != null) {
+                if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
+                    procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
+                    if (procesoSeleccionado.getComportamiento() != null) {                      // Si aun tiene ciclos por hacer...
                         IProceso p = this.listaBloqueados.remove(i);  //  Lo remuve de la lista bloqueada.
-                        int prioridad = 3 - (p.getEnvejecimiento() % 5) + (p.getFeedback() % 2);
-                        if (p.getEntradaSalida()) {
-                            prioridad = prioridad + 2;
-                        }
-                        if (prioridad == 0) {
-                            p.setPrioridad(1);
-                        } else {
-                            p.setPrioridad(prioridad);
-                        }
                         this.ingresarProceso(p, p.getPrioridad());         // Lo agrega a la cola.
                     } else {
-                        this.listaBloqueados.remove(i);
+                        this.listaBloqueados.remove(i); 
                     }
                 } else {
                     Integer nuevoValor = procesoSeleccionado.getComportamiento().getFirst() - 1;
@@ -130,7 +149,22 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         }
     }
-
+     */
+    
+    
+     /*int prioridad = 3 - (p.getEnvejecimiento() % 5) + (p.getFeedback() % 2);
+                        if (p.getEntradaSalida()) {
+                            prioridad = prioridad + 2;
+                        }
+                        if (prioridad == 0) {
+                            p.setPrioridad(1);
+                        } else {
+                            p.setPrioridad(prioridad);
+                        }*/
+                       
+    
+    
+    
     /**
      *
      */

@@ -118,10 +118,13 @@ public class Cpu implements ICpu {
             this.procesoCorriendo.getComportamiento().set(0, comportamientoProceso - 1);
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
-
-            this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
-            this.procesoCorriendo = null;                                                   // Se declara que no hay proceso en el CPU.
+           
+            if ( this.procesoCorriendo.getComportamiento().size() != 0 ) { 
+                this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
+            }
+            this.procesoCorriendo = null;    
         }
+       
     }
 
     // End Methods ****************************************
