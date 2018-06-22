@@ -5,7 +5,6 @@
  */
 package entidades;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -100,7 +99,7 @@ public class Proceso implements IProceso {
      * @return the comportamiento
      */
     @Override
-    public LinkedList getComportamiento() {
+    public LinkedList<Integer> getComportamiento() {
         return comportamiento;
     }
 

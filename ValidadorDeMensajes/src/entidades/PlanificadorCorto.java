@@ -122,12 +122,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         this.ingresarProceso(p, p.getPrioridad());         // Lo agrega a la cola.
                     } else {
                         this.listaBloqueados.remove(i);
-                        // FALTA ----------------- DETRUIR EL OBJETO de ESE proceso.
-                        // Los objetos no se destruyen. Se eliminan las referencias y cuando esta huerfano
-                        // pasa el garbagecollector y lo borra de la memoria
                     }
                 } else {
-                    int nuevoValor = (Integer) procesoSeleccionado.getComportamiento().getFirst() - 1;
+                    Integer nuevoValor = procesoSeleccionado.getComportamiento().getFirst() - 1;
                     procesoSeleccionado.getComportamiento().set(i, nuevoValor);
                 }
             }
