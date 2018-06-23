@@ -15,7 +15,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     private final AtomicBoolean monitorPC;
     private Reloj reloj;
-    private LinkedList<IProceso>[] pilaListas;
+    private final LinkedList<IProceso>[] pilaListas;
     private LinkedList<IProceso> listaBloqueados;
     private final ICpu[] cpus;
     private Boolean cargarCPUs = true;
@@ -99,19 +99,21 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private void reasignarPrioridadesPila(){
         for (int i = 1; i < this.pilaListas.length; i++) {
             if (!this.pilaListas[i].isEmpty()) {
-                Iterator<IProceso> iter = this.pilaListas[i].iterator();
-                while(iter.hasNext()) {
-                    IProceso proceso = (IProceso) iter.next();
-                    int prioridadLlego = proceso.getPrioridad();
-                    
-                    int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
-                    
-                    if ( prioridadLlego != prioridadNueva ) {
-                        proceso.setPrioridad(prioridadNueva);
-                        proceso.setCantCiclosEjecutando(0);
-                        proceso.setCantCiclosEsperando(0);
-                        this.ingresarProceso(proceso,prioridadNueva);
-                        iter.remove();
+                synchronized (pilaListas){
+                    Iterator<IProceso> iter = this.pilaListas[i].iterator();
+                    while(iter.hasNext()) {
+                        IProceso proceso = (IProceso) iter.next();
+                        int prioridadLlego = proceso.getPrioridad();
+
+                        int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
+
+                        if ( prioridadLlego != prioridadNueva ) {
+                            proceso.setPrioridad(prioridadNueva);
+                            proceso.setCantCiclosEjecutando(0);
+                            proceso.setCantCiclosEsperando(0);
+                            this.ingresarProceso(proceso,prioridadNueva);
+                            iter.remove();
+                        }
                     }
                 }
             }
@@ -123,9 +125,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     private void actualizarComportamientoProcesoBloqueado() {
         if ( this.listaBloqueados.size() > 0 ) {
-            Iterator<IProceso> iter = listaBloqueados.iterator();
-            while(iter.hasNext()) {
-                IProceso procesoSeleccionado = iter.next();
+            synchronized (listaBloqueados){
+                Iterator<IProceso> iter = listaBloqueados.iterator();
+                while(iter.hasNext()) {
+                    IProceso procesoSeleccionado = iter.next();
                     if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                         procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
                         if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
@@ -140,6 +143,8 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         procesoSeleccionado.getComportamiento().set(0, nuevoValor);
                     }
                 }
+            }
+
         }
     }
     
@@ -176,8 +181,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     @Override
     public void ingresarProceso(IProceso pproceso, int lista) {
         this.restarUnoProcesosRestantes();
-        this.pilaListas[lista].addLast(pproceso);        //Esto simula la pila X, por defecto deberia ser la 3
-        this.restarUnoProcesosRestantes();
+          synchronized (pilaListas){
+              this.pilaListas[lista].addLast(pproceso);
+          }   
     }
 
     /**
@@ -187,27 +193,29 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     @Override
     public synchronized void ingresarProcesoListaBloqueados(IProceso proceso) {
         this.sumarUnoProcesosRestantes();
-        if (this.listaBloqueados.size() > 0) {
-            Iterator<IProceso> iter = listaBloqueados.iterator();
-            for (int i = 0; i < listaBloqueados.size(); i++) {
-                if (iter.hasNext()) {                              //Iterador de java
-                    Proceso procesoSeleccionado = (Proceso) iter.next();
-                    if (i == (listaBloqueados.size() - 1)) {
-                        listaBloqueados.addLast(proceso);               //Agrega al final.
-                        break;
-                    } else if ( procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst()) {
-                        if (i == 0) {
-                            listaBloqueados.addFirst(proceso);              //Agrega al principio.
+        synchronized (listaBloqueados){
+            if (this.listaBloqueados.size() > 0) {
+                Iterator<IProceso> iter = listaBloqueados.iterator();
+                for (int i = 0; i < listaBloqueados.size(); i++) {
+                    if (iter.hasNext()) {                              //Iterador de java
+                        Proceso procesoSeleccionado = (Proceso) iter.next();
+                        if (i == (listaBloqueados.size() - 1)) {
+                            listaBloqueados.addLast(proceso);               //Agrega al final.
                             break;
-                        } else {
-                            listaBloqueados.add(i - 1, proceso);            //Agrega al anteriro, ya que se paso por uno.
-                            break;
+                        } else if ( procesoSeleccionado.getComportamiento().getFirst() > proceso.getComportamiento().getFirst()) {
+                            if (i == 0) {
+                                listaBloqueados.addFirst(proceso);              //Agrega al principio.
+                                break;
+                            } else {
+                                listaBloqueados.add(i - 1, proceso);            //Agrega al anteriro, ya que se paso por uno.
+                                break;
+                            }
                         }
                     }
                 }
-            }
-        } else {
-            listaBloqueados.addLast(proceso);
+            } else {
+                listaBloqueados.addLast(proceso);
+            }            
         }
     }
   

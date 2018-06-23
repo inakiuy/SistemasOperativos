@@ -62,7 +62,11 @@ public class ProcesosDatasource implements IDatasource {
                     if (iter.hasNext()) {                              //Iterador de java
                         Proceso procesoSeleccionado = (Proceso) iter.next();
                         if (proc.getTiempoDeLlegada() < procesoSeleccionado.getTiempoDeLlegada()) {
-                            listaProcesos.add(i - 1, proc);            //Agrega al anteriro, ya que se paso por uno.
+                            if ( i > 1){
+                                listaProcesos.add(i - 1, proc);            //Agrega al anteriro, ya que se paso por uno.
+                            } else{
+                                listaProcesos.addFirst(proc);            //Agrega al principio
+                            }
                             break;
                         }
                     }

@@ -8,8 +8,6 @@ package entidades;
 
 import datasource.IDatasource;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -64,7 +62,7 @@ public class Reloj implements Runnable {
         //Meto los cpu en un array para pasarlos al Planificador Corto que los
         //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
         ICpu[] CPUs = new ICpu[CANTIDAD_CPUS];
-      
+
         //Creamos hilo del planificador a corto plazo que es el objeto encargado
         //de planificar el uso de CPU de forma eficiente.
         IPlanificadorCorto ru_planificadorCorto = new PlanificadorCorto(this.monitorPC, this, CPUs);
@@ -75,22 +73,18 @@ public class Reloj implements Runnable {
         IPlanificadorLargo ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
-        //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
-        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs, this, ru_planificadorCorto);
-        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs,this, ru_planificadorCorto);
-        Thread th_cpu1 = new Thread(ru_cpu1);
-        Thread th_cpu2 = new Thread(ru_cpu2);
-        
-        CPUs[0] = ru_cpu1;
-        CPUs[1] = ru_cpu2;        
-
         try {
+                    //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
+            for ( int i = 0 ; i < this.CANTIDAD_CPUS ; i++) {
+               CPUs[i] = new Cpu("CPU-"+ i+1, this.monitorCPUs, this, ru_planificadorCorto);;
+               Thread th_cpu = new Thread(CPUs[i]);
+               th_cpu.start();
+            }
+
             // Arranco todos los hilos. Su primera instruccion es parar a la espera
             // de una notificacion en su correspondiente monitor (mutexPL, mutexPC, mutexCPUs).
             th_planificadorLargo.start();
             th_planificadorCorto.start();
-            th_cpu1.start();
-            th_cpu2.start();
 
             // Para test hacemos solo 30 ciclos
             while (this.getTiempoActual() < 30000) {
