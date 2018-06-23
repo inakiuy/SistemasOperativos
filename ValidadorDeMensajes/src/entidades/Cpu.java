@@ -87,7 +87,7 @@ public class Cpu implements ICpu {
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
             if ( this.procesoCorriendo.getComportamiento().size() > 0 ) { 
-                this.procesoCorriendo.sumarDosPrioridad();
+                this.procesoCorriendo.aumentarDosPrioridades();
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
                 this.procesoCorriendo = null;
             } else {

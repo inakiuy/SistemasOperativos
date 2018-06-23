@@ -38,7 +38,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.monitorPC = pmonitorPC;
         this.reloj = preloj;
         this.cpus = pcpus;
-        this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS];    // Array de 5, se usaran solo 4, del 1 al 5.
+        this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS + 1];    // Array de 5, se usaran solo 4, del 1 al 5.
         this.listaBloqueados = new LinkedList();
         for (int i = 1; i < this.pilaListas.length; i++) {
             pilaListas[i] = new LinkedList<>();

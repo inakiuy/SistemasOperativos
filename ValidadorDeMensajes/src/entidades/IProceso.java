@@ -27,5 +27,5 @@ public interface IProceso {
     public void sumarUnoCiclosEjecutando();
     public void cambiarPrioridad(int cantidad);
     public void logEstadisticas(Long ptiempoActual);
-    public void sumarDosPrioridad();
+    public void aumentarDosPrioridades();
 }

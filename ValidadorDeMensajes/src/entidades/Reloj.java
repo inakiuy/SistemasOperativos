@@ -25,7 +25,7 @@ public class Reloj implements Runnable {
     private final AtomicBoolean monitorPL;
     private final AtomicBoolean monitorPC;
     private final AtomicBoolean monitorCPUs;
-    private final Integer CANTIDAD_CPUS = 2;
+    private final Integer CANTIDAD_CPUS = 1;
     private final Integer DELAY = 100;
     // End Atributes **************************************
 
