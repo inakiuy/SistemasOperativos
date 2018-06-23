@@ -125,13 +125,14 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         if ( this.listaBloqueados.size() > 0 ) {
             Iterator<IProceso> iter = listaBloqueados.iterator();
             while(iter.hasNext()) {
-                IProceso procesoSeleccionado = (IProceso) iter.next();
+                IProceso procesoSeleccionado = iter.next();
                     if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                         procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
                         if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
                             this.ingresarProceso(procesoSeleccionado, procesoSeleccionado.getPrioridad());         // Lo agrega a la cola.
                             iter.remove();
                         } else {
+                            procesoSeleccionado.logEstadisticas(this.reloj.getTiempoActual());
                             iter.remove(); 
                         }
                     } else {

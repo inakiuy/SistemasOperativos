@@ -9,8 +9,11 @@ package datasource;
  *
  * @author Inaki
  */
-public class Logger {
+public class NuestroLogger {
+   
     public static void log(String[] datos){
-        
+        String rutaArchivoLog = "./src/datos/procesos.log";
+        String[] CSV = {String.join(";", datos)};
+        ManejadorArchivosGenerico1.escribirArchivo(rutaArchivoLog, CSV);
     }
 }

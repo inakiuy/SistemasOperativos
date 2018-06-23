@@ -120,9 +120,7 @@ public class Cpu implements ICpu {
             if ( this.procesoCorriendo.getComportamiento().size() > 0 ) { 
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
             } else {
-            String[] estadisticas = this.procesoCorriendo.obtenerEstadisticas();
-            estadisticas[4] = String.valueOf(this.reloj.getTiempoActual());
-            
+            this.procesoCorriendo.logEstadisticas(this.reloj.getTiempoActual());
             this.procesoCorriendo = null;
             }
         }

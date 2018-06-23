@@ -5,6 +5,7 @@
  */
 package entidades;
 
+import datasource.NuestroLogger;
 import java.util.LinkedList;
 
 /**
@@ -89,6 +90,7 @@ public class Proceso implements IProceso {
      * Cambia la prioridad del proceso
      * @param cantidad 
      */
+    @Override
     public void cambiarPrioridad(int cantidad) {
         int nuevaPrioridad = this.prioridad + cantidad;
         if ( nuevaPrioridad <= 0 ){
@@ -104,10 +106,19 @@ public class Proceso implements IProceso {
      * Obtiene las estadisticas del procesos para ser logueadas al terminar.
      * @return 
      */
-    @Override
-    public String[] obtenerEstadisticas(){
-        String[] estadisticas = {this.tiempoDeLlegada.toString(), this.getCantCiclosEjecutando().toString(), this.getCantCiclosEsperando().toString(), ""};
+    private String[] obtenerEstadisticas(Long ptiempoActual){
+        String[] estadisticas = {this.tiempoDeLlegada.toString(), this.getCantCiclosEjecutando().toString(), this.getCantCiclosEsperando().toString(), ptiempoActual.toString()};
         return estadisticas;
+    }
+    
+    /**
+     *
+     * @param ptiempoActual
+     */
+    @Override
+    public void logEstadisticas(Long ptiempoActual){
+        String[] estadisticas = this.obtenerEstadisticas(ptiempoActual);
+        NuestroLogger.log(estadisticas);
     }
     // End Methods ****************************************    
     

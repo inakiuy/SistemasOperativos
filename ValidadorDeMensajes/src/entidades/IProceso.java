@@ -26,5 +26,5 @@ public interface IProceso {
     public void sumarUnoCiclosEsperando();
     public void sumarUnoCiclosEjecutando();
     public void cambiarPrioridad(int cantidad);
-    public String[] obtenerEstadisticas();
+    public void logEstadisticas(Long ptiempoActual);
 }
