@@ -17,22 +17,16 @@ public interface IProceso {
     public LinkedList<Integer> getComportamiento();
     public Long getTiempoDeLlegada();
     public int getPrioridad();
-    public int getFeedback();
     public int getCantCiclosEjecutando();
     public int getCantCiclosEsperando();
     public int getPrioridadInicial();
-    public Boolean getEntradaSalida();
-    
+
     public void setPrioridad(int prioridad);
-    public void setFeedback(int feedback);
-    public void setEntradaSalida(Boolean entradaSalida);
     public void setCantCiclosEjecutando(int cantCiclosEjecutando);
     public void setCantCiclosEsperando(int cantCiclosEsperando);
-    
-    
-    public void sumarUnoFeedback();
+
     public void sumarUnoCiclosEsperando();
     public void sumarUnoCiclosEjecutando();
 
-    
+     public void cambiarPrioridad(int cantidad);
 }

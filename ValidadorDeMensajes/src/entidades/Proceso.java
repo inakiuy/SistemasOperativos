@@ -24,8 +24,6 @@ public class Proceso implements IProceso {
     private int prioridad;
     private int cantCiclosEjecutando;
     private int cantCiclosEsperando;
-    private int feedback;
-    private Boolean entradaSalida;
     
     // End Atributes *************************************
 
@@ -65,9 +63,7 @@ public class Proceso implements IProceso {
         this.prioridad = 3;                     // Prioridad 3 por defecto.
         this.cantCiclosEjecutando = 0;
         this.cantCiclosEsperando = 0;
-        this.feedback = 0;
-        this.entradaSalida = false;
-      }
+    }
 
     // End Constructors ***********************************
     
@@ -125,26 +121,6 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getFeedback() {
-        return feedback;
-    }
-
-    @Override
-    public void setFeedback(int feedback) {
-        this.feedback = feedback;
-    }
-
-    @Override
-    public Boolean getEntradaSalida() {
-        return entradaSalida;
-    }
-
-    @Override
-    public void setEntradaSalida(Boolean entradaSalida) {
-        this.entradaSalida = entradaSalida;
-    }
-
-    @Override
     public int getCantCiclosEjecutando() {
         return cantCiclosEjecutando;
     }
@@ -170,11 +146,6 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public void sumarUnoFeedback() {
-        this.feedback += 1;
-    }
-
-    @Override
     public void sumarUnoCiclosEsperando() {
         this.cantCiclosEsperando += 1;
     }
@@ -182,5 +153,16 @@ public class Proceso implements IProceso {
     @Override
     public void sumarUnoCiclosEjecutando() {
         this.cantCiclosEjecutando += 1;
+    }
+    
+    public void cambiarPrioridad(int cantidad) {
+        int nuevaPrioridad = this.prioridad + cantidad;
+        if ( nuevaPrioridad <= 0 ){
+            nuevaPrioridad = 1;
+        }
+        else if (nuevaPrioridad >= 5  ){
+            nuevaPrioridad = 5;
+        }
+        this.setPrioridad(nuevaPrioridad);
     }
  }
