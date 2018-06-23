@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entidades;
 
 import java.util.Iterator;
@@ -11,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
- * @author Inaki
+ * @author
  */
 public class PlanificadorCorto implements IPlanificadorCorto {
 
@@ -250,8 +245,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     public void sumarUnoProcesosRestantes(){
         this.CANT_PROC_RESTANTES += 1;
     }
-// End Methods ****************************************
+    // End Methods ****************************************
 
+    /**
+     * Getters and Setters ****************************************************
+     */
     /**
      *
      * @return
@@ -301,4 +299,5 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     public int getTAMANIO_QUANTUM() {
         return this.TAMANIO_QUANTUM;
     }
+    // End Getters and Setters ****************************************
 }

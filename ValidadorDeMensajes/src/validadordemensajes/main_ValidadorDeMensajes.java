@@ -21,7 +21,7 @@ public class main_ValidadorDeMensajes {
         /**
          * Paramtros *****************************************************
          */
-        final int INTERVALO_TIEMPO = 1000;
+        final int INTERVALO_TIEMPO = 1;
         final String NOMBRE_RELOJ = "RELOJ-1";
         // Fin Paramtros *****************************************************
         

@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entidades;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
- * @author Inaki
+ * @author
  */
 public class Cpu implements ICpu {
 
@@ -18,7 +13,7 @@ public class Cpu implements ICpu {
      */
     private final String nombre;
     private IProceso procesoCorriendo;
-    private AtomicBoolean monitorCPUs;
+    private final AtomicBoolean monitorCPUs;
     private final IPlanificadorCorto planificadorCorto;
     private final Integer DELAY = 600;
     // End Atributes **************************************
@@ -59,7 +54,7 @@ public class Cpu implements ICpu {
                 System.out.println("      3 - Ejecutando ciclo de " + this.getNombre());
                 Thread.sleep(DELAY);
                 if (this.getProcesoCorriendo() != null) {
-                    System.out.println("      3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    System.out.println("      3 - Proceso corriendo en " + this.getNombre() +  ":"  + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
                     Thread.sleep(DELAY);
                     this.trabajar();
 
