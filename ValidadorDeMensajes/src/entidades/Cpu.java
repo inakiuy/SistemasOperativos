@@ -12,6 +12,7 @@ public class Cpu implements ICpu {
      * Atributes *****************************************************
      */
     private final String nombre;
+    private final Reloj reloj;
     private IProceso procesoCorriendo;
     private final AtomicBoolean monitorCPUs;
     private final IPlanificadorCorto planificadorCorto;
@@ -27,9 +28,10 @@ public class Cpu implements ICpu {
      * @param monitorCPUs
      * @param pPlanificadorCorto
      */
-    public Cpu(String pnombre, AtomicBoolean monitorCPUs, IPlanificadorCorto pPlanificadorCorto) {
+    public Cpu(String pnombre, AtomicBoolean monitorCPUs, Reloj preloj, IPlanificadorCorto pPlanificadorCorto) {
         this.nombre = pnombre;
         this.monitorCPUs = monitorCPUs;
+        this.reloj = preloj;
         this.planificadorCorto = pPlanificadorCorto;
         this.procesoCorriendo = null;
     }
@@ -105,23 +107,37 @@ public class Cpu implements ICpu {
             }
         }
     }*/
+    
+    /**
+     * 
+     */
     private void trabajar() {
-
-        int comportamientoProceso = this.procesoCorriendo.getComportamiento().getFirst();
-
-        if (comportamientoProceso != 1) {                                                   // Disminuye en uno el numero del primero.
+        Integer comportamientoProceso = this.procesoCorriendo.getComportamiento().getFirst();
+        if (comportamientoProceso > 1) {                                                   // Disminuye en uno el numero del primero.
             this.procesoCorriendo.getComportamiento().set(0, comportamientoProceso - 1);
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
-           
-            if ( this.procesoCorriendo.getComportamiento().size() != 0 ) { 
+            if ( this.procesoCorriendo.getComportamiento().size() > 0 ) { 
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
+            } else {
+            String[] estadisticas = this.procesoCorriendo.obtenerEstadisticas();
+            estadisticas[4] = String.valueOf(this.reloj.getTiempoActual());
+            
+            this.procesoCorriendo = null;
             }
-            this.procesoCorriendo = null;    
         }
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public boolean hayProceso() {
+        return this.procesoCorriendo != null;
+    }
     // End Methods ****************************************
+    
     /**
      * Getters and Setters ****************************************************
      */
@@ -155,9 +171,4 @@ public class Cpu implements ICpu {
     }
 
     // End Getters and Setters ****************************   
-    @Override
-    public boolean hayProceso() {
-        return this.procesoCorriendo != null;
-    }
-
 }

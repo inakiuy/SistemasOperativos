@@ -67,7 +67,7 @@ public class Reloj implements Runnable {
       
         //Creamos hilo del planificador a corto plazo que es el objeto encargado
         //de planificar el uso de CPU de forma eficiente.
-        IPlanificadorCorto ru_planificadorCorto = new PlanificadorCorto(this.monitorPC, CPUs);
+        IPlanificadorCorto ru_planificadorCorto = new PlanificadorCorto(this.monitorPC, this, CPUs);
         Thread th_planificadorCorto = new Thread(ru_planificadorCorto);
 
         //Creamos hilos de planificador largo que son los objetos que admiten los
@@ -76,8 +76,8 @@ public class Reloj implements Runnable {
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
         //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
-        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs, ru_planificadorCorto);
-        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs, ru_planificadorCorto);
+        ICpu ru_cpu1 = new Cpu("CPU-1", this.monitorCPUs, this, ru_planificadorCorto);
+        ICpu ru_cpu2 = new Cpu("CPU-2", this.monitorCPUs,this, ru_planificadorCorto);
         Thread th_cpu1 = new Thread(ru_cpu1);
         Thread th_cpu2 = new Thread(ru_cpu2);
         
@@ -140,8 +140,7 @@ public class Reloj implements Runnable {
                 this.tiempoActual = this.getTiempoActual() + this.getIntervaloDeTiempo();
             }
         } catch (InterruptedException ex) {
-            System.out.println(" :( Algo salio mal en el reloj...");
-            Logger.getLogger(Reloj.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(" :( Algo salio mal en el reloj..." + ex.getMessage());
         }
         System.out.println("----- TERMINO EL RELOJ -----");
     }

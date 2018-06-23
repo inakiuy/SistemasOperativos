@@ -14,6 +14,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * Atributes *****************************************************
      */
     private final AtomicBoolean monitorPC;
+    private Reloj reloj;
     private LinkedList<IProceso>[] pilaListas;
     private LinkedList<IProceso> listaBloqueados;
     private final ICpu[] cpus;
@@ -33,8 +34,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * @param pmonitorPC
      * @param pcpus
      */
-    public PlanificadorCorto(AtomicBoolean pmonitorPC, ICpu[] pcpus) {
+    public PlanificadorCorto(AtomicBoolean pmonitorPC, Reloj preloj, ICpu[] pcpus) {
         this.monitorPC = pmonitorPC;
+        this.reloj = preloj;
         this.cpus = pcpus;
         this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS];    // Array de 5, se usaran solo 4, del 1 al 5.
         this.listaBloqueados = new LinkedList();
@@ -117,10 +119,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     }
    
     /**
-     *
+     * 
      */
     private void actualizarComportamientoProcesoBloqueado() {
-        if ( this.listaBloqueados.size() != 0 ) {
+        if ( this.listaBloqueados.size() > 0 ) {
             Iterator<IProceso> iter = listaBloqueados.iterator();
             while(iter.hasNext()) {
                 IProceso procesoSeleccionado = (IProceso) iter.next();

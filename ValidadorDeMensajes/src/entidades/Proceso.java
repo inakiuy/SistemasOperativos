@@ -20,11 +20,10 @@ public class Proceso implements IProceso {
     private final String tipo;
     private LinkedList<Integer> comportamiento;
     private Long tiempoDeLlegada;
-    private int prioridadInicial;
-    private int prioridad;
-    private int cantCiclosEjecutando;
-    private int cantCiclosEsperando;
-    
+    private Integer prioridadInicial;
+    private Integer prioridad;
+    private Integer cantCiclosEjecutando;
+    private Integer cantCiclosEsperando;    
     // End Atributes *************************************
 
       
@@ -95,10 +94,20 @@ public class Proceso implements IProceso {
         if ( nuevaPrioridad <= 0 ){
             nuevaPrioridad = 1;
         }
-        else if (nuevaPrioridad >= 5  ){
+        else if (nuevaPrioridad >= 5){
             nuevaPrioridad = 5;
         }
         this.setPrioridad(nuevaPrioridad);
+    }
+    
+    /**
+     * Obtiene las estadisticas del procesos para ser logueadas al terminar.
+     * @return 
+     */
+    @Override
+    public String[] obtenerEstadisticas(){
+        String[] estadisticas = {this.tiempoDeLlegada.toString(), this.getCantCiclosEjecutando().toString(), this.getCantCiclosEsperando().toString(), ""};
+        return estadisticas;
     }
     // End Methods ****************************************    
     
@@ -139,7 +148,7 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getPrioridad() {
+    public Integer getPrioridad() {
         return prioridad;
     }
 
@@ -149,7 +158,7 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getCantCiclosEjecutando() {
+    public Integer getCantCiclosEjecutando() {
         return cantCiclosEjecutando;
     }
 
@@ -159,7 +168,7 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getCantCiclosEsperando() {
+    public Integer getCantCiclosEsperando() {
         return cantCiclosEsperando;
     }
 
@@ -169,7 +178,7 @@ public class Proceso implements IProceso {
     }
 
     @Override
-    public int getPrioridadInicial() {
+    public Integer getPrioridadInicial() {
         return this.prioridadInicial;
     }
     // End Getters and Setters ****************************    
