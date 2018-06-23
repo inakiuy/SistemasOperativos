@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entidades;
 
 import datasource.IDatasource;
@@ -11,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
- * @author Inaki
+ * @author
  */
 public class PlanificadorLargo implements IPlanificadorLargo {
 
@@ -22,7 +17,8 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private Reloj reloj;
     private IDatasource fuenteDeDatosProcesos;
     private IPlanificadorCorto planificadorCorto;
-    private LinkedList<IProceso> listaProcesosPL;   
+    private LinkedList<IProceso> listaProcesosPL;
+    private final Integer DELAY = 600;
     // End Atributes **************************************
 
     /**
@@ -61,10 +57,8 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                     }
                 }
                 System.out.println("  1 - Ejecutando planificador LARGO...");
-  
+                Thread.sleep(DELAY);
                 planificar();
-                
-                Thread.sleep(200);
                 System.out.println("  1 - Fin planificador LARGO");
   
                 synchronized (monitorPL) {
@@ -101,7 +95,9 @@ public class PlanificadorLargo implements IPlanificadorLargo {
             if ( proceso != null ) {
                 this.listaProcesosPL.addLast(proceso);
             }
-            else { hayProcesos = false; }
+            else {
+                hayProcesos = false; 
+            }
         }
     }
     // End Methods ****************************************

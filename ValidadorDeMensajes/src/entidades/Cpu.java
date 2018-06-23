@@ -20,6 +20,7 @@ public class Cpu implements ICpu {
     private IProceso procesoCorriendo;
     private AtomicBoolean monitorCPUs;
     private final IPlanificadorCorto planificadorCorto;
+    private final Integer DELAY = 600;
     // End Atributes **************************************
 
     /**
@@ -55,20 +56,19 @@ public class Cpu implements ICpu {
                     }
                 }
 
-                System.out.println("      5 - Ejecutando ciclo de " + this.getNombre());
-
+                System.out.println("      3 - Ejecutando ciclo de " + this.getNombre());
+                Thread.sleep(DELAY);
                 if (this.getProcesoCorriendo() != null) {
-                    System.out.println("      5 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
-
+                    System.out.println("      3 - Proceso corriendo: " + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    Thread.sleep(DELAY);
                     this.trabajar();
 
                     // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
                 } else {
-                    System.out.println("      5 - " + this.getNombre() + " vacio");
+                    System.out.println("      3 - " + this.getNombre() + " vacio");
+                    Thread.sleep(DELAY);
                 }
-                Thread.sleep(200);
-
-                System.out.println("      5 - Fin ciclo de " + this.getNombre());
+                System.out.println("      3 - Fin ciclo de " + this.getNombre());
 
                 synchronized (monitorCPUs) {
                     monitorCPUs.set(false);

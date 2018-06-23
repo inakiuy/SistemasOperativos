@@ -18,14 +18,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     /**
      * Atributes *****************************************************
      */
-    private Integer cantProcesosRestantes;
     private final AtomicBoolean monitorPC;
     private LinkedList<IProceso>[] pilaListas;
     private LinkedList<IProceso> listaBloqueados;
-    private final int tamanioQuantum;
     private final ICpu[] cpus;
-    private final Integer CANTIDAD_DE_COLAS = 5;
     private Boolean cargarCPUs = true;
+    private final int TAMANIO_QUANTUM = 4;
+    private Integer CANT_PROC_RESTANTES = 500;
+    private final Integer CANTIDAD_DE_COLAS = 5;
+    private final Integer DELAY = 600;
     // End Atributes **************************************
 
     /**
@@ -39,9 +40,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     public PlanificadorCorto(AtomicBoolean pmonitorPC, ICpu[] pcpus) {
         this.monitorPC = pmonitorPC;
-        this.tamanioQuantum = 4;
         this.cpus = pcpus;
-        this.cantProcesosRestantes = 500;
         this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS];    // Array de 5, se usaran solo 4, del 1 al 5.
         this.listaBloqueados = new LinkedList();
         for (int i = 1; i < this.pilaListas.length; i++) {
@@ -65,27 +64,23 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         monitorPC.wait();
                     }
                 }
-                try {
                     if (this.cargarCPUs) {
                         //PRIMERO
                         System.out.println("    2 - Ejecutando planificador CORTO...");
+                        Thread.sleep(DELAY);
                         this.asignarProcesosCpusVacios();
                         System.out.println("    2 - Fin planificador CORTO.");
                     } else {
-                        System.out.println("    4 - Ejecutando planificador CORTO...");
+                        System.out.println("    2 - Ejecutando planificador CORTO...");
+                        Thread.sleep(DELAY);
                         this.planificar();
-                        System.out.println("    4 - Fin planificador CORTO.");
-                    }
-                    Thread.sleep(200);
+                        System.out.println("    2 - Fin planificador CORTO.");
+                    }                    
                     synchronized (monitorPC) {
                         monitorPC.set(false);
                         monitorPC.notify();
                     }
-                } catch (Exception e) {
-                    System.out.println("Algo salio mal en PC: " + e.toString());
-                }finally {
-                    this.cargarCPUs = !this.cargarCPUs;
-                }
+                    this.cargarCPUs = !this.cargarCPUs;                    
             }
         }catch (Exception e) {
             System.out.println("Algo salio mal en PC: " + e.toString());
@@ -96,13 +91,14 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      *
      */
     private void planificar() {
-        System.out.println("    4 - Estoy planificando.");
-        //ULTIMO
-        
+        System.out.println("    2 - Estoy planificando.");
+        //ULTIMO        
         this.actualizarComportamientoProcesoBloqueado();
     }
 
-  
+    /**
+     * 
+     */
     private void reasignarPrioridadesPila(){
         for (int i = 1; i < this.pilaListas.length; i++) {
             if (!this.pilaListas[i].isEmpty()) {
@@ -124,7 +120,6 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         }   
     }
-
    
     /**
      *
@@ -154,7 +149,12 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      *
      */
     private void asignarProcesosCpusVacios() {
-        System.out.println("      3 - Estoy asignando procesos a CPU`s vacios.");
+        System.out.println("    2 - Estoy asignando procesos a CPU`s vacios.");
+        try {
+            Thread.sleep(DELAY);
+        }catch (Exception e) {
+            System.out.println("Algo salio mal en PC: " + e.toString());
+        }
         for (ICpu cpu : this.cpus) {
             // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
             if (!cpu.hayProceso()) {
@@ -213,13 +213,16 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         }
     }
   
-    
+    /**
+     * 
+     * @param pproceso
+     * @return 
+     */
     public int formulaRecalcularPrioridad(IProceso pproceso){
-        //  5 quantums = 20 ciclos
-        
+        //  5 quantums = 20 ciclos        
         int prioridadBase = pproceso.getPrioridadInicial();
-        int envejecimiento = (pproceso.getCantCiclosEsperando() / this.tamanioQuantum) % 5;
-        int feedback = (pproceso.getCantCiclosEjecutando() / this.tamanioQuantum) % 2;
+        int envejecimiento = (pproceso.getCantCiclosEsperando() / this.TAMANIO_QUANTUM) % 5;
+        int feedback = (pproceso.getCantCiclosEjecutando() / this.TAMANIO_QUANTUM) % 2;
 
         int prioridadNueva = prioridadBase - envejecimiento + feedback;
         
@@ -232,6 +235,21 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         return prioridadNueva;
     }
 
+    /**
+     * 
+     */
+    @Override
+    public void restarUnoProcesosRestantes(){
+        this.CANT_PROC_RESTANTES -= 1;
+    }
+ 
+    /**
+     * 
+     */
+    @Override
+    public void sumarUnoProcesosRestantes(){
+        this.CANT_PROC_RESTANTES += 1;
+    }
 // End Methods ****************************************
 
     /**
@@ -240,7 +258,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public int getCantProcesosRestantes() {
-        return cantProcesosRestantes;
+        return CANT_PROC_RESTANTES;
     }
 
     /**
@@ -249,7 +267,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      */
     @Override
     public void setCantProcesosRestantes(int cantProcesosRestantes) {
-        this.cantProcesosRestantes -= cantProcesosRestantes;
+        this.CANT_PROC_RESTANTES -= cantProcesosRestantes;
     }
 
     /**
@@ -280,17 +298,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     }
 
     @Override
-    public void restarUnoProcesosRestantes(){
-        this.cantProcesosRestantes -= 1;
-    }
- 
-    @Override
-    public void sumarUnoProcesosRestantes(){
-        this.cantProcesosRestantes += 1;
-    }
-
-    @Override
-    public int getTamanioQuantum() {
-        return this.tamanioQuantum;
+    public int getTAMANIO_QUANTUM() {
+        return this.TAMANIO_QUANTUM;
     }
 }
