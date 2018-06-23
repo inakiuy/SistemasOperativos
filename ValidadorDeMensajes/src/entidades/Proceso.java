@@ -71,6 +71,35 @@ public class Proceso implements IProceso {
     /**
      * Methods ****************************************************
      */
+    /**
+     * Aumenta la variable de ciclos esperados
+     */
+    @Override
+    public void sumarUnoCiclosEsperando() {
+        this.cantCiclosEsperando += 1;
+    }
+    /**
+     * Aumenta la variable de ciclos ejecutados
+     */
+    @Override
+    public void sumarUnoCiclosEjecutando() {
+        this.cantCiclosEjecutando += 1;
+    }
+    
+    /**
+     * Cambia la prioridad del proceso
+     * @param cantidad 
+     */
+    public void cambiarPrioridad(int cantidad) {
+        int nuevaPrioridad = this.prioridad + cantidad;
+        if ( nuevaPrioridad <= 0 ){
+            nuevaPrioridad = 1;
+        }
+        else if (nuevaPrioridad >= 5  ){
+            nuevaPrioridad = 5;
+        }
+        this.setPrioridad(nuevaPrioridad);
+    }
     // End Methods ****************************************    
     
     
@@ -108,7 +137,6 @@ public class Proceso implements IProceso {
     public Long getTiempoDeLlegada() {
         return tiempoDeLlegada;
     }
-    // End Getters and Setters ****************************    
 
     @Override
     public int getPrioridad() {
@@ -144,25 +172,5 @@ public class Proceso implements IProceso {
     public int getPrioridadInicial() {
         return this.prioridadInicial;
     }
-
-    @Override
-    public void sumarUnoCiclosEsperando() {
-        this.cantCiclosEsperando += 1;
-    }
-
-    @Override
-    public void sumarUnoCiclosEjecutando() {
-        this.cantCiclosEjecutando += 1;
-    }
-    
-    public void cambiarPrioridad(int cantidad) {
-        int nuevaPrioridad = this.prioridad + cantidad;
-        if ( nuevaPrioridad <= 0 ){
-            nuevaPrioridad = 1;
-        }
-        else if (nuevaPrioridad >= 5  ){
-            nuevaPrioridad = 5;
-        }
-        this.setPrioridad(nuevaPrioridad);
-    }
+    // End Getters and Setters ****************************    
  }

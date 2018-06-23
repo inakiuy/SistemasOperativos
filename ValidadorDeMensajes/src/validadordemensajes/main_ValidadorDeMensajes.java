@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package validadordemensajes;
 
 import entidades.Reloj;
@@ -23,10 +18,13 @@ public class main_ValidadorDeMensajes {
          */
         final int INTERVALO_TIEMPO = 1;
         final String NOMBRE_RELOJ = "RELOJ-1";
+        //final String RUTA_DATOS = "./src/datos/procesos.txt";
+        final String RUTA_DATOS = "./src/datos/mas_procesos.txt";
+        //final String RUTA_DATOS = "./src/datos/procesos_desordenados.txt";
         // Fin Paramtros *****************************************************
         
         //Cargamos los datos de prueba en una lista para luego alimentar el sistema
-        final IDatasource datos = new ProcesosDatasource();
+        final IDatasource datos = new ProcesosDatasource(RUTA_DATOS);
         
         //Creamos el reloj que sincronizara la simulacion
         Runnable ru_reloj = new Reloj(NOMBRE_RELOJ, INTERVALO_TIEMPO, datos);

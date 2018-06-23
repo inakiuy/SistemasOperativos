@@ -20,8 +20,6 @@ public class ProcesosDatasource implements IDatasource {
      * Atributes *****************************************************
      */
     private LinkedList<IProceso> listaProcesos;             //Procesos esperando ser recibidos por el Planificador Largo
-
-    private String RUTA_DATOS = "./src/datos/procesos.txt";
     // End Atributes *************************************
 
     /**
@@ -31,9 +29,9 @@ public class ProcesosDatasource implements IDatasource {
      * Constructor de la fuente de datos. Al inicializarse se cargan los datos
      * en una lista
      */
-    public ProcesosDatasource() {
+    public ProcesosDatasource(String prutaDatos) {
         this.listaProcesos = new LinkedList<>();
-        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(RUTA_DATOS, true);  //Hay que ignorar la cabeza
+        String[] datos_csv = ManejadorArchivosGenerico1.leerArchivo(prutaDatos, true);  //Hay que ignorar la cabeza
         for (String dato : datos_csv) {
             String[] datos_proc = dato.split(";");
             String proc_nombre = datos_proc[0];
