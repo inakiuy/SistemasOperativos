@@ -76,7 +76,7 @@ public class Reloj implements Runnable {
         try {
                     //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
             for ( int i = 0 ; i < this.CANTIDAD_CPUS ; i++) {
-               CPUs[i] = new Cpu("CPU-"+ i+1, this.monitorCPUs, this, ru_planificadorCorto);;
+               CPUs[i] = new Cpu("CPU-"+ i, this.monitorCPUs, this, ru_planificadorCorto);;
                Thread th_cpu = new Thread(CPUs[i]);
                th_cpu.start();
             }
