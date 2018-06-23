@@ -56,10 +56,10 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                         monitorPL.wait();
                     }
                 }
-                System.out.println("  1 - Ejecutando planificador LARGO...");
+                System.out.println("                        1 - Ejecutando planificador LARGO...");
                 Thread.sleep(DELAY);
                 planificar();
-                System.out.println("  1 - Fin planificador LARGO");
+                System.out.println("                        1 - Fin planificador LARGO");
   
                 synchronized (monitorPL) {
                     monitorPL.set(false);

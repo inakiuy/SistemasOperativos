@@ -193,4 +193,13 @@ public class Proceso implements IProceso {
         return this.prioridadInicial;
     }
     // End Getters and Setters ****************************    
+
+    @Override
+    public void sumarDosPrioridad() {
+        int prioriNueva = this.prioridad + 2;
+        if ( prioriNueva >= 5){
+            this.setPrioridad(5);
+        }
+        else this.setPrioridad(prioriNueva);
+    }
  }

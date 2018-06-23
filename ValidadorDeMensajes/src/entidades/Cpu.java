@@ -53,19 +53,19 @@ public class Cpu implements ICpu {
                     }
                 }
 
-                System.out.println("      3 - Ejecutando ciclo de " + this.getNombre());
+                System.out.println("                            3 - Ejecutando ciclo de " + this.getNombre());
                 Thread.sleep(DELAY);
                 if (this.getProcesoCorriendo() != null) {
-                    System.out.println("      3 - Proceso corriendo en " + this.getNombre() +  ":"  + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    System.out.println("                            3 - Proceso corriendo en " + this.getNombre() +  ":"  + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
                     Thread.sleep(DELAY);
                     this.trabajar();
 
                     // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
                 } else {
-                    System.out.println("      3 - " + this.getNombre() + " vacio");
+                    System.out.println("                            3 - " + this.getNombre() + " vacio");
                     Thread.sleep(DELAY);
                 }
-                System.out.println("      3 - Fin ciclo de " + this.getNombre());
+                System.out.println("                            3 - Fin ciclo de " + this.getNombre());
 
                 synchronized (monitorCPUs) {
                     monitorCPUs.set(false);
@@ -87,6 +87,7 @@ public class Cpu implements ICpu {
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
             if ( this.procesoCorriendo.getComportamiento().size() > 0 ) { 
+                this.procesoCorriendo.sumarDosPrioridad();
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
                 this.procesoCorriendo = null;
             } else {

@@ -19,7 +19,7 @@ public class ProcesosDatasource implements IDatasource {
     /**
      * Atributes *****************************************************
      */
-    private LinkedList<IProceso> listaProcesos;             //Procesos esperando ser recibidos por el Planificador Largo
+    private final LinkedList<IProceso> listaProcesos;             //Procesos esperando ser recibidos por el Planificador Largo
     // End Atributes *************************************
 
     /**

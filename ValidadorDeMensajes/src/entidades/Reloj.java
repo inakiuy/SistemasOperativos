@@ -18,15 +18,15 @@ public class Reloj implements Runnable {
     /**
      * Atributes *****************************************************
      */
-    private String nombre;
-    private long intervaloDeTiempo;
+    private final String nombre;
+    private final long intervaloDeTiempo;
     private Long tiempoActual;
     private IDatasource datos;
     private final AtomicBoolean monitorPL;
     private final AtomicBoolean monitorPC;
     private final AtomicBoolean monitorCPUs;
     private final Integer CANTIDAD_CPUS = 2;
-    private final Integer DELAY = 600;
+    private final Integer DELAY = 100;
     // End Atributes **************************************
 
     /**
@@ -88,7 +88,7 @@ public class Reloj implements Runnable {
 
             // Para test hacemos solo 30 ciclos
             while (this.getTiempoActual() < 30000) {
-                System.out.println("0 - TIEMPO SIMULADO: " + this.getTiempoActual() + " - thread: " + Thread.currentThread().getName());
+                System.out.println("                      0 - TIEMPO SIMULADO: " + this.getTiempoActual() + " - thread: " + Thread.currentThread().getName());
                 Thread.sleep(DELAY);
                 // Arranca a trabajar el planificador a largo plazo
                 synchronized (monitorPL) {

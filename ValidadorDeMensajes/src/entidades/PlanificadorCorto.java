@@ -14,9 +14,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * Atributes *****************************************************
      */
     private final AtomicBoolean monitorPC;
-    private Reloj reloj;
+    private final Reloj reloj;
     private final LinkedList<IProceso>[] pilaListas;
-    private LinkedList<IProceso> listaBloqueados;
+    private final LinkedList<IProceso> listaBloqueados;
     private final ICpu[] cpus;
     private Boolean cargarCPUs = true;
     private final int TAMANIO_QUANTUM = 4;
@@ -63,15 +63,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 }
                     if (this.cargarCPUs) {
                         //PRIMERO
-                        System.out.println("    2 - Ejecutando planificador CORTO...");
+                        System.out.println("                          2 - Ejecutando planificador CORTO...");
                         Thread.sleep(DELAY);
                         this.asignarProcesosCpusVacios();
-                        System.out.println("    2 - Fin planificador CORTO.");
+                        System.out.println("                          2 - Fin planificador CORTO.");
                     } else {
-                        System.out.println("    2 - Ejecutando planificador CORTO...");
+                        System.out.println("                          2 - Ejecutando planificador CORTO...");
                         Thread.sleep(DELAY);
                         this.planificar();
-                        System.out.println("    2 - Fin planificador CORTO.");
+                        System.out.println("                          2 - Fin planificador CORTO.");
                     }                    
                     synchronized (monitorPC) {
                         monitorPC.set(false);
@@ -88,7 +88,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      *
      */
     private void planificar() {
-        System.out.println("    2 - Estoy planificando.");
+        System.out.println("                          2 - Estoy planificando.");
         //ULTIMO        
         this.actualizarComportamientoProcesoBloqueado();
     }
@@ -152,7 +152,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      *
      */
     private void asignarProcesosCpusVacios() {
-        System.out.println("    2 - Estoy asignando procesos a CPU`s vacios.");
+        System.out.println("                          2 - Estoy asignando procesos a CPU`s vacios.");
         try {
             Thread.sleep(DELAY);
         }catch (Exception e) {
