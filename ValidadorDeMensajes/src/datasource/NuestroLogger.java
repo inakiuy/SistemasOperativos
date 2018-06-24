@@ -11,7 +11,7 @@ package datasource;
  */
 public class NuestroLogger {
    
-    public static void log(String[] datos){
+    public static void logEstadisticas(String[] datos){
         
         String wt = datos[1];
         String st = datos[2];
@@ -23,5 +23,11 @@ public class NuestroLogger {
         String rutaArchivoLog = "./src/datos/procesos.log";
         String[] CSV = {String.join(";", datos)};
         ManejadorArchivosGenerico1.escribirArchivo(rutaArchivoLog, CSV);
+    }
+    
+    public static void logConsola(String salidaConsola){
+        String rutaArchivoLog = "./src/datos/consola.log";
+        String[] datos = {salidaConsola};
+        ManejadorArchivosGenerico1.escribirArchivo(rutaArchivoLog, datos);
     }
 }

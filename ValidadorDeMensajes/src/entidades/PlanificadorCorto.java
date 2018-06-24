@@ -1,5 +1,6 @@
 package entidades;
 
+import datasource.NuestroLogger;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -64,17 +65,21 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                     if (this.cargarCPUs) {
                         //PRIMERO
                         System.out.println("                          2 - Ejecutando planificador CORTO...");
+                        NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Ejecutando planificador corto - Asignar procesos a CPUs vacios");
                         Thread.sleep(DELAY);
                         
                         this.actualizarComportamientoProcesoBloqueado();
                         this.asignarProcesosCpusVacios();
                         
                         System.out.println("                          2 - Fin planificador CORTO.");
+                        NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Fin planificador corto - Asignar procesos a CPUs vacios");
                     } else {
                         System.out.println("                          2 - Ejecutando planificador CORTO...");
+                        NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Ejecutando planificador corto - Planificar procesos de las colas");
                         Thread.sleep(DELAY);
                         this.planificar();
                         System.out.println("                          2 - Fin planificador CORTO.");
+                        NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Fin planificador corto - Planificar procesos de las colas");
                     }                    
                     synchronized (monitorPC) {
                         monitorPC.set(false);
@@ -84,6 +89,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
             }
         }catch (Exception e) {
             System.out.println("Algo salio mal en PC: " + e.toString());
+            NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Algo salio mal en PC: " + e.toString());
         }
     }
 

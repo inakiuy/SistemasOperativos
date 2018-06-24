@@ -7,6 +7,7 @@
 package entidades;
 
 import datasource.IDatasource;
+import datasource.NuestroLogger;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -16,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Reloj implements Runnable {
 
     /**
-     * Atributes *****************************************************
+     * Atributes **************************************************************
      */
     private final String nombre;
     private final long intervaloDeTiempo;
@@ -26,11 +27,13 @@ public class Reloj implements Runnable {
     private final AtomicBoolean monitorPC;
     private final MonitoresCPUs monitoresCPUs;
     private final Integer CANTIDAD_CPUS = 4;
+    private final Integer CANTIDAD_PL = 1;
+    private final Integer CANTIDAD_PC = 1;
     private final Integer DELAY = 1;
-    // End Atributes **************************************
+    // End Atributes **********************************************************
 
     /**
-     * Constructors ****************************************************
+     * Constructors ***********************************************************
      */
 
     /**
@@ -49,16 +52,17 @@ public class Reloj implements Runnable {
         this.monitorPC = new AtomicBoolean();
         this.monitoresCPUs = new MonitoresCPUs(CANTIDAD_CPUS);
     }
-    // End Constructors ***********************************
+    // End Constructors *******************************************************
 
     /**
-     * Methods ****************************************************
+     * Methods ****************************************************************
      */
     /**
      * METODO PRINCIPAL QUE SE EJECUTA CUANDO UN HILO CORRE
      */
     @Override
     public void run() {
+        
         //Meto los cpu en un array para pasarlos al Planificador Corto que los
         //va a gestionar. Al parametrizar la cantidad de CPUs hay que arreglar esto.
         ICpu[] CPUs = new ICpu[CANTIDAD_CPUS];
@@ -91,6 +95,7 @@ public class Reloj implements Runnable {
             // Para test hacemos solo 30 ciclos
             while (this.getTiempoActual() < 30000) {
                 System.out.println("                      0 - TIEMPO SIMULADO: " + this.getTiempoActual() + " - thread: " + Thread.currentThread().getName());
+                NuestroLogger.logConsola(this.getTiempoActual() + " [RELOJ] Tiempo simulado: " + this.getTiempoActual());
                 Thread.sleep(DELAY);
                 // Arranca a trabajar el planificador a largo plazo
                 synchronized (monitorPL) {
@@ -139,10 +144,12 @@ public class Reloj implements Runnable {
             }
         } catch (InterruptedException ex) {
             System.out.println(" :( Algo salio mal en el reloj..." + ex.getMessage());
+            NuestroLogger.logConsola(this.getTiempoActual() + "[RELOJ] Algo salio mal en el reloj..." + ex.getMessage());
         }
         System.out.println("----- TERMINO EL RELOJ -----");
+        NuestroLogger.logConsola(this.getTiempoActual() + " [RELOJ] Termino el reloj");
     }
-    // End Methods ****************************************
+    // End Methods ************************************************************
 
     /**
      * Getters and Setters ****************************************************
@@ -171,5 +178,5 @@ public class Reloj implements Runnable {
     public MonitoresCPUs getMonitoresCPUs(){
         return this.monitoresCPUs;
     }
-    // End Getters and Setters ****************************
+    // End Getters and Setters ************************************************
 }

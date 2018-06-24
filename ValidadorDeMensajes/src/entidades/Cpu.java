@@ -1,5 +1,7 @@
 package entidades;
 
+import datasource.NuestroLogger;
+
 /**
  *
  * @author
@@ -53,18 +55,22 @@ public class Cpu implements ICpu {
                 }
 
                 System.out.println("                            3 - Ejecutando ciclo de " + this.getNombre());
+                NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [" + this.getNombre() + "] Comienzo ciclo de " + this.getNombre());
                 Thread.sleep(DELAY);
                 if (this.getProcesoCorriendo() != null) {
                     System.out.println("                            3 - Proceso corriendo en " + this.getNombre() +  ":"  + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
+                    NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [" + this.getNombre() + "] Proceso corriendo en " + this.getNombre() +  ":"  + this.getProcesoCorriendo().getNombre() + " - " + this.getProcesoCorriendo().getTipo());
                     Thread.sleep(DELAY);
                     this.trabajar();
 
                     // ACA IRIA HACER QUE EL PROCESO PUBLIQUE O LO QUE SEA...    ??????
                 } else {
                     System.out.println("                            3 - " + this.getNombre() + " vacio");
+                NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [" + this.getNombre() + "] CPU vacio");
                     Thread.sleep(DELAY);
                 }
                 System.out.println("                            3 - Fin ciclo de " + this.getNombre());
+                NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [" + this.getNombre() + "] Fin ciclo de " + this.getNombre());
                 
                 synchronized (monitorCPU){
                     monitorCPU.setContinuar(Boolean.FALSE);

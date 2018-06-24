@@ -127,7 +127,7 @@ public class Proceso implements IProceso {
     @Override
     public void logEstadisticas(){
         String[] estadisticas = this.obtenerEstadisticas();
-        NuestroLogger.log(estadisticas);
+        NuestroLogger.logEstadisticas(estadisticas);
     }
     
     @Override

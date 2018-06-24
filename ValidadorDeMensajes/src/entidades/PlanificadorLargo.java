@@ -1,6 +1,7 @@
 package entidades;
 
 import datasource.IDatasource;
+import datasource.NuestroLogger;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -57,9 +58,11 @@ public class PlanificadorLargo implements IPlanificadorLargo {
                     }
                 }
                 System.out.println("                        1 - Ejecutando planificador LARGO...");
+                NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PL] Ejecutando planificador largo");
                 Thread.sleep(DELAY);
                 planificar();
                 System.out.println("                        1 - Fin planificador LARGO");
+                NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PL] Fin planificador largo");
   
                 synchronized (monitorPL) {
                     monitorPL.set(false);
@@ -68,6 +71,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
             }
         } catch (Exception e) {
             System.out.println("Algo salio mal en PL: " + e.toString());
+            NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PL] Algo salio mal en PL: " + e.toString());
         }
     }
     
