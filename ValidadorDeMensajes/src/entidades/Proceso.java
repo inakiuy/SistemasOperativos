@@ -21,7 +21,7 @@ public class Proceso implements IProceso {
     private final String tipo;
     private LinkedList<Integer> comportamiento;
     private Long tiempoDeLlegada;
-    private Integer prioridadInicial;
+    private final Integer prioridadInicial = 3;
     private Integer prioridad;
     private Integer cantCiclosEjecutando;
     private Integer cantCiclosEsperando;    
@@ -51,7 +51,6 @@ public class Proceso implements IProceso {
      * @param ptiempoDeLlegada
      */
     public Proceso(String pnombre, String ptipo, String pComportamiento, Long ptiempoDeLlegada) {
-        this.prioridadInicial = 3;
         this.nombre = pnombre;
         this.tipo = ptipo;
         this.comportamiento = new LinkedList();
@@ -120,6 +119,9 @@ public class Proceso implements IProceso {
         String[] estadisticas = this.obtenerEstadisticas(ptiempoActual);
         NuestroLogger.log(estadisticas);
     }
+    
+    
+    
     // End Methods ****************************************    
     
     

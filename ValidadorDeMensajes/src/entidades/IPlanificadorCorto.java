@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Inaki
  */
 public interface IPlanificadorCorto extends Runnable{
-    public void ingresarProceso(IProceso pproceso, int lista);
+      public void ingresarProceso(IProceso pproceso);
     public int getCantProcesosRestantes();
     public void setCantProcesosRestantes(int cantProcesosRestantes);
     public AtomicBoolean getMonitorPC();
@@ -23,4 +23,5 @@ public interface IPlanificadorCorto extends Runnable{
     public int getTAMANIO_QUANTUM();
     public void restarUnoProcesosRestantes();
     public void sumarUnoProcesosRestantes();
+    public int formulaRecalcularPrioridad(IProceso pproceso);
 }

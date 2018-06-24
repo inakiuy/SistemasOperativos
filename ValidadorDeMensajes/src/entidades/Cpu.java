@@ -84,10 +84,30 @@ public class Cpu implements ICpu {
         Integer comportamientoProceso = this.procesoCorriendo.getComportamiento().getFirst();
         if (comportamientoProceso > 1) {                                                   // Disminuye en uno el numero del primero.
             this.procesoCorriendo.getComportamiento().set(0, comportamientoProceso - 1);
+         
+            this.procesoCorriendo.sumarUnoCiclosEjecutando();
+            
+            if ( procesoCorriendo.getCantCiclosEjecutando() / this.planificadorCorto.getTAMANIO_QUANTUM() != 1){
+                int prioridadLlego = this.procesoCorriendo.getPrioridad();
+                int prioridadNueva = this.planificadorCorto.formulaRecalcularPrioridad(procesoCorriendo);
+
+                // IÑAKI TIENE QUE GUARDAR INFORMACION PARA SU QUERIDO LOG
+                if ( prioridadLlego != prioridadNueva ) {
+                    procesoCorriendo.setPrioridad(prioridadNueva);
+                    procesoCorriendo.setCantCiclosEjecutando(0);
+                    this.planificadorCorto.ingresarProceso(procesoCorriendo);
+                    this.procesoCorriendo = null;
+                }
+            } else {
+                System.out.println("                            3 - Se le termino el quantum al proceso " + procesoCorriendo.getNombre());
+                this.planificadorCorto.ingresarProceso(procesoCorriendo);
+                this.procesoCorriendo = null;
+            }
         } else {
             this.procesoCorriendo.getComportamiento().removeFirst();      // Elimina el primero numero y cambia al estado de E/S.
             if ( this.procesoCorriendo.getComportamiento().size() > 0 ) { 
                 this.procesoCorriendo.aumentarDosPrioridades();
+                this.procesoCorriendo.getComportamiento().set(0, this.procesoCorriendo.getComportamiento().getFirst() + 1);  // Se le suma uno, ya que la lista de bloqueados se ejecuta 1 vez por adelantado.
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
                 this.procesoCorriendo = null;
             } else {

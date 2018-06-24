@@ -65,7 +65,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         //PRIMERO
                         System.out.println("                          2 - Ejecutando planificador CORTO...");
                         Thread.sleep(DELAY);
+                        
+                        this.actualizarComportamientoProcesoBloqueado();
                         this.asignarProcesosCpusVacios();
+                        
                         System.out.println("                          2 - Fin planificador CORTO.");
                     } else {
                         System.out.println("                          2 - Ejecutando planificador CORTO...");
@@ -90,29 +93,34 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private void planificar() {
         System.out.println("                          2 - Estoy planificando.");
         //ULTIMO        
-        this.actualizarComportamientoProcesoBloqueado();
+               
+        this.reasignarPrioridadesPila();
+        
+
     }
 
     /**
      * 
      */
     private void reasignarPrioridadesPila(){
-        for (int i = 1; i < this.pilaListas.length; i++) {
-            if (!this.pilaListas[i].isEmpty()) {
-                synchronized (pilaListas){
-                    Iterator<IProceso> iter = this.pilaListas[i].iterator();
-                    while(iter.hasNext()) {
-                        IProceso proceso = (IProceso) iter.next();
-                        int prioridadLlego = proceso.getPrioridad();
+        synchronized (pilaListas){
+            for (int i = 1; i < this.pilaListas.length; i++) {
+                if (!this.pilaListas[i].isEmpty()) {
+                        Iterator<IProceso> iter = this.pilaListas[i].iterator();
+                        while(iter.hasNext()) {
+                            IProceso proceso = (IProceso) iter.next();
+                        
+                            proceso.sumarUnoCiclosEsperando();
+                            
+                            int prioridadLlego = proceso.getPrioridad();
+                            int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
 
-                        int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
-
-                        if ( prioridadLlego != prioridadNueva ) {
-                            proceso.setPrioridad(prioridadNueva);
-                            proceso.setCantCiclosEjecutando(0);
-                            proceso.setCantCiclosEsperando(0);
-                            this.ingresarProceso(proceso,prioridadNueva);
-                            iter.remove();
+                            if ( prioridadLlego != prioridadNueva ) {
+                                proceso.setPrioridad(prioridadNueva);
+                                //proceso.setCantCiclosEjecutando(0);  // Tal vez no necesita.
+                                proceso.setCantCiclosEsperando(0);
+                                this.ingresarProceso(proceso);
+                                iter.remove();
                         }
                     }
                 }
@@ -132,7 +140,9 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                     if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                         procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
                         if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
-                            this.ingresarProceso(procesoSeleccionado, procesoSeleccionado.getPrioridad());         // Lo agrega a la cola.
+                            procesoSeleccionado.setCantCiclosEjecutando(0);
+                            System.out.println(procesoSeleccionado.getPrioridad());
+                            this.ingresarProceso(procesoSeleccionado);         // Lo agrega a la cola.
                             iter.remove();
                         } else {
                             procesoSeleccionado.logEstadisticas(this.reloj.getTiempoActual());
@@ -155,21 +165,27 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         System.out.println("                          2 - Estoy asignando procesos a CPU`s vacios.");
         try {
             Thread.sleep(DELAY);
-        }catch (Exception e) {
-            System.out.println("Algo salio mal en PC: " + e.toString());
-        }
-        for (ICpu cpu : this.cpus) {
+            
+            for (ICpu cpu : this.cpus) {
             // Chequear Cpu por Cpu cual esta vacio para pasarle un proceso.
             if (!cpu.hayProceso()) {
                 for (int i = 1; i < this.pilaListas.length; i++) {
                     // Buscar el primer proceso con mayor prioridad.
                     if (!this.pilaListas[i].isEmpty()) {
                         IProceso primero = this.pilaListas[i].removeFirst();
+
+                        // ACA IÑAKI AGREGA LOG
+                        primero.setCantCiclosEsperando(0);
+                        
                         cpu.setProcesoCorriendo(primero);
                         break;
                     }
                 }
             }
+        }
+            
+        }catch (Exception e) {
+            System.out.println("Algo salio mal en PC: " + e.toString());
         }
     }
 
@@ -179,10 +195,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * @param lista
      */
     @Override
-    public void ingresarProceso(IProceso pproceso, int lista) {
+    public void ingresarProceso(IProceso pproceso) {
         this.restarUnoProcesosRestantes();
           synchronized (pilaListas){
-              this.pilaListas[lista].addLast(pproceso);
+              this.pilaListas[pproceso.getPrioridad()].addLast(pproceso);
           }   
     }
 
@@ -224,11 +240,12 @@ public class PlanificadorCorto implements IPlanificadorCorto {
      * @param pproceso
      * @return 
      */
+    @Override
     public int formulaRecalcularPrioridad(IProceso pproceso){
         //  5 quantums = 20 ciclos        
-        int prioridadBase = pproceso.getPrioridadInicial();
-        int envejecimiento = (pproceso.getCantCiclosEsperando() / this.TAMANIO_QUANTUM) % 5;
-        int feedback = (pproceso.getCantCiclosEjecutando() / this.TAMANIO_QUANTUM) % 2;
+        int prioridadBase = pproceso.getPrioridad();
+        int envejecimiento = (pproceso.getCantCiclosEsperando() / this.TAMANIO_QUANTUM) / 5;
+        int feedback = (pproceso.getCantCiclosEjecutando() / this.TAMANIO_QUANTUM) / 2;
 
         int prioridadNueva = prioridadBase - envejecimiento + feedback;
         

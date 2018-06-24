@@ -80,7 +80,8 @@ public class PlanificadorLargo implements IPlanificadorLargo {
         this.obtenerNuevosProcesos();      
         while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() > 0 ) {
             IProceso proceso = this.listaProcesosPL.removeFirst();
-            this.planificadorCorto.ingresarProceso(proceso,3);        // Proceso X en la lista 3    (Van del 1 al 5)
+            proceso.setPrioridad(3);
+            this.planificadorCorto.ingresarProceso(proceso);        // Proceso X en la lista 3    (Van del 1 al 5)
         }      
     }
     
