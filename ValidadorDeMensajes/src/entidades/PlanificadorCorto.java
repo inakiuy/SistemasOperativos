@@ -123,7 +123,6 @@ public class PlanificadorCorto implements IPlanificadorCorto {
 
                             if ( prioridadLlego != prioridadNueva ) {
                                 proceso.setPrioridad(prioridadNueva);
-                                //proceso.setCantCiclosEjecutando(0);  // Tal vez no necesita.
                                 proceso.setCantCiclosEsperando(0);
                                 this.ingresarProceso(proceso);
                                 iter.remove();
@@ -143,10 +142,10 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 Iterator<IProceso> iter = listaBloqueados.iterator();
                 while(iter.hasNext()) {
                     IProceso procesoSeleccionado = iter.next();
-                    if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
-                        procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
+                    if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {      //Si fue su ultima espera, lo pasa a la Cola nuevamente.
+                        procesoSeleccionado.getComportamiento().removeFirst();           //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
+                        //procesoSeleccionado.getVectorDeInformacion()[1] += procesoSeleccionado.getCantCiclosEjecutando();
                         if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
-                            procesoSeleccionado.getVectorDeInformacion()[1] += procesoSeleccionado.getCantCiclosEjecutando();
                             procesoSeleccionado.setCantCiclosEjecutando(0);
                             this.ingresarProceso(procesoSeleccionado);         // Lo agrega a la cola.
                             iter.remove();
@@ -183,8 +182,11 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                         if ( proceso.getVectorDeInformacion()[0] < 0) {
                              proceso.getVectorDeInformacion()[0] = proceso.getCantCiclosEsperando();
                         }
+                        else {
+                            proceso.getVectorDeInformacion() [1] += proceso.getCantCiclosEsperando(); 
+                        }
+
                         proceso.setCantCiclosEsperando(0);
-                        
                         cpu.setProcesoCorriendo(proceso);
                         break;
                     }
