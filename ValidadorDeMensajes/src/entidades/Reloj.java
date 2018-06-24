@@ -21,11 +21,11 @@ public class Reloj implements Runnable {
     private final String nombre;
     private final long intervaloDeTiempo;
     private Long tiempoActual;
-    private IDatasource datos;
+    private IDatasource fuenteDeDatos;
     private final AtomicBoolean monitorPL;
     private final AtomicBoolean monitorPC;
-    private final AtomicBoolean monitorCPUs;
-    private final Integer CANTIDAD_CPUS = 1;
+    private final MonitoresCPUs monitoresCPUs;
+    private final Integer CANTIDAD_CPUS = 4;
     private final Integer DELAY = 1;
     // End Atributes **************************************
 
@@ -44,10 +44,10 @@ public class Reloj implements Runnable {
         this.nombre = pnombre;
         this.intervaloDeTiempo = pintervalo;
         this.tiempoActual = new Long(0);
-        this.datos = pDatos;
+        this.fuenteDeDatos = pDatos;
         this.monitorPL = new AtomicBoolean();
         this.monitorPC = new AtomicBoolean();
-        this.monitorCPUs = new AtomicBoolean();
+        this.monitoresCPUs = new MonitoresCPUs(CANTIDAD_CPUS);
     }
     // End Constructors ***********************************
 
@@ -70,15 +70,17 @@ public class Reloj implements Runnable {
 
         //Creamos hilos de planificador largo que son los objetos que admiten los
         //procesos desde la fuente de datos.
-        IPlanificadorLargo ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, datos, ru_planificadorCorto);
+        IPlanificadorLargo ru_planificadorLargo = new PlanificadorLargo(this.monitorPL, this, fuenteDeDatos, ru_planificadorCorto);
         Thread th_planificadorLargo = new Thread(ru_planificadorLargo);
 
         try {
-                    //Creamos los CPU. Esto se podria parametrizar y que se creen N CPUs
+                    //Creamos los CPU y junto todos los monitores en una coleccion
             for ( int i = 0 ; i < this.CANTIDAD_CPUS ; i++) {
-               CPUs[i] = new Cpu("CPU-"+ i, this.monitorCPUs, this, ru_planificadorCorto);;
-               Thread th_cpu = new Thread(CPUs[i]);
-               th_cpu.start();
+                MonitorCPU monitor = new MonitorCPU();
+                monitoresCPUs.getMonitoresCPUs()[i] = monitor;
+                CPUs[i] = new Cpu("CPU-"+ i, monitor, this, ru_planificadorCorto);;
+                Thread th_cpu = new Thread(CPUs[i]);
+                th_cpu.start();
             }
 
             // Arranco todos los hilos. Su primera instruccion es parar a la espera
@@ -111,12 +113,14 @@ public class Reloj implements Runnable {
                 }
 
                 // Terminada la planificacion, comienza el procesamiento
-                synchronized (monitorCPUs) {
-                    monitorCPUs.set(true);
-                    monitorCPUs.notifyAll();
-                    while (monitorCPUs.get()) {
+                synchronized (monitoresCPUs) {
+                    monitoresCPUs.getMonitorReloj().set(true);
+                    monitoresCPUs.notificarATodos();
+                }
+                synchronized (monitoresCPUs.getMonitorReloj()){
+                    while (monitoresCPUs.getMonitorReloj().get()) {
                         // El hilo reloj espera nuevamente
-                        monitorCPUs.wait();
+                        monitoresCPUs.getMonitorReloj().wait();
                     }
                 }
                 
@@ -162,6 +166,10 @@ public class Reloj implements Runnable {
      */
     public long getTiempoActual() {
         return tiempoActual;       //Ya que hay que pasarlo a un entero por la entrada de datos.
-    }    
+    }
+
+    public MonitoresCPUs getMonitoresCPUs(){
+        return this.monitoresCPUs;
+    }
     // End Getters and Setters ****************************
 }

@@ -1,7 +1,5 @@
 package entidades;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 /**
  *
  * @author
@@ -14,7 +12,7 @@ public class Cpu implements ICpu {
     private final String nombre;
     private final Reloj reloj;
     private IProceso procesoCorriendo;
-    private final AtomicBoolean monitorCPUs;
+    private final MonitorCPU monitorCPU;
     private final IPlanificadorCorto planificadorCorto;
     private final Integer DELAY = 600;
     // End Atributes **************************************
@@ -25,12 +23,13 @@ public class Cpu implements ICpu {
     /**
      *
      * @param pnombre
-     * @param monitorCPUs
+     * @param monitorCPU
+     * @param preloj
      * @param pPlanificadorCorto
      */
-    public Cpu(String pnombre, AtomicBoolean monitorCPUs, Reloj preloj, IPlanificadorCorto pPlanificadorCorto) {
+    public Cpu(String pnombre, MonitorCPU monitorCPU, Reloj preloj, IPlanificadorCorto pPlanificadorCorto) {
         this.nombre = pnombre;
-        this.monitorCPUs = monitorCPUs;
+        this.monitorCPU = monitorCPU;
         this.reloj = preloj;
         this.planificadorCorto = pPlanificadorCorto;
         this.procesoCorriendo = null;
@@ -47,9 +46,9 @@ public class Cpu implements ICpu {
     public void run() {
         try {
             while (true) {
-                synchronized (monitorCPUs) {
-                    while (!monitorCPUs.get()) {
-                        monitorCPUs.wait();
+                synchronized (monitorCPU) {
+                    while (!monitorCPU.getContinuar()) {
+                        monitorCPU.wait();
                     }
                 }
 
@@ -66,11 +65,11 @@ public class Cpu implements ICpu {
                     Thread.sleep(DELAY);
                 }
                 System.out.println("                            3 - Fin ciclo de " + this.getNombre());
-
-                synchronized (monitorCPUs) {
-                    monitorCPUs.set(false);
-                    monitorCPUs.notify();
-                }
+                
+                synchronized (monitorCPU){
+                    monitorCPU.setContinuar(Boolean.FALSE);
+                }                
+                reloj.getMonitoresCPUs().continuar();
             }
         } catch (Exception e) {
             System.out.println("Algo salio mal en CPU + " + this.getNombre() + ": " + e.toString());
