@@ -18,12 +18,15 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private final Reloj reloj;
     private final LinkedList<IProceso>[] pilaListas;
     private final LinkedList<IProceso> listaBloqueados;
+    private final LinkedList<IProceso> listaProcesosRetiradosCPU;
     private final ICpu[] cpus;
     private Boolean cargarCPUs = true;
     private final int TAMANIO_QUANTUM = 4;
     private Integer CANT_PROC_RESTANTES = 500;
     private final Integer CANTIDAD_DE_COLAS = 5;
     private final Integer DELAY = 100;
+    
+    
     // End Atributes **************************************
 
     /**
@@ -41,6 +44,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         this.cpus = pcpus;
         this.pilaListas = new LinkedList[CANTIDAD_DE_COLAS + 1];    // Array de 5, se usaran solo 4, del 1 al 5.
         this.listaBloqueados = new LinkedList();
+        this.listaProcesosRetiradosCPU = new LinkedList();
         for (int i = 1; i < this.pilaListas.length; i++) {
             pilaListas[i] = new LinkedList<>();
         }
@@ -80,6 +84,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                           
                         this.reasignarPrioridadesPila();
                         this.sumarCiclo();
+                        this.reingresarProcesosRetiradosCPUs();
                         
                         System.out.println("                          2 - Fin planificador CORTO.");
                         NuestroLogger.logConsola(this.reloj.getTiempoActual() + " [PC] Fin planificador corto - Planificar procesos de las colas");
@@ -122,6 +127,28 @@ public class PlanificadorCorto implements IPlanificadorCorto {
         }   
     }
    
+    
+    
+    private void reingresarProcesosRetiradosCPUs(){
+        synchronized (this.listaProcesosRetiradosCPU){
+            if (!this.listaProcesosRetiradosCPU.isEmpty()) {
+                for (int i = 0; i < this.listaProcesosRetiradosCPU.size() ; i++) {
+                    Iterator<IProceso> iter = this.listaProcesosRetiradosCPU.iterator();
+                        while(iter.hasNext()) {
+                            IProceso proceso = (IProceso) iter.next();
+                            int prioridadLlego = proceso.getPrioridad();
+                            int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
+                            if ( prioridadLlego != prioridadNueva ) {
+                                proceso.setPrioridad(prioridadNueva);
+                            }
+                            this.ingresarProceso(proceso);
+                            iter.remove();
+                    }
+                }
+            }
+        }  
+    }
+            
      private void sumarCiclo(){
         synchronized (pilaListas){
             for (int i = 1; i < this.pilaListas.length; i++) {
@@ -216,7 +243,14 @@ public class PlanificadorCorto implements IPlanificadorCorto {
               this.pilaListas[pproceso.getPrioridad()].addLast(pproceso);
           }   
     }
-
+    
+   @Override
+    public void ingresarProcesoRetirado(IProceso pproceso) {
+        this.restarUnoProcesosRestantes();
+          synchronized (this.listaProcesosRetiradosCPU){
+              this.listaProcesosRetiradosCPU.addLast(pproceso);
+          }   
+    }
     /**
      *
      * @param proceso

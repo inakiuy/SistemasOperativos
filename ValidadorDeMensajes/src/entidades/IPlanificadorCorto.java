@@ -24,4 +24,5 @@ public interface IPlanificadorCorto extends Runnable{
     public void restarUnoProcesosRestantes();
     public void sumarUnoProcesosRestantes();
     public int formulaRecalcularPrioridad(IProceso pproceso);
+    public void ingresarProcesoRetirado(IProceso pproceso);
 }

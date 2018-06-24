@@ -104,7 +104,7 @@ public class Cpu implements ICpu {
                 }
             } else {
                 System.out.println("                            3 - Se le termino el quantum al proceso " + procesoCorriendo.getNombre());
-                this.planificadorCorto.ingresarProceso(procesoCorriendo);
+                this.planificadorCorto.ingresarProcesoRetirado(procesoCorriendo);
                 this.procesoCorriendo = null;
             }
         } else {
