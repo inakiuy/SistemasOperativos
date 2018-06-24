@@ -16,7 +16,7 @@ public class Cpu implements ICpu {
     private IProceso procesoCorriendo;
     private final MonitorCPU monitorCPU;
     private final IPlanificadorCorto planificadorCorto;
-    private final Integer DELAY = 600;
+    private final Integer DELAY = 100;
     // End Atributes **************************************
 
     /**

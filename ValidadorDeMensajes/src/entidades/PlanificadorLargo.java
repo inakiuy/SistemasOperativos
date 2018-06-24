@@ -19,7 +19,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private IDatasource fuenteDeDatosProcesos;
     private IPlanificadorCorto planificadorCorto;
     private LinkedList<IProceso> listaProcesosPL;
-    private final Integer DELAY = 600;
+    private final Integer DELAY = 100;
     // End Atributes **************************************
 
     /**
