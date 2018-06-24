@@ -12,6 +12,14 @@ package datasource;
 public class NuestroLogger {
    
     public static void log(String[] datos){
+        
+        String wt = datos[1];
+        String st = datos[2];
+        
+        Integer tt = Integer.parseInt(st) + Integer.parseInt(wt);
+        
+        datos[3] = tt.toString();
+        
         String rutaArchivoLog = "./src/datos/procesos.log";
         String[] CSV = {String.join(";", datos)};
         ManejadorArchivosGenerico1.escribirArchivo(rutaArchivoLog, CSV);

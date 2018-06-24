@@ -24,8 +24,10 @@ public class Proceso implements IProceso {
     private final Integer prioridadInicial = 3;
     private Integer prioridad;
     private Integer cantCiclosEjecutando;
-    private Integer cantCiclosEsperando;    
-    // End Atributes *************************************
+    private Integer cantCiclosEsperando;
+    private final Integer[] vectorDeInformacion = {-1,0,0};     // RT  WT  ST  	
+    
+// End Atributes *************************************
 
       
     /**
@@ -62,6 +64,7 @@ public class Proceso implements IProceso {
         this.prioridad = 3;                     // Prioridad 3 por defecto.
         this.cantCiclosEjecutando = 0;
         this.cantCiclosEsperando = 0;
+        st();
     }
 
     // End Constructors ***********************************
@@ -70,6 +73,13 @@ public class Proceso implements IProceso {
     /**
      * Methods ****************************************************
      */
+
+    private void st(){
+        for ( int i = 0 ; i < this.getComportamiento().size(); i++ ){                // ST
+            this.getVectorDeInformacion()[2] += this.getComportamiento().get(i);
+        }
+    }
+    
     /**
      * Aumenta la variable de ciclos esperados
      */
@@ -105,8 +115,8 @@ public class Proceso implements IProceso {
      * Obtiene las estadisticas del procesos para ser logueadas al terminar.
      * @return 
      */
-    private String[] obtenerEstadisticas(Long ptiempoActual){
-        String[] estadisticas = {this.tiempoDeLlegada.toString(), this.getCantCiclosEjecutando().toString(), this.getCantCiclosEsperando().toString(), ptiempoActual.toString()};
+    private String[] obtenerEstadisticas(){    // RT  WT  ST  TT 
+        String[] estadisticas = {this.getVectorDeInformacion()[0].toString(), this.getVectorDeInformacion()[1].toString(), this.getVectorDeInformacion()[2].toString(), "0", this.getNombre()};
         return estadisticas;
     }
     
@@ -115,12 +125,15 @@ public class Proceso implements IProceso {
      * @param ptiempoActual
      */
     @Override
-    public void logEstadisticas(Long ptiempoActual){
-        String[] estadisticas = this.obtenerEstadisticas(ptiempoActual);
+    public void logEstadisticas(){
+        String[] estadisticas = this.obtenerEstadisticas();
         NuestroLogger.log(estadisticas);
     }
     
-    
+    @Override
+    public Integer[] getVectorDeInformacion(){
+        return this.vectorDeInformacion;
+    }
     
     // End Methods ****************************************    
     

@@ -20,12 +20,13 @@ public interface IProceso {
     public Integer getCantCiclosEjecutando();
     public Integer getCantCiclosEsperando();
     public Integer getPrioridadInicial();
+    public Integer[] getVectorDeInformacion();
     public void setPrioridad(int prioridad);
     public void setCantCiclosEjecutando(int cantCiclosEjecutando);
     public void setCantCiclosEsperando(int cantCiclosEsperando);
     public void sumarUnoCiclosEsperando();
     public void sumarUnoCiclosEjecutando();
     public void cambiarPrioridad(int cantidad);
-    public void logEstadisticas(Long ptiempoActual);
+    public void logEstadisticas();
     public void aumentarDosPrioridades();
 }

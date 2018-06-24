@@ -111,7 +111,7 @@ public class Cpu implements ICpu {
                 this.planificadorCorto.ingresarProcesoListaBloqueados(procesoCorriendo);      //Lo pasamos a la lista bloqueado del PC.
                 this.procesoCorriendo = null;
             } else {
-            this.procesoCorriendo.logEstadisticas(this.reloj.getTiempoActual());
+            this.procesoCorriendo.logEstadisticas();
             this.procesoCorriendo = null;
             }
         }

@@ -140,12 +140,12 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                     if ( procesoSeleccionado.getComportamiento().getFirst() == 1 ) {                //Si fue su ultima espera, lo pasa a la Cola nuevamente.
                         procesoSeleccionado.getComportamiento().removeFirst();                      //  Remuevo el primer valor que es un 1, en su ultimo ciclo.
                         if (procesoSeleccionado.getComportamiento().size() != 0) {                      // Si aun tiene ciclos por hacer...
+                            procesoSeleccionado.getVectorDeInformacion()[1] += procesoSeleccionado.getCantCiclosEjecutando();
                             procesoSeleccionado.setCantCiclosEjecutando(0);
-                            System.out.println(procesoSeleccionado.getPrioridad());
                             this.ingresarProceso(procesoSeleccionado);         // Lo agrega a la cola.
                             iter.remove();
                         } else {
-                            procesoSeleccionado.logEstadisticas(this.reloj.getTiempoActual());
+                            procesoSeleccionado.logEstadisticas();
                             iter.remove(); 
                         }
                     } else {
@@ -172,12 +172,14 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 for (int i = 1; i < this.pilaListas.length; i++) {
                     // Buscar el primer proceso con mayor prioridad.
                     if (!this.pilaListas[i].isEmpty()) {
-                        IProceso primero = this.pilaListas[i].removeFirst();
+                        IProceso proceso = this.pilaListas[i].removeFirst();
 
-                        // ACA IÑAKI AGREGA LOG
-                        primero.setCantCiclosEsperando(0);
+                        if ( proceso.getVectorDeInformacion()[0] < 0) {
+                             proceso.getVectorDeInformacion()[0] = proceso.getCantCiclosEsperando();
+                        }
+                        proceso.setCantCiclosEsperando(0);
                         
-                        cpu.setProcesoCorriendo(primero);
+                        cpu.setProcesoCorriendo(proceso);
                         break;
                     }
                 }
