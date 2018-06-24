@@ -1,2 +1,5 @@
-0;0;4;4;conulstar_validez_mensaje-1
+0;0;4;4;consultar_validez_mensaje-1
 0;2;12;14;calc_puntaje_mensaje-1
+1;5;9;14;firmar_mensaje-11
+3;4;12;16;calc_nivel_confianza-1
+6;9;30;39;calc_premio-1
