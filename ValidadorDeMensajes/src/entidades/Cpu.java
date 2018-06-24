@@ -85,8 +85,7 @@ public class Cpu implements ICpu {
             this.procesoCorriendo.getComportamiento().set(0, comportamientoProceso - 1);
          
             this.procesoCorriendo.sumarUnoCiclosEjecutando();
-            
-            if ( procesoCorriendo.getCantCiclosEjecutando() / this.planificadorCorto.getTAMANIO_QUANTUM() != 1){
+                if ( procesoCorriendo.getCantCiclosEjecutando() % this.planificadorCorto.getTAMANIO_QUANTUM() != 0){
                 int prioridadLlego = this.procesoCorriendo.getPrioridad();
                 int prioridadNueva = this.planificadorCorto.formulaRecalcularPrioridad(procesoCorriendo);
 
