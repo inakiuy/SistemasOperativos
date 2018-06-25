@@ -18,10 +18,8 @@ public class main_ValidadorDeMensajes {
          */
         final int INTERVALO_TIEMPO = 1;
         final String NOMBRE_RELOJ = "RELOJ-1";
-        final String RUTA_DATOS = "./src/datos/procesos.csv";
-        //final String RUTA_DATOS = "./src/datos/mas_procesos.csv";
-        //final String RUTA_DATOS = "./src/datos/procesos_desordenados.csv";
-        //final String RUTA_DATOS = "./src/datos/procesosTodosLleganCero.csv";
+        //final String RUTA_DATOS = "./src/datos/procesos.csv";
+        final String RUTA_DATOS = "./src/datos/set_Aleatorio.csv";
         
         // Fin Paramtros *****************************************************
         

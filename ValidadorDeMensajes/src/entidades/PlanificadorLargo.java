@@ -19,7 +19,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
     private IDatasource fuenteDeDatosProcesos;
     private IPlanificadorCorto planificadorCorto;
     private LinkedList<IProceso> listaProcesosPL;
-    private final Integer DELAY = 100;
+    private final Integer DELAY = 1;
     // End Atributes **************************************
 
     /**
@@ -82,7 +82,7 @@ public class PlanificadorLargo implements IPlanificadorLargo {
      */
     private void planificar(){    
         this.obtenerNuevosProcesos();      
-        while ( ! this.listaProcesosPL.isEmpty() && this.planificadorCorto.getCantProcesosRestantes() > 0 ) {
+        while ( ! this.listaProcesosPL.isEmpty() ) {
             IProceso proceso = this.listaProcesosPL.removeFirst();
             proceso.setPrioridad(3);
             this.planificadorCorto.ingresarProceso(proceso);        // Proceso X en la lista 3    (Van del 1 al 5)

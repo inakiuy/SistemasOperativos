@@ -24,7 +24,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
     private final int TAMANIO_QUANTUM = 4;
     private Integer CANT_PROC_RESTANTES = 500;
     private final Integer CANTIDAD_DE_COLAS = 5;
-    private final Integer DELAY = 100;
+    private final Integer DELAY = 1;
     
     
     // End Atributes **************************************
@@ -135,7 +135,7 @@ public class PlanificadorCorto implements IPlanificadorCorto {
                 for (int i = 0; i < this.listaProcesosRetiradosCPU.size() ; i++) {
                     Iterator<IProceso> iter = this.listaProcesosRetiradosCPU.iterator();
                         while(iter.hasNext()) {
-                            IProceso proceso = (IProceso) iter.next();
+                            IProceso proceso = iter.next();
                             int prioridadLlego = proceso.getPrioridad();
                             int prioridadNueva = this.formulaRecalcularPrioridad(proceso);
                             if ( prioridadLlego != prioridadNueva ) {
@@ -211,13 +211,8 @@ public class PlanificadorCorto implements IPlanificadorCorto {
 
                         if ( proceso.getVectorDeInformacion()[0] < 0) {
                              proceso.getVectorDeInformacion()[0] = proceso.getCantCiclosEsperando();
-                        }
-                       
-//                        if ( proceso.getCantCiclosEsperando() != 1 ){
-                        System.out.println("Asig Proc CPUs " + proceso.getCantCiclosEsperando());
-                        proceso.getVectorDeInformacion() [1] += proceso.getCantCiclosEsperando(); 
-  //                      }
-                        
+                        }                       
+                        proceso.getVectorDeInformacion() [1] += proceso.getCantCiclosEsperando();
                         proceso.setCantCiclosEsperando(0);
                         cpu.setProcesoCorriendo(proceso);
                         break;

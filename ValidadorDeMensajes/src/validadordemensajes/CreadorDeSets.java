@@ -26,7 +26,7 @@ public class CreadorDeSets {
         String[][] procesos = {procesoA,procesoB, procesoC, procesoD, procesoE};
         Integer tiempoLlegada = 0;
         Integer minrangoTiempo = 0;
-        Integer maxrangoTiempo = 10;
+        Integer maxrangoTiempo = 4;
         Random randomTiempo = new Random();
         Integer RandomTiempo;
         
