@@ -1,999 +1,1000 @@
-0;0;9;9;calc_puntaje_mensaje-1
-0;1;9;10;calc_puntaje_mensaje-4
-1;1;12;13;calc_nivel_confianza-5
-0;0;12;12;calc_nivel_confianza-6
-1;1;12;13;firmar_mensaje-9
-0;5;9;14;calc_puntaje_mensaje-7
-1;9;12;21;calc_nivel_confianza-8
-0;2;30;32;calc_premio-3
-5;6;12;18;calc_nivel_confianza-10
-0;4;30;34;calc_premio-2
-7;7;12;19;firmar_mensaje-11
-4;7;9;16;calc_puntaje_mensaje-12
-4;7;9;16;calc_puntaje_mensaje-14
-2;2;4;6;consultar_validez_mensaje-18
-3;5;12;17;calc_nivel_confianza-13
-2;2;4;6;consultar_validez_mensaje-19
-4;4;12;16;firmar_mensaje-15
-3;3;4;7;consultar_validez_mensaje-22
-2;7;12;19;calc_nivel_confianza-16
-1;2;12;14;calc_nivel_confianza-21
-1;1;12;13;firmar_mensaje-24
-0;0;12;12;firmar_mensaje-26
-1;3;12;15;calc_nivel_confianza-25
-1;7;9;16;calc_puntaje_mensaje-27
-5;5;4;9;consultar_validez_mensaje-29
-1;1;4;5;consultar_validez_mensaje-32
-4;13;30;43;calc_premio-17
-1;6;30;36;calc_premio-20
-5;5;12;17;firmar_mensaje-30
-1;4;30;34;calc_premio-23
-4;4;4;8;consultar_validez_mensaje-37
-2;5;9;14;calc_puntaje_mensaje-33
-0;2;9;11;calc_puntaje_mensaje-34
-5;9;12;21;calc_nivel_confianza-31
-1;3;12;15;calc_nivel_confianza-35
-7;7;4;11;consultar_validez_mensaje-39
-3;3;4;7;consultar_validez_mensaje-42
-5;5;4;9;consultar_validez_mensaje-41
-0;10;30;40;calc_premio-28
-6;6;12;18;calc_nivel_confianza-40
-3;3;12;15;firmar_mensaje-43
-0;0;4;4;consultar_validez_mensaje-47
-0;0;12;12;calc_nivel_confianza-45
-1;1;12;13;calc_nivel_confianza-44
-1;1;12;13;firmar_mensaje-46
-2;2;4;6;consultar_validez_mensaje-48
-4;4;4;8;consultar_validez_mensaje-50
-1;1;4;5;consultar_validez_mensaje-51
-4;4;9;13;calc_puntaje_mensaje-49
-1;13;30;43;calc_premio-36
-3;12;30;42;calc_premio-38
-1;1;12;13;calc_nivel_confianza-52
-0;3;9;12;calc_puntaje_mensaje-54
-0;0;4;4;consultar_validez_mensaje-58
-0;0;4;4;consultar_validez_mensaje-59
-0;1;12;13;calc_nivel_confianza-55
-0;3;12;15;calc_nivel_confianza-56
-0;0;12;12;calc_nivel_confianza-60
-2;3;12;15;calc_nivel_confianza-57
-4;4;4;8;consultar_validez_mensaje-66
-5;5;12;17;firmar_mensaje-63
-4;5;9;14;calc_puntaje_mensaje-64
-2;6;12;18;calc_nivel_confianza-62
-0;0;9;9;calc_puntaje_mensaje-67
-4;5;12;17;calc_nivel_confianza-65
-4;4;4;8;consultar_validez_mensaje-69
-0;2;12;14;calc_nivel_confianza-68
-4;4;4;8;consultar_validez_mensaje-74
-2;2;12;14;firmar_mensaje-70
-0;6;9;15;calc_puntaje_mensaje-71
-0;7;9;16;calc_puntaje_mensaje-73
-0;24;30;54;calc_premio-53
-8;8;4;12;consultar_validez_mensaje-79
-6;6;12;18;firmar_mensaje-76
-6;6;4;10;consultar_validez_mensaje-80
-0;9;12;21;calc_nivel_confianza-72
-4;11;12;23;calc_nivel_confianza-75
-2;18;30;48;calc_premio-61
-8;13;12;25;calc_nivel_confianza-77
-5;5;4;9;consultar_validez_mensaje-84
-5;5;12;17;firmar_mensaje-81
-3;6;9;15;calc_puntaje_mensaje-83
-3;3;4;7;consultar_validez_mensaje-88
-1;1;4;5;consultar_validez_mensaje-89
-2;3;12;15;calc_nivel_confianza-85
-3;4;9;13;calc_puntaje_mensaje-86
-1;1;12;13;firmar_mensaje-91
-0;2;9;11;calc_puntaje_mensaje-94
-3;4;12;16;firmar_mensaje-93
-2;2;4;6;consultar_validez_mensaje-98
-1;1;12;13;firmar_mensaje-96
-2;7;9;16;calc_puntaje_mensaje-100
-7;36;30;66;calc_premio-78
-4;11;12;23;calc_nivel_confianza-102
-3;11;9;20;calc_puntaje_mensaje-104
-5;30;30;60;calc_premio-82
-10;10;12;22;firmar_mensaje-107
-2;28;30;58;calc_premio-87
-13;13;12;25;firmar_mensaje-111
-2;36;30;66;calc_premio-90
-10;26;9;35;calc_puntaje_mensaje-108
-2;36;30;66;calc_premio-92
-12;31;9;40;calc_puntaje_mensaje-109
-0;35;30;65;calc_premio-95
-1;33;30;63;calc_premio-97
-12;25;9;34;calc_puntaje_mensaje-112
-10;29;12;41;calc_nivel_confianza-110
-20;20;12;32;firmar_mensaje-117
-12;27;12;39;calc_nivel_confianza-113
-18;19;12;31;firmar_mensaje-118
-16;16;12;28;firmar_mensaje-120
-14;33;9;42;calc_puntaje_mensaje-114
-19;19;12;31;firmar_mensaje-121
-2;50;30;80;calc_premio-99
-2;22;12;34;firmar_mensaje-123
-16;41;9;50;calc_puntaje_mensaje-115
-5;25;12;37;firmar_mensaje-124
-17;44;12;56;calc_nivel_confianza-116
-2;30;12;42;calc_nivel_confianza-122
-5;58;30;88;calc_premio-101
-13;33;4;37;consultar_validez_mensaje-130
-4;62;30;92;calc_premio-103
-17;37;4;41;consultar_validez_mensaje-134
-13;33;12;45;firmar_mensaje-131
-14;34;4;38;consultar_validez_mensaje-135
-8;42;9;51;calc_puntaje_mensaje-128
-15;35;12;47;firmar_mensaje-133
-7;41;12;53;calc_nivel_confianza-127
-15;35;4;39;consultar_validez_mensaje-137
-16;36;4;40;consultar_validez_mensaje-138
-13;33;4;37;consultar_validez_mensaje-140
-11;46;12;58;calc_nivel_confianza-129
-5;74;30;104;calc_premio-105
-7;27;4;31;consultar_validez_mensaje-144
-7;79;30;109;calc_premio-106
-7;27;4;31;consultar_validez_mensaje-147
-6;26;4;30;consultar_validez_mensaje-148
-15;43;12;55;calc_nivel_confianza-136
-13;39;12;51;calc_nivel_confianza-139
-8;28;12;40;firmar_mensaje-143
-13;40;9;49;calc_puntaje_mensaje-141
-9;38;9;47;calc_puntaje_mensaje-146
-8;28;4;32;consultar_validez_mensaje-152
-17;70;30;100;calc_premio-119
-9;35;9;44;calc_puntaje_mensaje-150
-10;37;9;46;calc_puntaje_mensaje-151
-6;34;12;46;calc_nivel_confianza-153
-9;29;12;41;firmar_mensaje-156
-7;76;30;106;calc_premio-126
-8;37;9;46;calc_puntaje_mensaje-155
-9;29;4;33;consultar_validez_mensaje-161
-7;81;30;111;calc_premio-125
-7;35;9;44;calc_puntaje_mensaje-158
-8;37;12;49;calc_nivel_confianza-157
-14;82;30;112;calc_premio-132
-11;31;4;35;consultar_validez_mensaje-167
-12;32;4;36;consultar_validez_mensaje-168
-13;33;4;37;consultar_validez_mensaje-169
-10;43;9;52;calc_puntaje_mensaje-162
-9;43;9;52;calc_puntaje_mensaje-163
-13;33;4;37;consultar_validez_mensaje-172
-10;44;9;53;calc_puntaje_mensaje-164
-12;32;4;36;consultar_validez_mensaje-173
-8;41;12;53;calc_nivel_confianza-165
-14;34;4;38;consultar_validez_mensaje-174
-11;43;12;55;calc_nivel_confianza-166
-8;75;30;105;calc_premio-145
-11;81;30;111;calc_premio-142
-11;41;9;50;calc_puntaje_mensaje-171
-12;32;12;44;firmar_mensaje-175
-12;44;12;56;calc_nivel_confianza-170
-14;34;4;38;consultar_validez_mensaje-180
-10;30;4;34;consultar_validez_mensaje-183
-10;78;30;108;calc_premio-149
-11;40;9;49;calc_puntaje_mensaje-176
-9;38;9;47;calc_puntaje_mensaje-177
-8;37;9;46;calc_puntaje_mensaje-178
-11;31;12;43;firmar_mensaje-182
-5;76;30;106;calc_premio-154
-11;45;9;54;calc_puntaje_mensaje-179
-9;41;9;50;calc_puntaje_mensaje-185
-12;46;12;58;calc_nivel_confianza-181
-12;32;12;44;firmar_mensaje-188
-10;42;9;51;calc_puntaje_mensaje-186
-12;32;12;44;firmar_mensaje-190
-10;30;4;34;consultar_validez_mensaje-194
-7;79;30;109;calc_premio-159
-12;43;12;55;calc_nivel_confianza-187
-11;41;9;50;calc_puntaje_mensaje-189
-9;79;30;109;calc_premio-160
-11;41;9;50;calc_puntaje_mensaje-191
-12;33;12;45;firmar_mensaje-193
-10;30;4;34;consultar_validez_mensaje-199
-12;32;12;44;firmar_mensaje-195
-8;28;4;32;consultar_validez_mensaje-200
-12;43;9;52;calc_puntaje_mensaje-192
-10;36;9;45;calc_puntaje_mensaje-196
-10;37;9;46;calc_puntaje_mensaje-197
-7;27;4;31;consultar_validez_mensaje-204
-8;28;4;32;consultar_validez_mensaje-206
-7;33;12;45;calc_nivel_confianza-203
-7;27;12;39;firmar_mensaje-208
-7;27;12;39;firmar_mensaje-209
-7;27;12;39;firmar_mensaje-212
-7;38;12;50;calc_nivel_confianza-205
-11;31;4;35;consultar_validez_mensaje-216
-11;31;12;43;firmar_mensaje-213
-8;40;9;49;calc_puntaje_mensaje-210
-11;32;12;44;firmar_mensaje-214
-10;30;12;42;firmar_mensaje-215
-5;37;12;49;calc_nivel_confianza-211
-11;38;9;47;calc_puntaje_mensaje-218
-9;79;30;109;calc_premio-184
-11;39;12;51;calc_nivel_confianza-217
-10;37;12;49;calc_nivel_confianza-219
-11;46;9;55;calc_puntaje_mensaje-221
-11;45;12;57;calc_nivel_confianza-222
-15;35;12;47;firmar_mensaje-230
-7;46;9;55;calc_puntaje_mensaje-225
-9;81;30;111;calc_premio-198
-12;52;12;64;calc_nivel_confianza-226
-12;52;12;64;calc_nivel_confianza-227
-14;55;9;64;calc_puntaje_mensaje-228
-8;86;30;116;calc_premio-202
-1;42;12;54;calc_nivel_confianza-238
-7;88;30;118;calc_premio-201
-1;46;12;58;calc_nivel_confianza-239
-4;44;4;48;consultar_validez_mensaje-243
-5;45;4;49;consultar_validez_mensaje-245
-5;45;4;49;consultar_validez_mensaje-246
-1;49;12;61;calc_nivel_confianza-240
-7;47;4;51;consultar_validez_mensaje-248
-8;48;4;52;consultar_validez_mensaje-249
-18;72;12;84;calc_nivel_confianza-232
-8;48;4;52;consultar_validez_mensaje-251
-10;104;30;134;calc_premio-207
-5;52;12;64;firmar_mensaje-247
-19;75;9;84;calc_puntaje_mensaje-236
-9;49;4;53;consultar_validez_mensaje-255
-8;55;12;67;firmar_mensaje-250
-8;58;12;70;firmar_mensaje-252
-20;79;9;88;calc_puntaje_mensaje-241
-14;54;4;58;consultar_validez_mensaje-263
-14;54;4;58;consultar_validez_mensaje-264
-15;97;30;127;calc_premio-229
-5;69;9;78;calc_puntaje_mensaje-259
-7;78;12;90;calc_nivel_confianza-253
-15;55;4;59;consultar_validez_mensaje-269
-14;54;4;58;consultar_validez_mensaje-270
-12;62;12;74;firmar_mensaje-262
-9;84;12;96;calc_nivel_confianza-256
-11;77;9;86;calc_puntaje_mensaje-261
-12;52;4;56;consultar_validez_mensaje-275
-11;138;30;168;calc_premio-220
-12;52;4;56;consultar_validez_mensaje-277
-14;64;12;76;firmar_mensaje-268
-13;75;9;84;calc_puntaje_mensaje-265
-9;85;12;97;calc_nivel_confianza-260
-11;51;4;55;consultar_validez_mensaje-278
-19;119;30;149;calc_premio-233
-11;62;12;74;firmar_mensaje-271
-14;78;9;87;calc_puntaje_mensaje-266
-12;52;4;56;consultar_validez_mensaje-281
-19;124;30;154;calc_premio-235
-13;66;12;78;firmar_mensaje-274
-20;127;30;157;calc_premio-234
-10;73;9;82;calc_puntaje_mensaje-272
-13;64;12;76;firmar_mensaje-276
-11;72;9;81;calc_puntaje_mensaje-273
-14;54;4;58;consultar_validez_mensaje-283
-8;149;30;179;calc_premio-223
-8;147;30;177;calc_premio-224
-18;133;30;163;calc_premio-237
-11;74;9;83;calc_puntaje_mensaje-280
-12;62;12;74;firmar_mensaje-285
-12;69;9;78;calc_puntaje_mensaje-284
-13;62;12;74;firmar_mensaje-288
-1;135;30;165;calc_premio-242
-12;62;12;74;firmar_mensaje-289
-4;139;30;169;calc_premio-244
-9;60;12;72;firmar_mensaje-290
-18;164;30;194;calc_premio-231
-9;67;9;76;calc_puntaje_mensaje-292
-10;58;12;70;firmar_mensaje-295
-8;68;9;77;calc_puntaje_mensaje-293
-10;59;12;71;firmar_mensaje-297
-8;140;30;170;calc_premio-254
-9;141;30;171;calc_premio-257
-10;73;9;82;calc_puntaje_mensaje-296
-7;142;30;172;calc_premio-258
-10;81;12;93;calc_nivel_confianza-294
-12;52;4;56;consultar_validez_mensaje-312
-12;74;9;83;calc_puntaje_mensaje-299
-13;53;4;57;consultar_validez_mensaje-315
-13;53;4;57;consultar_validez_mensaje-314
-10;74;9;83;calc_puntaje_mensaje-304
-14;54;4;58;consultar_validez_mensaje-319
-12;79;9;88;calc_puntaje_mensaje-306
-10;89;12;101;calc_nivel_confianza-302
-9;89;12;101;calc_nivel_confianza-301
-16;155;30;185;calc_premio-267
-18;58;4;62;consultar_validez_mensaje-325
-10;95;12;107;calc_nivel_confianza-303
-14;73;12;85;firmar_mensaje-316
-20;60;4;64;consultar_validez_mensaje-329
-10;95;12;107;calc_nivel_confianza-305
-15;75;12;87;firmar_mensaje-320
-12;101;12;113;calc_nivel_confianza-307
-19;59;4;63;consultar_validez_mensaje-336
-20;60;4;64;consultar_validez_mensaje-337
-16;75;12;87;firmar_mensaje-324
-12;105;12;117;calc_nivel_confianza-310
-18;78;12;90;firmar_mensaje-327
-12;105;12;117;calc_nivel_confianza-311
-11;160;30;190;calc_premio-279
-17;96;9;105;calc_puntaje_mensaje-321
-12;106;12;118;calc_nivel_confianza-313
-20;77;12;89;firmar_mensaje-332
-13;158;30;188;calc_premio-282
-19;77;12;89;firmar_mensaje-333
-19;59;4;63;consultar_validez_mensaje-345
-13;112;12;124;calc_nivel_confianza-318
-17;96;9;105;calc_puntaje_mensaje-331
-14;166;30;196;calc_premio-286
-19;98;9;107;calc_puntaje_mensaje-334
-2;62;4;66;consultar_validez_mensaje-353
-3;63;4;67;consultar_validez_mensaje-355
-2;62;4;66;consultar_validez_mensaje-356
-15;176;30;206;calc_premio-287
-18;116;12;128;calc_nivel_confianza-328
-9;168;30;198;calc_premio-291
-18;118;12;130;calc_nivel_confianza-326
-18;100;9;109;calc_puntaje_mensaje-338
-18;100;9;109;calc_puntaje_mensaje-339
-19;118;12;130;calc_nivel_confianza-330
-1;100;9;109;calc_puntaje_mensaje-340
-1;81;12;93;firmar_mensaje-350
-20;80;12;92;firmar_mensaje-351
-19;100;9;109;calc_puntaje_mensaje-344
-19;59;4;63;consultar_validez_mensaje-367
-11;173;30;203;calc_premio-298
-19;101;9;110;calc_puntaje_mensaje-348
-2;62;4;66;consultar_validez_mensaje-370
-2;81;12;93;firmar_mensaje-359
-19;59;4;63;consultar_validez_mensaje-372
-10;179;30;209;calc_premio-300
-2;81;12;93;firmar_mensaje-361
-2;101;9;110;calc_puntaje_mensaje-352
-13;166;30;196;calc_premio-308
-2;82;12;94;firmar_mensaje-362
-20;123;12;135;calc_nivel_confianza-342
-1;61;4;65;consultar_validez_mensaje-377
-18;120;12;132;calc_nivel_confianza-346
-20;83;12;95;firmar_mensaje-366
-19;122;12;134;calc_nivel_confianza-349
-20;102;9;111;calc_puntaje_mensaje-364
-4;64;4;68;consultar_validez_mensaje-383
-12;189;30;219;calc_premio-309
-4;128;12;140;calc_nivel_confianza-354
-20;82;12;94;firmar_mensaje-374
-1;120;12;132;calc_nivel_confianza-357
-1;120;12;132;calc_nivel_confianza-358
-2;62;4;66;consultar_validez_mensaje-389
-13;190;30;220;calc_premio-317
-1;83;12;95;firmar_mensaje-379
-17;183;30;213;calc_premio-322
-2;127;12;139;calc_nivel_confianza-360
-1;123;12;135;calc_nivel_confianza-363
-17;183;30;213;calc_premio-323
-19;120;12;132;calc_nivel_confianza-365
-5;87;12;99;firmar_mensaje-380
-2;62;4;66;consultar_validez_mensaje-394
-20;103;9;112;calc_puntaje_mensaje-373
-1;61;4;65;consultar_validez_mensaje-395
-3;84;12;96;firmar_mensaje-382
-1;103;9;112;calc_puntaje_mensaje-376
-19;183;30;213;calc_premio-335
-2;88;12;100;firmar_mensaje-387
-7;67;4;71;consultar_validez_mensaje-408
-18;172;30;202;calc_premio-343
-2;128;12;140;calc_nivel_confianza-375
-7;67;4;71;consultar_validez_mensaje-411
-1;130;12;142;calc_nivel_confianza-378
-5;90;12;102;firmar_mensaje-401
-18;186;30;216;calc_premio-347
-6;66;4;70;consultar_validez_mensaje-419
-6;66;4;70;consultar_validez_mensaje-418
-7;93;12;105;firmar_mensaje-404
-3;116;9;125;calc_puntaje_mensaje-391
-7;97;12;109;firmar_mensaje-407
-4;144;12;156;calc_nivel_confianza-381
-3;122;9;131;calc_puntaje_mensaje-392
-1;216;30;246;calc_premio-341
-3;141;12;153;calc_nivel_confianza-384
-1;139;12;151;calc_nivel_confianza-385
-3;141;12;153;calc_nivel_confianza-386
-1;119;9;128;calc_puntaje_mensaje-398
-4;121;9;130;calc_puntaje_mensaje-400
-5;122;9;131;calc_puntaje_mensaje-403
-7;101;12;113;firmar_mensaje-414
-6;101;12;113;firmar_mensaje-416
-7;137;9;146;calc_puntaje_mensaje-409
-6;137;9;146;calc_puntaje_mensaje-410
-19;198;30;228;calc_premio-368
-7;136;9;145;calc_puntaje_mensaje-412
-19;79;4;83;consultar_validez_mensaje-449
-20;155;12;167;calc_nivel_confianza-396
-1;198;30;228;calc_premio-369
-5;134;9;143;calc_puntaje_mensaje-413
-1;154;12;166;calc_nivel_confianza-399
-13;109;12;121;firmar_mensaje-430
-18;78;4;82;consultar_validez_mensaje-451
-8;135;9;144;calc_puntaje_mensaje-415
-12;109;12;121;firmar_mensaje-431
-1;201;30;231;calc_premio-371
-12;108;12;120;firmar_mensaje-432
-5;161;12;173;calc_nivel_confianza-402
-6;140;9;149;calc_puntaje_mensaje-421
-2;82;4;86;consultar_validez_mensaje-462
-9;145;9;154;calc_puntaje_mensaje-424
-1;81;4;85;consultar_validez_mensaje-463
-20;80;4;84;consultar_validez_mensaje-464
-11;149;9;158;calc_puntaje_mensaje-426
-17;117;12;129;firmar_mensaje-443
-12;147;9;156;calc_puntaje_mensaje-433
-17;116;12;128;firmar_mensaje-453
-12;151;9;160;calc_puntaje_mensaje-435
-20;80;4;84;consultar_validez_mensaje-477
-14;152;9;161;calc_puntaje_mensaje-438
-14;153;9;162;calc_puntaje_mensaje-437
-19;118;12;130;firmar_mensaje-456
-14;155;9;164;calc_puntaje_mensaje-440
-2;82;4;86;consultar_validez_mensaje-480
-3;83;4;87;consultar_validez_mensaje-485
-8;187;12;199;calc_nivel_confianza-422
-15;159;9;168;calc_puntaje_mensaje-442
-9;188;12;200;calc_nivel_confianza-425
-17;160;9;169;calc_puntaje_mensaje-444
-2;230;30;260;calc_premio-388
-3;234;30;264;calc_premio-390
-2;123;12;135;firmar_mensaje-465
-20;120;12;132;firmar_mensaje-467
-1;122;12;134;firmar_mensaje-466
-1;81;4;85;consultar_validez_mensaje-490
-12;196;12;208;calc_nivel_confianza-429
-16;163;9;172;calc_puntaje_mensaje-452
-17;160;9;169;calc_puntaje_mensaje-454
-2;244;30;274;calc_premio-393
-1;128;12;140;firmar_mensaje-473
-2;239;30;269;calc_premio-397
-12;197;12;209;calc_nivel_confianza-436
-18;164;9;173;calc_puntaje_mensaje-457
-18;164;9;173;calc_puntaje_mensaje-460
-1;127;12;139;firmar_mensaje-479
-7;249;30;279;calc_premio-406
-7;250;30;280;calc_premio-405
-15;205;12;217;calc_nivel_confianza-441
-19;203;12;215;calc_nivel_confianza-446
-2;127;12;139;firmar_mensaje-486
-5;85;4;89;consultar_validez_mensaje-505
-1;167;9;176;calc_puntaje_mensaje-468
-5;85;4;89;consultar_validez_mensaje-506
-19;208;12;220;calc_nivel_confianza-450
-1;175;9;184;calc_puntaje_mensaje-472
-18;207;12;219;calc_nivel_confianza-455
-7;87;4;91;consultar_validez_mensaje-515
-18;207;12;219;calc_nivel_confianza-458
-7;87;4;91;consultar_validez_mensaje-516
-6;131;12;143;firmar_mensaje-496
-18;210;12;222;calc_nivel_confianza-459
-5;85;4;89;consultar_validez_mensaje-520
-20;212;12;224;calc_nivel_confianza-461
-6;267;30;297;calc_premio-417
-2;176;9;185;calc_puntaje_mensaje-483
-6;131;12;143;firmar_mensaje-501
-5;271;30;301;calc_premio-420
-6;86;4;90;consultar_validez_mensaje-527
-8;275;30;305;calc_premio-423
-5;85;4;89;consultar_validez_mensaje-532
-12;280;30;310;calc_premio-427
-19;214;12;226;calc_nivel_confianza-471
-20;218;12;230;calc_nivel_confianza-474
-7;87;4;91;consultar_validez_mensaje-537
-12;288;30;318;calc_premio-428
-6;179;9;188;calc_puntaje_mensaje-497
-7;133;12;145;firmar_mensaje-513
-7;180;9;189;calc_puntaje_mensaje-498
-6;179;9;188;calc_puntaje_mensaje-499
-6;135;12;147;firmar_mensaje-517
-12;289;30;319;calc_premio-434
-1;222;12;234;calc_nivel_confianza-481
-6;138;12;150;firmar_mensaje-518
-2;226;12;238;calc_nivel_confianza-482
-12;92;4;96;consultar_validez_mensaje-551
-6;139;12;151;firmar_mensaje-523
-6;139;12;151;firmar_mensaje-524
-14;298;30;328;calc_premio-439
-4;182;9;191;calc_puntaje_mensaje-507
-4;136;12;148;firmar_mensaje-529
-13;93;4;97;consultar_validez_mensaje-559
-19;302;30;332;calc_premio-445
-5;183;9;192;calc_puntaje_mensaje-508
-14;94;4;98;consultar_validez_mensaje-560
-4;138;12;150;firmar_mensaje-531
-3;229;12;241;calc_nivel_confianza-491
-20;307;30;337;calc_premio-447
-20;304;30;334;calc_premio-448
-5;184;9;193;calc_puntaje_mensaje-511
-5;235;12;247;calc_nivel_confianza-492
-4;141;12;153;firmar_mensaje-534
-7;190;9;199;calc_puntaje_mensaje-512
-5;233;12;245;calc_nivel_confianza-495
-15;95;4;99;consultar_validez_mensaje-566
-7;192;9;201;calc_puntaje_mensaje-514
-17;97;4;101;consultar_validez_mensaje-569
-19;99;4;103;consultar_validez_mensaje-572
-6;146;12;158;firmar_mensaje-540
-4;192;9;201;calc_puntaje_mensaje-519
-20;100;4;104;consultar_validez_mensaje-573
-18;98;4;102;consultar_validez_mensaje-575
-19;99;4;103;consultar_validez_mensaje-576
-7;197;9;206;calc_puntaje_mensaje-525
-11;149;12;161;firmar_mensaje-548
-12;150;12;162;firmar_mensaje-550
-5;242;12;254;calc_nivel_confianza-502
-7;199;9;208;calc_puntaje_mensaje-526
-4;240;12;252;calc_nivel_confianza-504
-11;149;12;161;firmar_mensaje-553
-20;100;4;104;consultar_validez_mensaje-581
-18;98;4;102;consultar_validez_mensaje-583
-14;152;12;164;firmar_mensaje-556
-2;102;4;106;consultar_validez_mensaje-585
-6;245;12;257;calc_nivel_confianza-510
-15;152;12;164;firmar_mensaje-561
-1;325;30;355;calc_premio-469
-14;153;12;165;firmar_mensaje-562
-18;98;4;102;consultar_validez_mensaje-592
-2;329;30;359;calc_premio-470
-19;99;4;103;consultar_validez_mensaje-594
-9;203;9;212;calc_puntaje_mensaje-544
-19;329;30;359;calc_premio-475
-17;153;12;165;firmar_mensaje-570
-17;97;4;101;consultar_validez_mensaje-600
-11;203;9;212;calc_puntaje_mensaje-545
-5;247;12;259;calc_nivel_confianza-521
-9;202;9;211;calc_puntaje_mensaje-546
-15;95;4;99;consultar_validez_mensaje-603
-19;153;12;165;firmar_mensaje-574
-10;203;9;212;calc_puntaje_mensaje-547
-20;333;30;363;calc_premio-476
-20;331;30;361;calc_premio-478
-4;247;12;259;calc_nivel_confianza-522
-14;94;4;98;consultar_validez_mensaje-604
-15;95;4;99;consultar_validez_mensaje-605
-15;95;4;99;consultar_validez_mensaje-608
-16;96;4;100;consultar_validez_mensaje-610
-4;249;12;261;calc_nivel_confianza-528
-3;245;12;257;calc_nivel_confianza-530
-4;339;30;369;calc_premio-484
-3;334;30;364;calc_premio-487
-2;336;30;366;calc_premio-488
-20;154;12;166;firmar_mensaje-584
-20;337;30;367;calc_premio-489
-16;96;4;100;consultar_validez_mensaje-622
-19;153;12;165;firmar_mensaje-588
-17;210;9;219;calc_puntaje_mensaje-565
-7;258;12;270;calc_nivel_confianza-536
-15;95;4;99;consultar_validez_mensaje-625
-18;155;12;167;firmar_mensaje-591
-15;209;9;218;calc_puntaje_mensaje-568
-17;153;12;165;firmar_mensaje-593
-5;352;30;382;calc_premio-493
-5;350;30;380;calc_premio-494
-18;155;12;167;firmar_mensaje-597
-17;156;12;168;firmar_mensaje-599
-20;100;4;104;consultar_validez_mensaje-632
-13;263;12;275;calc_nivel_confianza-549
-15;154;12;166;firmar_mensaje-602
-10;260;12;272;calc_nivel_confianza-552
-7;353;30;383;calc_premio-500
-19;99;4;103;consultar_validez_mensaje-642
-4;356;30;386;calc_premio-503
-18;98;4;102;consultar_validez_mensaje-644
-14;152;12;164;firmar_mensaje-618
-16;270;12;282;calc_nivel_confianza-563
-15;267;12;279;calc_nivel_confianza-564
-14;155;12;167;firmar_mensaje-620
-16;266;12;278;calc_nivel_confianza-567
-18;98;4;102;consultar_validez_mensaje-650
-6;357;30;387;calc_premio-509
-17;156;12;168;firmar_mensaje-624
-18;266;12;278;calc_nivel_confianza-571
-16;96;4;100;consultar_validez_mensaje-656
-17;267;12;279;calc_nivel_confianza-579
-16;96;4;100;consultar_validez_mensaje-662
-15;211;9;220;calc_puntaje_mensaje-607
-19;269;12;281;calc_nivel_confianza-580
-14;208;9;217;calc_puntaje_mensaje-609
-16;96;4;100;consultar_validez_mensaje-663
-13;209;9;218;calc_puntaje_mensaje-611
-16;96;4;100;consultar_validez_mensaje-667
-18;157;12;169;firmar_mensaje-638
-13;209;9;218;calc_puntaje_mensaje-615
-1;101;4;105;consultar_validez_mensaje-670
-20;162;12;174;firmar_mensaje-640
-20;276;12;288;calc_nivel_confianza-586
-18;277;12;289;calc_nivel_confianza-590
-15;219;9;228;calc_puntaje_mensaje-623
-19;274;12;286;calc_nivel_confianza-595
-5;374;30;404;calc_premio-533
-20;163;12;175;firmar_mensaje-648
-3;103;4;107;consultar_validez_mensaje-679
-2;102;4;106;consultar_validez_mensaje-680
-18;158;12;170;firmar_mensaje-651
-7;375;30;405;calc_premio-535
-18;160;12;172;firmar_mensaje-652
-7;374;30;404;calc_premio-538
-17;215;9;224;calc_puntaje_mensaje-631
-16;159;12;171;firmar_mensaje-654
-5;375;30;405;calc_premio-539
-17;276;12;288;calc_nivel_confianza-601
-4;104;4;108;consultar_validez_mensaje-684
-20;219;9;228;calc_puntaje_mensaje-633
-8;378;30;408;calc_premio-542
-7;380;30;410;calc_premio-541
-5;105;4;109;consultar_validez_mensaje-686
-4;104;4;108;consultar_validez_mensaje-687
-19;218;9;227;calc_puntaje_mensaje-636
-8;385;30;415;calc_premio-543
-19;219;9;228;calc_puntaje_mensaje-637
-18;216;9;225;calc_puntaje_mensaje-639
-5;105;4;109;consultar_validez_mensaje-692
-15;275;12;287;calc_nivel_confianza-612
-17;162;12;174;firmar_mensaje-664
-11;382;30;412;calc_premio-554
-13;274;12;286;calc_nivel_confianza-614
-12;384;30;414;calc_premio-555
-12;270;12;282;calc_nivel_confianza-617
-3;103;4;107;consultar_validez_mensaje-701
-13;385;30;415;calc_premio-557
-3;103;4;107;consultar_validez_mensaje-702
-14;279;12;291;calc_nivel_confianza-619
-1;164;12;176;firmar_mensaje-671
-12;386;30;416;calc_premio-558
-19;225;9;234;calc_puntaje_mensaje-647
-17;281;12;293;calc_nivel_confianza-627
-17;280;12;292;calc_nivel_confianza-628
-19;285;12;297;calc_nivel_confianza-629
-20;284;12;296;calc_nivel_confianza-630
-16;223;9;232;calc_puntaje_mensaje-657
-3;169;12;181;firmar_mensaje-683
-17;228;9;237;calc_puntaje_mensaje-658
-17;226;9;235;calc_puntaje_mensaje-659
-5;105;4;109;consultar_validez_mensaje-722
-6;106;4;110;consultar_validez_mensaje-725
-16;226;9;235;calc_puntaje_mensaje-665
-18;398;30;428;calc_premio-577
-17;397;30;427;calc_premio-578
-3;168;12;180;firmar_mensaje-694
-20;229;9;238;calc_puntaje_mensaje-669
-19;394;30;424;calc_premio-582
-20;292;12;304;calc_nivel_confianza-641
-2;230;9;239;calc_puntaje_mensaje-672
-3;232;9;241;calc_puntaje_mensaje-673
-4;168;12;180;firmar_mensaje-699
-4;169;12;181;firmar_mensaje-703
-1;403;30;433;calc_premio-587
-5;105;4;109;consultar_validez_mensaje-740
-5;236;9;245;calc_puntaje_mensaje-677
-3;234;9;243;calc_puntaje_mensaje-678
-4;171;12;183;firmar_mensaje-706
-3;171;12;183;firmar_mensaje-707
-20;299;12;311;calc_nivel_confianza-649
-5;175;12;187;firmar_mensaje-709
-18;409;30;439;calc_premio-589
-18;293;12;305;calc_nivel_confianza-653
-2;236;9;245;calc_puntaje_mensaje-682
-17;294;12;306;calc_nivel_confianza-655
-18;407;30;437;calc_premio-596
-10;110;4;114;consultar_validez_mensaje-748
-6;173;12;185;firmar_mensaje-716
-17;404;30;434;calc_premio-598
-5;174;12;186;firmar_mensaje-719
-17;293;12;305;calc_nivel_confianza-661
-9;109;4;113;consultar_validez_mensaje-754
-7;107;4;111;consultar_validez_mensaje-757
-7;107;4;111;consultar_validez_mensaje-759
-3;237;9;246;calc_puntaje_mensaje-693
-4;236;9;245;calc_puntaje_mensaje-695
-15;406;30;436;calc_premio-606
-4;236;9;245;calc_puntaje_mensaje-696
-20;296;12;308;calc_nivel_confianza-668
-6;174;12;186;firmar_mensaje-729
-7;176;12;188;firmar_mensaje-730
-15;410;30;440;calc_premio-613
-4;236;9;245;calc_puntaje_mensaje-704
-6;173;12;185;firmar_mensaje-735
-14;408;30;438;calc_premio-616
-6;177;12;189;firmar_mensaje-736
-4;305;12;317;calc_nivel_confianza-675
-5;305;12;317;calc_nivel_confianza-676
-4;176;12;188;firmar_mensaje-737
-13;113;4;117;consultar_validez_mensaje-770
-12;112;4;116;consultar_validez_mensaje-771
-14;417;30;447;calc_premio-621
-14;114;4;118;consultar_validez_mensaje-780
-8;183;12;195;firmar_mensaje-741
-10;185;12;197;firmar_mensaje-746
-6;251;9;260;calc_puntaje_mensaje-717
-16;426;30;456;calc_premio-626
-5;313;12;325;calc_nivel_confianza-685
-5;247;9;256;calc_puntaje_mensaje-721
-16;116;4;120;consultar_validez_mensaje-786
-9;182;12;194;firmar_mensaje-752
-17;425;30;455;calc_premio-635
-16;116;4;120;consultar_validez_mensaje-791
-9;185;12;197;firmar_mensaje-756
-4;310;12;322;calc_nivel_confianza-697
-20;435;30;465;calc_premio-634
-7;183;12;195;firmar_mensaje-760
-2;313;12;325;calc_nivel_confianza-698
-3;311;12;323;calc_nivel_confianza-700
-6;182;12;194;firmar_mensaje-761
-15;115;4;119;consultar_validez_mensaje-797
-8;180;12;192;firmar_mensaje-763
-11;111;4;115;consultar_validez_mensaje-799
-5;245;9;254;calc_puntaje_mensaje-738
-4;310;12;322;calc_nivel_confianza-705
-18;428;30;458;calc_premio-643
-7;249;9;258;calc_puntaje_mensaje-739
-11;111;4;115;consultar_validez_mensaje-804
-13;183;12;195;firmar_mensaje-769
-7;313;12;325;calc_nivel_confianza-711
-18;432;30;462;calc_premio-645
-10;110;4;114;consultar_validez_mensaje-806
-10;110;4;114;consultar_validez_mensaje-807
-18;432;30;462;calc_premio-646
-9;250;9;259;calc_puntaje_mensaje-742
-7;319;12;331;calc_nivel_confianza-712
-7;107;4;111;consultar_validez_mensaje-810
-5;315;12;327;calc_nivel_confianza-714
-6;106;4;110;consultar_validez_mensaje-811
-9;253;9;262;calc_puntaje_mensaje-747
-9;250;9;259;calc_puntaje_mensaje-751
-6;312;12;324;calc_nivel_confianza-723
-15;182;12;194;firmar_mensaje-785
-8;248;9;257;calc_puntaje_mensaje-753
-16;434;30;464;calc_premio-660
-8;319;12;331;calc_nivel_confianza-726
-8;250;9;259;calc_puntaje_mensaje-758
-7;316;12;328;calc_nivel_confianza-728
-8;108;4;112;consultar_validez_mensaje-821
-6;106;4;110;consultar_validez_mensaje-823
-17;434;30;464;calc_premio-666
-18;185;12;197;firmar_mensaje-793
-7;246;9;255;calc_puntaje_mensaje-764
-7;107;4;111;consultar_validez_mensaje-828
-8;108;4;112;consultar_validez_mensaje-830
-8;249;9;258;calc_puntaje_mensaje-765
-12;179;12;191;firmar_mensaje-800
-12;179;12;191;firmar_mensaje-801
-12;179;12;191;firmar_mensaje-802
-4;440;30;470;calc_premio-674
-13;250;9;259;calc_puntaje_mensaje-774
-14;248;9;257;calc_puntaje_mensaje-775
-13;247;9;256;calc_puntaje_mensaje-776
-11;247;9;256;calc_puntaje_mensaje-777
-14;248;9;257;calc_puntaje_mensaje-779
-8;108;4;112;consultar_validez_mensaje-836
-8;174;12;186;firmar_mensaje-808
-9;317;12;329;calc_nivel_confianza-745
-8;175;12;187;firmar_mensaje-809
-2;441;30;471;calc_premio-681
-8;108;4;112;consultar_validez_mensaje-842
-12;249;9;258;calc_puntaje_mensaje-787
-14;253;9;262;calc_puntaje_mensaje-788
-13;252;9;261;calc_puntaje_mensaje-789
-8;182;12;194;firmar_mensaje-816
-13;113;4;117;consultar_validez_mensaje-851
-15;115;4;119;consultar_validez_mensaje-852
-15;115;4;119;consultar_validez_mensaje-853
-4;449;30;479;calc_premio-690
-4;453;30;483;calc_premio-689
-16;254;9;263;calc_puntaje_mensaje-794
-16;252;9;261;calc_puntaje_mensaje-795
-4;455;30;485;calc_premio-688
-4;453;30;483;calc_premio-691
-6;178;12;190;firmar_mensaje-822
-7;320;12;332;calc_nivel_confianza-762
-13;113;4;117;consultar_validez_mensaje-856
-13;113;4;117;consultar_validez_mensaje-859
-7;320;12;332;calc_nivel_confianza-766
-14;256;9;265;calc_puntaje_mensaje-798
-9;246;9;255;calc_puntaje_mensaje-803
-8;178;12;190;firmar_mensaje-831
-12;319;12;331;calc_nivel_confianza-773
-8;181;12;193;firmar_mensaje-832
-12;325;12;337;calc_nivel_confianza-772
-7;177;12;189;firmar_mensaje-835
-4;449;30;479;calc_premio-708
-6;450;30;480;calc_premio-710
-8;180;12;192;firmar_mensaje-837
-12;112;4;116;consultar_validez_mensaje-875
-7;180;12;192;firmar_mensaje-840
-17;325;12;337;calc_nivel_confianza-784
-5;456;30;486;calc_premio-713
-6;250;9;259;calc_puntaje_mensaje-815
-15;115;4;119;consultar_validez_mensaje-878
-13;113;4;117;consultar_validez_mensaje-879
-9;184;12;196;firmar_mensaje-843
-10;184;12;196;firmar_mensaje-844
-5;460;30;490;calc_premio-715
-9;184;12;196;firmar_mensaje-845
-5;458;30;488;calc_premio-718
-8;257;9;266;calc_puntaje_mensaje-817
-6;462;30;492;calc_premio-720
-13;329;12;341;calc_nivel_confianza-790
-6;459;30;489;calc_premio-724
-7;256;9;265;calc_puntaje_mensaje-819
-16;330;12;342;calc_nivel_confianza-792
-14;114;4;118;consultar_validez_mensaje-890
-6;251;9;260;calc_puntaje_mensaje-826
-13;113;4;117;consultar_validez_mensaje-894
-9;465;30;495;calc_premio-727
-5;456;30;486;calc_premio-732
-6;461;30;491;calc_premio-733
-6;462;30;492;calc_premio-731
-10;324;12;336;calc_nivel_confianza-805
-7;464;30;494;calc_premio-734
-13;189;12;201;firmar_mensaje-863
-19;119;4;123;consultar_validez_mensaje-908
-16;116;4;120;consultar_validez_mensaje-911
-12;188;12;200;firmar_mensaje-870
-12;189;12;201;firmar_mensaje-869
-17;117;4;121;consultar_validez_mensaje-915
-12;188;12;200;firmar_mensaje-874
-9;468;30;498;calc_premio-744
-10;470;30;500;calc_premio-743
-9;259;9;268;calc_puntaje_mensaje-846
-16;116;4;120;consultar_validez_mensaje-920
-13;191;12;203;firmar_mensaje-880
-11;265;9;274;calc_puntaje_mensaje-848
-7;470;30;500;calc_premio-749
-20;120;4;124;consultar_validez_mensaje-925
-7;472;30;502;calc_premio-750
-15;196;12;208;firmar_mensaje-882
-16;196;12;208;firmar_mensaje-883
-15;196;12;208;firmar_mensaje-884
-7;338;12;350;calc_nivel_confianza-820
-13;266;9;275;calc_puntaje_mensaje-855
-5;331;12;343;calc_nivel_confianza-824
-10;479;30;509;calc_premio-755
-20;120;4;124;consultar_validez_mensaje-935
-13;267;9;276;calc_puntaje_mensaje-857
-2;122;4;126;consultar_validez_mensaje-938
-8;338;12;350;calc_nivel_confianza-829
-10;479;30;509;calc_premio-767
-10;481;30;511;calc_premio-768
-17;200;12;212;firmar_mensaje-905
-7;337;12;349;calc_nivel_confianza-838
-5;125;4;129;consultar_validez_mensaje-951
-18;203;12;215;firmar_mensaje-907
-19;205;12;217;firmar_mensaje-906
-8;342;12;354;calc_nivel_confianza-839
-7;127;4;131;consultar_validez_mensaje-954
-17;205;12;217;firmar_mensaje-909
-8;128;4;132;consultar_validez_mensaje-955
-9;129;4;133;consultar_validez_mensaje-957
-8;349;12;361;calc_nivel_confianza-841
-17;210;12;222;firmar_mensaje-913
-13;490;30;520;calc_premio-778
-14;488;30;518;calc_premio-781
-10;130;4;134;consultar_validez_mensaje-968
-14;487;30;517;calc_premio-782
-18;209;12;221;firmar_mensaje-917
-18;209;12;221;firmar_mensaje-918
-14;492;30;522;calc_premio-783
-13;133;4;137;consultar_validez_mensaje-970
-11;356;12;368;calc_nivel_confianza-849
-14;134;4;138;consultar_validez_mensaje-973
-13;133;4;137;consultar_validez_mensaje-974
-19;209;12;221;firmar_mensaje-924
-20;210;12;222;firmar_mensaje-926
-19;209;12;221;firmar_mensaje-928
-11;131;4;135;consultar_validez_mensaje-979
-14;288;9;297;calc_puntaje_mensaje-891
-13;286;9;295;calc_puntaje_mensaje-892
-13;133;4;137;consultar_validez_mensaje-988
-13;364;12;376;calc_nivel_confianza-860
-14;134;4;138;consultar_validez_mensaje-990
-16;500;30;530;calc_premio-796
-1;216;12;228;firmar_mensaje-937
-15;292;9;301;calc_puntaje_mensaje-899
-14;367;12;379;calc_nivel_confianza-862
-2;218;12;230;firmar_mensaje-940
-3;220;12;232;firmar_mensaje-941
-3;221;12;233;firmar_mensaje-944
-13;371;12;383;calc_nivel_confianza-865
-18;138;4;142;consultar_validez_mensaje-998
-10;365;12;377;calc_nivel_confianza-868
-6;223;12;235;firmar_mensaje-947
-11;367;12;379;calc_nivel_confianza-871
-12;368;12;380;calc_nivel_confianza-872
-18;299;9;308;calc_puntaje_mensaje-912
-6;219;12;231;firmar_mensaje-952
-6;217;12;229;firmar_mensaje-953
-13;370;12;382;calc_nivel_confianza-873
-9;218;12;230;firmar_mensaje-956
-12;218;12;230;firmar_mensaje-961
-13;219;12;231;firmar_mensaje-963
-16;295;9;304;calc_puntaje_mensaje-916
-15;368;12;380;calc_nivel_confianza-877
-11;214;12;226;firmar_mensaje-966
-7;500;30;530;calc_premio-812
-7;500;30;530;calc_premio-813
-13;211;12;223;firmar_mensaje-971
-15;360;12;372;calc_nivel_confianza-887
-8;502;30;532;calc_premio-814
-10;206;12;218;firmar_mensaje-976
-10;207;12;219;firmar_mensaje-977
-2;289;9;298;calc_puntaje_mensaje-930
-1;289;9;298;calc_puntaje_mensaje-931
-7;498;30;528;calc_premio-818
-20;288;9;297;calc_puntaje_mensaje-933
-13;359;12;371;calc_nivel_confianza-895
-14;359;12;371;calc_nivel_confianza-897
-5;498;30;528;calc_premio-825
-8;495;30;525;calc_premio-827
-14;204;12;216;firmar_mensaje-989
-16;362;12;374;calc_nivel_confianza-900
-3;287;9;296;calc_puntaje_mensaje-943
-3;286;9;295;calc_puntaje_mensaje-945
-17;200;12;212;firmar_mensaje-995
-17;361;12;373;calc_nivel_confianza-904
-18;202;12;214;firmar_mensaje-997
-3;285;9;294;calc_puntaje_mensaje-949
-3;283;9;292;calc_puntaje_mensaje-950
-16;359;12;371;calc_nivel_confianza-910
-13;280;9;289;calc_puntaje_mensaje-962
-10;281;9;290;calc_puntaje_mensaje-960
-6;499;30;529;calc_premio-834
-17;358;12;370;calc_nivel_confianza-914
-7;502;30;532;calc_premio-833
-13;275;9;284;calc_puntaje_mensaje-967
-11;270;9;279;calc_puntaje_mensaje-969
-19;344;12;356;calc_nivel_confianza-923
-20;342;12;354;calc_nivel_confianza-927
-18;337;12;349;calc_nivel_confianza-929
-12;257;9;266;calc_puntaje_mensaje-980
-12;486;30;516;calc_premio-847
-11;256;9;265;calc_puntaje_mensaje-983
-1;333;12;345;calc_nivel_confianza-936
-13;485;30;515;calc_premio-850
-14;253;9;262;calc_puntaje_mensaje-986
-12;252;9;261;calc_puntaje_mensaje-987
-14;483;30;513;calc_premio-854
-2;332;12;344;calc_nivel_confianza-939
-15;250;9;259;calc_puntaje_mensaje-992
-3;331;12;343;calc_nivel_confianza-942
-12;473;30;503;calc_premio-858
-13;475;30;505;calc_premio-861
-10;318;12;330;calc_nivel_confianza-958
-9;317;12;329;calc_nivel_confianza-959
-14;315;12;327;calc_nivel_confianza-964
-11;473;30;503;calc_premio-864
-11;292;12;304;calc_nivel_confianza-975
-13;467;30;497;calc_premio-867
-13;469;30;499;calc_premio-866
-14;454;30;484;calc_premio-876
-14;447;30;477;calc_premio-881
-11;290;12;302;calc_nivel_confianza-978
-12;283;12;295;calc_nivel_confianza-984
-15;441;30;471;calc_premio-885
-15;440;30;470;calc_premio-886
-16;438;30;468;calc_premio-889
-15;440;30;470;calc_premio-888
-18;267;12;279;calc_nivel_confianza-996
-16;272;12;284;calc_nivel_confianza-993
-13;426;30;456;calc_premio-896
-13;431;30;461;calc_premio-893
-13;423;30;453;calc_premio-898
-16;423;30;453;calc_premio-901
-15;421;30;451;calc_premio-902
-15;422;30;452;calc_premio-903
-17;393;30;423;calc_premio-919
-18;393;30;423;calc_premio-921
-18;392;30;422;calc_premio-922
-1;372;30;402;calc_premio-932
-19;369;30;399;calc_premio-934
-4;356;30;386;calc_premio-946
-4;352;30;382;calc_premio-948
-13;333;30;363;calc_premio-965
-13;301;30;331;calc_premio-981
-14;320;30;350;calc_premio-972
-13;301;30;331;calc_premio-982
-13;294;30;324;calc_premio-985
-15;285;30;315;calc_premio-991
-16;279;30;309;calc_premio-994
-18;272;30;302;calc_premio-999
+RT	WT	ST	TT	Nombre Proceso
+0	0	9	9	calc_puntaje_mensaje-1
+0	1	9	10	calc_puntaje_mensaje-4
+1	1	12	13	calc_nivel_confianza-5
+0	0	12	12	calc_nivel_confianza-6
+1	1	12	13	firmar_mensaje-9
+0	5	9	14	calc_puntaje_mensaje-7
+1	9	12	21	calc_nivel_confianza-8
+0	2	30	32	calc_premio-3
+5	6	12	18	calc_nivel_confianza-10
+0	4	30	34	calc_premio-2
+7	7	12	19	firmar_mensaje-11
+4	7	9	16	calc_puntaje_mensaje-12
+4	7	9	16	calc_puntaje_mensaje-14
+2	2	4	6	consultar_validez_mensaje-18
+3	5	12	17	calc_nivel_confianza-13
+2	2	4	6	consultar_validez_mensaje-19
+4	4	12	16	firmar_mensaje-15
+3	3	4	7	consultar_validez_mensaje-22
+2	7	12	19	calc_nivel_confianza-16
+1	2	12	14	calc_nivel_confianza-21
+1	1	12	13	firmar_mensaje-24
+0	0	12	12	firmar_mensaje-26
+1	3	12	15	calc_nivel_confianza-25
+1	7	9	16	calc_puntaje_mensaje-27
+5	5	4	9	consultar_validez_mensaje-29
+1	1	4	5	consultar_validez_mensaje-32
+4	13	30	43	calc_premio-17
+1	6	30	36	calc_premio-20
+5	5	12	17	firmar_mensaje-30
+1	4	30	34	calc_premio-23
+4	4	4	8	consultar_validez_mensaje-37
+2	5	9	14	calc_puntaje_mensaje-33
+0	2	9	11	calc_puntaje_mensaje-34
+5	9	12	21	calc_nivel_confianza-31
+1	3	12	15	calc_nivel_confianza-35
+7	7	4	11	consultar_validez_mensaje-39
+3	3	4	7	consultar_validez_mensaje-42
+5	5	4	9	consultar_validez_mensaje-41
+0	10	30	40	calc_premio-28
+6	6	12	18	calc_nivel_confianza-40
+3	3	12	15	firmar_mensaje-43
+0	0	4	4	consultar_validez_mensaje-47
+0	0	12	12	calc_nivel_confianza-45
+1	1	12	13	calc_nivel_confianza-44
+1	1	12	13	firmar_mensaje-46
+2	2	4	6	consultar_validez_mensaje-48
+4	4	4	8	consultar_validez_mensaje-50
+1	1	4	5	consultar_validez_mensaje-51
+4	4	9	13	calc_puntaje_mensaje-49
+1	13	30	43	calc_premio-36
+3	12	30	42	calc_premio-38
+1	1	12	13	calc_nivel_confianza-52
+0	3	9	12	calc_puntaje_mensaje-54
+0	0	4	4	consultar_validez_mensaje-58
+0	0	4	4	consultar_validez_mensaje-59
+0	1	12	13	calc_nivel_confianza-55
+0	3	12	15	calc_nivel_confianza-56
+0	0	12	12	calc_nivel_confianza-60
+2	3	12	15	calc_nivel_confianza-57
+4	4	4	8	consultar_validez_mensaje-66
+5	5	12	17	firmar_mensaje-63
+4	5	9	14	calc_puntaje_mensaje-64
+2	6	12	18	calc_nivel_confianza-62
+0	0	9	9	calc_puntaje_mensaje-67
+4	5	12	17	calc_nivel_confianza-65
+4	4	4	8	consultar_validez_mensaje-69
+0	2	12	14	calc_nivel_confianza-68
+4	4	4	8	consultar_validez_mensaje-74
+2	2	12	14	firmar_mensaje-70
+0	6	9	15	calc_puntaje_mensaje-71
+0	7	9	16	calc_puntaje_mensaje-73
+0	24	30	54	calc_premio-53
+8	8	4	12	consultar_validez_mensaje-79
+6	6	12	18	firmar_mensaje-76
+6	6	4	10	consultar_validez_mensaje-80
+0	9	12	21	calc_nivel_confianza-72
+4	11	12	23	calc_nivel_confianza-75
+2	18	30	48	calc_premio-61
+8	13	12	25	calc_nivel_confianza-77
+5	5	4	9	consultar_validez_mensaje-84
+5	5	12	17	firmar_mensaje-81
+3	6	9	15	calc_puntaje_mensaje-83
+3	3	4	7	consultar_validez_mensaje-88
+1	1	4	5	consultar_validez_mensaje-89
+2	3	12	15	calc_nivel_confianza-85
+3	4	9	13	calc_puntaje_mensaje-86
+1	1	12	13	firmar_mensaje-91
+0	2	9	11	calc_puntaje_mensaje-94
+3	4	12	16	firmar_mensaje-93
+2	2	4	6	consultar_validez_mensaje-98
+1	1	12	13	firmar_mensaje-96
+2	7	9	16	calc_puntaje_mensaje-100
+7	36	30	66	calc_premio-78
+4	11	12	23	calc_nivel_confianza-102
+3	11	9	20	calc_puntaje_mensaje-104
+5	30	30	60	calc_premio-82
+10	10	12	22	firmar_mensaje-107
+2	28	30	58	calc_premio-87
+13	13	12	25	firmar_mensaje-111
+2	36	30	66	calc_premio-90
+10	26	9	35	calc_puntaje_mensaje-108
+2	36	30	66	calc_premio-92
+12	31	9	40	calc_puntaje_mensaje-109
+0	35	30	65	calc_premio-95
+1	33	30	63	calc_premio-97
+12	25	9	34	calc_puntaje_mensaje-112
+10	29	12	41	calc_nivel_confianza-110
+20	20	12	32	firmar_mensaje-117
+12	27	12	39	calc_nivel_confianza-113
+18	19	12	31	firmar_mensaje-118
+16	16	12	28	firmar_mensaje-120
+14	33	9	42	calc_puntaje_mensaje-114
+19	19	12	31	firmar_mensaje-121
+2	50	30	80	calc_premio-99
+2	22	12	34	firmar_mensaje-123
+16	41	9	50	calc_puntaje_mensaje-115
+5	25	12	37	firmar_mensaje-124
+17	44	12	56	calc_nivel_confianza-116
+2	30	12	42	calc_nivel_confianza-122
+5	58	30	88	calc_premio-101
+13	33	4	37	consultar_validez_mensaje-130
+4	62	30	92	calc_premio-103
+17	37	4	41	consultar_validez_mensaje-134
+13	33	12	45	firmar_mensaje-131
+14	34	4	38	consultar_validez_mensaje-135
+8	42	9	51	calc_puntaje_mensaje-128
+15	35	12	47	firmar_mensaje-133
+7	41	12	53	calc_nivel_confianza-127
+15	35	4	39	consultar_validez_mensaje-137
+16	36	4	40	consultar_validez_mensaje-138
+13	33	4	37	consultar_validez_mensaje-140
+11	46	12	58	calc_nivel_confianza-129
+5	74	30	104	calc_premio-105
+7	27	4	31	consultar_validez_mensaje-144
+7	79	30	109	calc_premio-106
+7	27	4	31	consultar_validez_mensaje-147
+6	26	4	30	consultar_validez_mensaje-148
+15	43	12	55	calc_nivel_confianza-136
+13	39	12	51	calc_nivel_confianza-139
+8	28	12	40	firmar_mensaje-143
+13	40	9	49	calc_puntaje_mensaje-141
+9	38	9	47	calc_puntaje_mensaje-146
+8	28	4	32	consultar_validez_mensaje-152
+17	70	30	100	calc_premio-119
+9	35	9	44	calc_puntaje_mensaje-150
+10	37	9	46	calc_puntaje_mensaje-151
+6	34	12	46	calc_nivel_confianza-153
+9	29	12	41	firmar_mensaje-156
+7	76	30	106	calc_premio-126
+8	37	9	46	calc_puntaje_mensaje-155
+9	29	4	33	consultar_validez_mensaje-161
+7	81	30	111	calc_premio-125
+7	35	9	44	calc_puntaje_mensaje-158
+8	37	12	49	calc_nivel_confianza-157
+14	82	30	112	calc_premio-132
+11	31	4	35	consultar_validez_mensaje-167
+12	32	4	36	consultar_validez_mensaje-168
+13	33	4	37	consultar_validez_mensaje-169
+10	43	9	52	calc_puntaje_mensaje-162
+9	43	9	52	calc_puntaje_mensaje-163
+13	33	4	37	consultar_validez_mensaje-172
+10	44	9	53	calc_puntaje_mensaje-164
+12	32	4	36	consultar_validez_mensaje-173
+8	41	12	53	calc_nivel_confianza-165
+14	34	4	38	consultar_validez_mensaje-174
+11	43	12	55	calc_nivel_confianza-166
+8	75	30	105	calc_premio-145
+11	81	30	111	calc_premio-142
+11	41	9	50	calc_puntaje_mensaje-171
+12	32	12	44	firmar_mensaje-175
+12	44	12	56	calc_nivel_confianza-170
+14	34	4	38	consultar_validez_mensaje-180
+10	30	4	34	consultar_validez_mensaje-183
+10	78	30	108	calc_premio-149
+11	40	9	49	calc_puntaje_mensaje-176
+9	38	9	47	calc_puntaje_mensaje-177
+8	37	9	46	calc_puntaje_mensaje-178
+11	31	12	43	firmar_mensaje-182
+5	76	30	106	calc_premio-154
+11	45	9	54	calc_puntaje_mensaje-179
+9	41	9	50	calc_puntaje_mensaje-185
+12	46	12	58	calc_nivel_confianza-181
+12	32	12	44	firmar_mensaje-188
+10	42	9	51	calc_puntaje_mensaje-186
+12	32	12	44	firmar_mensaje-190
+10	30	4	34	consultar_validez_mensaje-194
+7	79	30	109	calc_premio-159
+12	43	12	55	calc_nivel_confianza-187
+11	41	9	50	calc_puntaje_mensaje-189
+9	79	30	109	calc_premio-160
+11	41	9	50	calc_puntaje_mensaje-191
+12	33	12	45	firmar_mensaje-193
+10	30	4	34	consultar_validez_mensaje-199
+12	32	12	44	firmar_mensaje-195
+8	28	4	32	consultar_validez_mensaje-200
+12	43	9	52	calc_puntaje_mensaje-192
+10	36	9	45	calc_puntaje_mensaje-196
+10	37	9	46	calc_puntaje_mensaje-197
+7	27	4	31	consultar_validez_mensaje-204
+8	28	4	32	consultar_validez_mensaje-206
+7	33	12	45	calc_nivel_confianza-203
+7	27	12	39	firmar_mensaje-208
+7	27	12	39	firmar_mensaje-209
+7	27	12	39	firmar_mensaje-212
+7	38	12	50	calc_nivel_confianza-205
+11	31	4	35	consultar_validez_mensaje-216
+11	31	12	43	firmar_mensaje-213
+8	40	9	49	calc_puntaje_mensaje-210
+11	32	12	44	firmar_mensaje-214
+10	30	12	42	firmar_mensaje-215
+5	37	12	49	calc_nivel_confianza-211
+11	38	9	47	calc_puntaje_mensaje-218
+9	79	30	109	calc_premio-184
+11	39	12	51	calc_nivel_confianza-217
+10	37	12	49	calc_nivel_confianza-219
+11	46	9	55	calc_puntaje_mensaje-221
+11	45	12	57	calc_nivel_confianza-222
+15	35	12	47	firmar_mensaje-230
+7	46	9	55	calc_puntaje_mensaje-225
+9	81	30	111	calc_premio-198
+12	52	12	64	calc_nivel_confianza-226
+12	52	12	64	calc_nivel_confianza-227
+14	55	9	64	calc_puntaje_mensaje-228
+8	86	30	116	calc_premio-202
+1	42	12	54	calc_nivel_confianza-238
+7	88	30	118	calc_premio-201
+1	46	12	58	calc_nivel_confianza-239
+4	44	4	48	consultar_validez_mensaje-243
+5	45	4	49	consultar_validez_mensaje-245
+5	45	4	49	consultar_validez_mensaje-246
+1	49	12	61	calc_nivel_confianza-240
+7	47	4	51	consultar_validez_mensaje-248
+8	48	4	52	consultar_validez_mensaje-249
+18	72	12	84	calc_nivel_confianza-232
+8	48	4	52	consultar_validez_mensaje-251
+10	104	30	134	calc_premio-207
+5	52	12	64	firmar_mensaje-247
+19	75	9	84	calc_puntaje_mensaje-236
+9	49	4	53	consultar_validez_mensaje-255
+8	55	12	67	firmar_mensaje-250
+8	58	12	70	firmar_mensaje-252
+20	79	9	88	calc_puntaje_mensaje-241
+14	54	4	58	consultar_validez_mensaje-263
+14	54	4	58	consultar_validez_mensaje-264
+15	97	30	127	calc_premio-229
+5	69	9	78	calc_puntaje_mensaje-259
+7	78	12	90	calc_nivel_confianza-253
+15	55	4	59	consultar_validez_mensaje-269
+14	54	4	58	consultar_validez_mensaje-270
+12	62	12	74	firmar_mensaje-262
+9	84	12	96	calc_nivel_confianza-256
+11	77	9	86	calc_puntaje_mensaje-261
+12	52	4	56	consultar_validez_mensaje-275
+11	138	30	168	calc_premio-220
+12	52	4	56	consultar_validez_mensaje-277
+14	64	12	76	firmar_mensaje-268
+13	75	9	84	calc_puntaje_mensaje-265
+9	85	12	97	calc_nivel_confianza-260
+11	51	4	55	consultar_validez_mensaje-278
+19	119	30	149	calc_premio-233
+11	62	12	74	firmar_mensaje-271
+14	78	9	87	calc_puntaje_mensaje-266
+12	52	4	56	consultar_validez_mensaje-281
+19	124	30	154	calc_premio-235
+13	66	12	78	firmar_mensaje-274
+20	127	30	157	calc_premio-234
+10	73	9	82	calc_puntaje_mensaje-272
+13	64	12	76	firmar_mensaje-276
+11	72	9	81	calc_puntaje_mensaje-273
+14	54	4	58	consultar_validez_mensaje-283
+8	149	30	179	calc_premio-223
+8	147	30	177	calc_premio-224
+18	133	30	163	calc_premio-237
+11	74	9	83	calc_puntaje_mensaje-280
+12	62	12	74	firmar_mensaje-285
+12	69	9	78	calc_puntaje_mensaje-284
+13	62	12	74	firmar_mensaje-288
+1	135	30	165	calc_premio-242
+12	62	12	74	firmar_mensaje-289
+4	139	30	169	calc_premio-244
+9	60	12	72	firmar_mensaje-290
+18	164	30	194	calc_premio-231
+9	67	9	76	calc_puntaje_mensaje-292
+10	58	12	70	firmar_mensaje-295
+8	68	9	77	calc_puntaje_mensaje-293
+10	59	12	71	firmar_mensaje-297
+8	140	30	170	calc_premio-254
+9	141	30	171	calc_premio-257
+10	73	9	82	calc_puntaje_mensaje-296
+7	142	30	172	calc_premio-258
+10	81	12	93	calc_nivel_confianza-294
+12	52	4	56	consultar_validez_mensaje-312
+12	74	9	83	calc_puntaje_mensaje-299
+13	53	4	57	consultar_validez_mensaje-315
+13	53	4	57	consultar_validez_mensaje-314
+10	74	9	83	calc_puntaje_mensaje-304
+14	54	4	58	consultar_validez_mensaje-319
+12	79	9	88	calc_puntaje_mensaje-306
+10	89	12	101	calc_nivel_confianza-302
+9	89	12	101	calc_nivel_confianza-301
+16	155	30	185	calc_premio-267
+18	58	4	62	consultar_validez_mensaje-325
+10	95	12	107	calc_nivel_confianza-303
+14	73	12	85	firmar_mensaje-316
+20	60	4	64	consultar_validez_mensaje-329
+10	95	12	107	calc_nivel_confianza-305
+15	75	12	87	firmar_mensaje-320
+12	101	12	113	calc_nivel_confianza-307
+19	59	4	63	consultar_validez_mensaje-336
+20	60	4	64	consultar_validez_mensaje-337
+16	75	12	87	firmar_mensaje-324
+12	105	12	117	calc_nivel_confianza-310
+18	78	12	90	firmar_mensaje-327
+12	105	12	117	calc_nivel_confianza-311
+11	160	30	190	calc_premio-279
+17	96	9	105	calc_puntaje_mensaje-321
+12	106	12	118	calc_nivel_confianza-313
+20	77	12	89	firmar_mensaje-332
+13	158	30	188	calc_premio-282
+19	77	12	89	firmar_mensaje-333
+19	59	4	63	consultar_validez_mensaje-345
+13	112	12	124	calc_nivel_confianza-318
+17	96	9	105	calc_puntaje_mensaje-331
+14	166	30	196	calc_premio-286
+19	98	9	107	calc_puntaje_mensaje-334
+2	62	4	66	consultar_validez_mensaje-353
+3	63	4	67	consultar_validez_mensaje-355
+2	62	4	66	consultar_validez_mensaje-356
+15	176	30	206	calc_premio-287
+18	116	12	128	calc_nivel_confianza-328
+9	168	30	198	calc_premio-291
+18	118	12	130	calc_nivel_confianza-326
+18	100	9	109	calc_puntaje_mensaje-338
+18	100	9	109	calc_puntaje_mensaje-339
+19	118	12	130	calc_nivel_confianza-330
+1	100	9	109	calc_puntaje_mensaje-340
+1	81	12	93	firmar_mensaje-350
+20	80	12	92	firmar_mensaje-351
+19	100	9	109	calc_puntaje_mensaje-344
+19	59	4	63	consultar_validez_mensaje-367
+11	173	30	203	calc_premio-298
+19	101	9	110	calc_puntaje_mensaje-348
+2	62	4	66	consultar_validez_mensaje-370
+2	81	12	93	firmar_mensaje-359
+19	59	4	63	consultar_validez_mensaje-372
+10	179	30	209	calc_premio-300
+2	81	12	93	firmar_mensaje-361
+2	101	9	110	calc_puntaje_mensaje-352
+13	166	30	196	calc_premio-308
+2	82	12	94	firmar_mensaje-362
+20	123	12	135	calc_nivel_confianza-342
+1	61	4	65	consultar_validez_mensaje-377
+18	120	12	132	calc_nivel_confianza-346
+20	83	12	95	firmar_mensaje-366
+19	122	12	134	calc_nivel_confianza-349
+20	102	9	111	calc_puntaje_mensaje-364
+4	64	4	68	consultar_validez_mensaje-383
+12	189	30	219	calc_premio-309
+4	128	12	140	calc_nivel_confianza-354
+20	82	12	94	firmar_mensaje-374
+1	120	12	132	calc_nivel_confianza-357
+1	120	12	132	calc_nivel_confianza-358
+2	62	4	66	consultar_validez_mensaje-389
+13	190	30	220	calc_premio-317
+1	83	12	95	firmar_mensaje-379
+17	183	30	213	calc_premio-322
+2	127	12	139	calc_nivel_confianza-360
+1	123	12	135	calc_nivel_confianza-363
+17	183	30	213	calc_premio-323
+19	120	12	132	calc_nivel_confianza-365
+5	87	12	99	firmar_mensaje-380
+2	62	4	66	consultar_validez_mensaje-394
+20	103	9	112	calc_puntaje_mensaje-373
+1	61	4	65	consultar_validez_mensaje-395
+3	84	12	96	firmar_mensaje-382
+1	103	9	112	calc_puntaje_mensaje-376
+19	183	30	213	calc_premio-335
+2	88	12	100	firmar_mensaje-387
+7	67	4	71	consultar_validez_mensaje-408
+18	172	30	202	calc_premio-343
+2	128	12	140	calc_nivel_confianza-375
+7	67	4	71	consultar_validez_mensaje-411
+1	130	12	142	calc_nivel_confianza-378
+5	90	12	102	firmar_mensaje-401
+18	186	30	216	calc_premio-347
+6	66	4	70	consultar_validez_mensaje-419
+6	66	4	70	consultar_validez_mensaje-418
+7	93	12	105	firmar_mensaje-404
+3	116	9	125	calc_puntaje_mensaje-391
+7	97	12	109	firmar_mensaje-407
+4	144	12	156	calc_nivel_confianza-381
+3	122	9	131	calc_puntaje_mensaje-392
+1	216	30	246	calc_premio-341
+3	141	12	153	calc_nivel_confianza-384
+1	139	12	151	calc_nivel_confianza-385
+3	141	12	153	calc_nivel_confianza-386
+1	119	9	128	calc_puntaje_mensaje-398
+4	121	9	130	calc_puntaje_mensaje-400
+5	122	9	131	calc_puntaje_mensaje-403
+7	101	12	113	firmar_mensaje-414
+6	101	12	113	firmar_mensaje-416
+7	137	9	146	calc_puntaje_mensaje-409
+6	137	9	146	calc_puntaje_mensaje-410
+19	198	30	228	calc_premio-368
+7	136	9	145	calc_puntaje_mensaje-412
+19	79	4	83	consultar_validez_mensaje-449
+20	155	12	167	calc_nivel_confianza-396
+1	198	30	228	calc_premio-369
+5	134	9	143	calc_puntaje_mensaje-413
+1	154	12	166	calc_nivel_confianza-399
+13	109	12	121	firmar_mensaje-430
+18	78	4	82	consultar_validez_mensaje-451
+8	135	9	144	calc_puntaje_mensaje-415
+12	109	12	121	firmar_mensaje-431
+1	201	30	231	calc_premio-371
+12	108	12	120	firmar_mensaje-432
+5	161	12	173	calc_nivel_confianza-402
+6	140	9	149	calc_puntaje_mensaje-421
+2	82	4	86	consultar_validez_mensaje-462
+9	145	9	154	calc_puntaje_mensaje-424
+1	81	4	85	consultar_validez_mensaje-463
+20	80	4	84	consultar_validez_mensaje-464
+11	149	9	158	calc_puntaje_mensaje-426
+17	117	12	129	firmar_mensaje-443
+12	147	9	156	calc_puntaje_mensaje-433
+17	116	12	128	firmar_mensaje-453
+12	151	9	160	calc_puntaje_mensaje-435
+20	80	4	84	consultar_validez_mensaje-477
+14	152	9	161	calc_puntaje_mensaje-438
+14	153	9	162	calc_puntaje_mensaje-437
+19	118	12	130	firmar_mensaje-456
+14	155	9	164	calc_puntaje_mensaje-440
+2	82	4	86	consultar_validez_mensaje-480
+3	83	4	87	consultar_validez_mensaje-485
+8	187	12	199	calc_nivel_confianza-422
+15	159	9	168	calc_puntaje_mensaje-442
+9	188	12	200	calc_nivel_confianza-425
+17	160	9	169	calc_puntaje_mensaje-444
+2	230	30	260	calc_premio-388
+3	234	30	264	calc_premio-390
+2	123	12	135	firmar_mensaje-465
+20	120	12	132	firmar_mensaje-467
+1	122	12	134	firmar_mensaje-466
+1	81	4	85	consultar_validez_mensaje-490
+12	196	12	208	calc_nivel_confianza-429
+16	163	9	172	calc_puntaje_mensaje-452
+17	160	9	169	calc_puntaje_mensaje-454
+2	244	30	274	calc_premio-393
+1	128	12	140	firmar_mensaje-473
+2	239	30	269	calc_premio-397
+12	197	12	209	calc_nivel_confianza-436
+18	164	9	173	calc_puntaje_mensaje-457
+18	164	9	173	calc_puntaje_mensaje-460
+1	127	12	139	firmar_mensaje-479
+7	249	30	279	calc_premio-406
+7	250	30	280	calc_premio-405
+15	205	12	217	calc_nivel_confianza-441
+19	203	12	215	calc_nivel_confianza-446
+2	127	12	139	firmar_mensaje-486
+5	85	4	89	consultar_validez_mensaje-505
+1	167	9	176	calc_puntaje_mensaje-468
+5	85	4	89	consultar_validez_mensaje-506
+19	208	12	220	calc_nivel_confianza-450
+1	175	9	184	calc_puntaje_mensaje-472
+18	207	12	219	calc_nivel_confianza-455
+7	87	4	91	consultar_validez_mensaje-515
+18	207	12	219	calc_nivel_confianza-458
+7	87	4	91	consultar_validez_mensaje-516
+6	131	12	143	firmar_mensaje-496
+18	210	12	222	calc_nivel_confianza-459
+5	85	4	89	consultar_validez_mensaje-520
+20	212	12	224	calc_nivel_confianza-461
+6	267	30	297	calc_premio-417
+2	176	9	185	calc_puntaje_mensaje-483
+6	131	12	143	firmar_mensaje-501
+5	271	30	301	calc_premio-420
+6	86	4	90	consultar_validez_mensaje-527
+8	275	30	305	calc_premio-423
+5	85	4	89	consultar_validez_mensaje-532
+12	280	30	310	calc_premio-427
+19	214	12	226	calc_nivel_confianza-471
+20	218	12	230	calc_nivel_confianza-474
+7	87	4	91	consultar_validez_mensaje-537
+12	288	30	318	calc_premio-428
+6	179	9	188	calc_puntaje_mensaje-497
+7	133	12	145	firmar_mensaje-513
+7	180	9	189	calc_puntaje_mensaje-498
+6	179	9	188	calc_puntaje_mensaje-499
+6	135	12	147	firmar_mensaje-517
+12	289	30	319	calc_premio-434
+1	222	12	234	calc_nivel_confianza-481
+6	138	12	150	firmar_mensaje-518
+2	226	12	238	calc_nivel_confianza-482
+12	92	4	96	consultar_validez_mensaje-551
+6	139	12	151	firmar_mensaje-523
+6	139	12	151	firmar_mensaje-524
+14	298	30	328	calc_premio-439
+4	182	9	191	calc_puntaje_mensaje-507
+4	136	12	148	firmar_mensaje-529
+13	93	4	97	consultar_validez_mensaje-559
+19	302	30	332	calc_premio-445
+5	183	9	192	calc_puntaje_mensaje-508
+14	94	4	98	consultar_validez_mensaje-560
+4	138	12	150	firmar_mensaje-531
+3	229	12	241	calc_nivel_confianza-491
+20	307	30	337	calc_premio-447
+20	304	30	334	calc_premio-448
+5	184	9	193	calc_puntaje_mensaje-511
+5	235	12	247	calc_nivel_confianza-492
+4	141	12	153	firmar_mensaje-534
+7	190	9	199	calc_puntaje_mensaje-512
+5	233	12	245	calc_nivel_confianza-495
+15	95	4	99	consultar_validez_mensaje-566
+7	192	9	201	calc_puntaje_mensaje-514
+17	97	4	101	consultar_validez_mensaje-569
+19	99	4	103	consultar_validez_mensaje-572
+6	146	12	158	firmar_mensaje-540
+4	192	9	201	calc_puntaje_mensaje-519
+20	100	4	104	consultar_validez_mensaje-573
+18	98	4	102	consultar_validez_mensaje-575
+19	99	4	103	consultar_validez_mensaje-576
+7	197	9	206	calc_puntaje_mensaje-525
+11	149	12	161	firmar_mensaje-548
+12	150	12	162	firmar_mensaje-550
+5	242	12	254	calc_nivel_confianza-502
+7	199	9	208	calc_puntaje_mensaje-526
+4	240	12	252	calc_nivel_confianza-504
+11	149	12	161	firmar_mensaje-553
+20	100	4	104	consultar_validez_mensaje-581
+18	98	4	102	consultar_validez_mensaje-583
+14	152	12	164	firmar_mensaje-556
+2	102	4	106	consultar_validez_mensaje-585
+6	245	12	257	calc_nivel_confianza-510
+15	152	12	164	firmar_mensaje-561
+1	325	30	355	calc_premio-469
+14	153	12	165	firmar_mensaje-562
+18	98	4	102	consultar_validez_mensaje-592
+2	329	30	359	calc_premio-470
+19	99	4	103	consultar_validez_mensaje-594
+9	203	9	212	calc_puntaje_mensaje-544
+19	329	30	359	calc_premio-475
+17	153	12	165	firmar_mensaje-570
+17	97	4	101	consultar_validez_mensaje-600
+11	203	9	212	calc_puntaje_mensaje-545
+5	247	12	259	calc_nivel_confianza-521
+9	202	9	211	calc_puntaje_mensaje-546
+15	95	4	99	consultar_validez_mensaje-603
+19	153	12	165	firmar_mensaje-574
+10	203	9	212	calc_puntaje_mensaje-547
+20	333	30	363	calc_premio-476
+20	331	30	361	calc_premio-478
+4	247	12	259	calc_nivel_confianza-522
+14	94	4	98	consultar_validez_mensaje-604
+15	95	4	99	consultar_validez_mensaje-605
+15	95	4	99	consultar_validez_mensaje-608
+16	96	4	100	consultar_validez_mensaje-610
+4	249	12	261	calc_nivel_confianza-528
+3	245	12	257	calc_nivel_confianza-530
+4	339	30	369	calc_premio-484
+3	334	30	364	calc_premio-487
+2	336	30	366	calc_premio-488
+20	154	12	166	firmar_mensaje-584
+20	337	30	367	calc_premio-489
+16	96	4	100	consultar_validez_mensaje-622
+19	153	12	165	firmar_mensaje-588
+17	210	9	219	calc_puntaje_mensaje-565
+7	258	12	270	calc_nivel_confianza-536
+15	95	4	99	consultar_validez_mensaje-625
+18	155	12	167	firmar_mensaje-591
+15	209	9	218	calc_puntaje_mensaje-568
+17	153	12	165	firmar_mensaje-593
+5	352	30	382	calc_premio-493
+5	350	30	380	calc_premio-494
+18	155	12	167	firmar_mensaje-597
+17	156	12	168	firmar_mensaje-599
+20	100	4	104	consultar_validez_mensaje-632
+13	263	12	275	calc_nivel_confianza-549
+15	154	12	166	firmar_mensaje-602
+10	260	12	272	calc_nivel_confianza-552
+7	353	30	383	calc_premio-500
+19	99	4	103	consultar_validez_mensaje-642
+4	356	30	386	calc_premio-503
+18	98	4	102	consultar_validez_mensaje-644
+14	152	12	164	firmar_mensaje-618
+16	270	12	282	calc_nivel_confianza-563
+15	267	12	279	calc_nivel_confianza-564
+14	155	12	167	firmar_mensaje-620
+16	266	12	278	calc_nivel_confianza-567
+18	98	4	102	consultar_validez_mensaje-650
+6	357	30	387	calc_premio-509
+17	156	12	168	firmar_mensaje-624
+18	266	12	278	calc_nivel_confianza-571
+16	96	4	100	consultar_validez_mensaje-656
+17	267	12	279	calc_nivel_confianza-579
+16	96	4	100	consultar_validez_mensaje-662
+15	211	9	220	calc_puntaje_mensaje-607
+19	269	12	281	calc_nivel_confianza-580
+14	208	9	217	calc_puntaje_mensaje-609
+16	96	4	100	consultar_validez_mensaje-663
+13	209	9	218	calc_puntaje_mensaje-611
+16	96	4	100	consultar_validez_mensaje-667
+18	157	12	169	firmar_mensaje-638
+13	209	9	218	calc_puntaje_mensaje-615
+1	101	4	105	consultar_validez_mensaje-670
+20	162	12	174	firmar_mensaje-640
+20	276	12	288	calc_nivel_confianza-586
+18	277	12	289	calc_nivel_confianza-590
+15	219	9	228	calc_puntaje_mensaje-623
+19	274	12	286	calc_nivel_confianza-595
+5	374	30	404	calc_premio-533
+20	163	12	175	firmar_mensaje-648
+3	103	4	107	consultar_validez_mensaje-679
+2	102	4	106	consultar_validez_mensaje-680
+18	158	12	170	firmar_mensaje-651
+7	375	30	405	calc_premio-535
+18	160	12	172	firmar_mensaje-652
+7	374	30	404	calc_premio-538
+17	215	9	224	calc_puntaje_mensaje-631
+16	159	12	171	firmar_mensaje-654
+5	375	30	405	calc_premio-539
+17	276	12	288	calc_nivel_confianza-601
+4	104	4	108	consultar_validez_mensaje-684
+20	219	9	228	calc_puntaje_mensaje-633
+8	378	30	408	calc_premio-542
+7	380	30	410	calc_premio-541
+5	105	4	109	consultar_validez_mensaje-686
+4	104	4	108	consultar_validez_mensaje-687
+19	218	9	227	calc_puntaje_mensaje-636
+8	385	30	415	calc_premio-543
+19	219	9	228	calc_puntaje_mensaje-637
+18	216	9	225	calc_puntaje_mensaje-639
+5	105	4	109	consultar_validez_mensaje-692
+15	275	12	287	calc_nivel_confianza-612
+17	162	12	174	firmar_mensaje-664
+11	382	30	412	calc_premio-554
+13	274	12	286	calc_nivel_confianza-614
+12	384	30	414	calc_premio-555
+12	270	12	282	calc_nivel_confianza-617
+3	103	4	107	consultar_validez_mensaje-701
+13	385	30	415	calc_premio-557
+3	103	4	107	consultar_validez_mensaje-702
+14	279	12	291	calc_nivel_confianza-619
+1	164	12	176	firmar_mensaje-671
+12	386	30	416	calc_premio-558
+19	225	9	234	calc_puntaje_mensaje-647
+17	281	12	293	calc_nivel_confianza-627
+17	280	12	292	calc_nivel_confianza-628
+19	285	12	297	calc_nivel_confianza-629
+20	284	12	296	calc_nivel_confianza-630
+16	223	9	232	calc_puntaje_mensaje-657
+3	169	12	181	firmar_mensaje-683
+17	228	9	237	calc_puntaje_mensaje-658
+17	226	9	235	calc_puntaje_mensaje-659
+5	105	4	109	consultar_validez_mensaje-722
+6	106	4	110	consultar_validez_mensaje-725
+16	226	9	235	calc_puntaje_mensaje-665
+18	398	30	428	calc_premio-577
+17	397	30	427	calc_premio-578
+3	168	12	180	firmar_mensaje-694
+20	229	9	238	calc_puntaje_mensaje-669
+19	394	30	424	calc_premio-582
+20	292	12	304	calc_nivel_confianza-641
+2	230	9	239	calc_puntaje_mensaje-672
+3	232	9	241	calc_puntaje_mensaje-673
+4	168	12	180	firmar_mensaje-699
+4	169	12	181	firmar_mensaje-703
+1	403	30	433	calc_premio-587
+5	105	4	109	consultar_validez_mensaje-740
+5	236	9	245	calc_puntaje_mensaje-677
+3	234	9	243	calc_puntaje_mensaje-678
+4	171	12	183	firmar_mensaje-706
+3	171	12	183	firmar_mensaje-707
+20	299	12	311	calc_nivel_confianza-649
+5	175	12	187	firmar_mensaje-709
+18	409	30	439	calc_premio-589
+18	293	12	305	calc_nivel_confianza-653
+2	236	9	245	calc_puntaje_mensaje-682
+17	294	12	306	calc_nivel_confianza-655
+18	407	30	437	calc_premio-596
+10	110	4	114	consultar_validez_mensaje-748
+6	173	12	185	firmar_mensaje-716
+17	404	30	434	calc_premio-598
+5	174	12	186	firmar_mensaje-719
+17	293	12	305	calc_nivel_confianza-661
+9	109	4	113	consultar_validez_mensaje-754
+7	107	4	111	consultar_validez_mensaje-757
+7	107	4	111	consultar_validez_mensaje-759
+3	237	9	246	calc_puntaje_mensaje-693
+4	236	9	245	calc_puntaje_mensaje-695
+15	406	30	436	calc_premio-606
+4	236	9	245	calc_puntaje_mensaje-696
+20	296	12	308	calc_nivel_confianza-668
+6	174	12	186	firmar_mensaje-729
+7	176	12	188	firmar_mensaje-730
+15	410	30	440	calc_premio-613
+4	236	9	245	calc_puntaje_mensaje-704
+6	173	12	185	firmar_mensaje-735
+14	408	30	438	calc_premio-616
+6	177	12	189	firmar_mensaje-736
+4	305	12	317	calc_nivel_confianza-675
+5	305	12	317	calc_nivel_confianza-676
+4	176	12	188	firmar_mensaje-737
+13	113	4	117	consultar_validez_mensaje-770
+12	112	4	116	consultar_validez_mensaje-771
+14	417	30	447	calc_premio-621
+14	114	4	118	consultar_validez_mensaje-780
+8	183	12	195	firmar_mensaje-741
+10	185	12	197	firmar_mensaje-746
+6	251	9	260	calc_puntaje_mensaje-717
+16	426	30	456	calc_premio-626
+5	313	12	325	calc_nivel_confianza-685
+5	247	9	256	calc_puntaje_mensaje-721
+16	116	4	120	consultar_validez_mensaje-786
+9	182	12	194	firmar_mensaje-752
+17	425	30	455	calc_premio-635
+16	116	4	120	consultar_validez_mensaje-791
+9	185	12	197	firmar_mensaje-756
+4	310	12	322	calc_nivel_confianza-697
+20	435	30	465	calc_premio-634
+7	183	12	195	firmar_mensaje-760
+2	313	12	325	calc_nivel_confianza-698
+3	311	12	323	calc_nivel_confianza-700
+6	182	12	194	firmar_mensaje-761
+15	115	4	119	consultar_validez_mensaje-797
+8	180	12	192	firmar_mensaje-763
+11	111	4	115	consultar_validez_mensaje-799
+5	245	9	254	calc_puntaje_mensaje-738
+4	310	12	322	calc_nivel_confianza-705
+18	428	30	458	calc_premio-643
+7	249	9	258	calc_puntaje_mensaje-739
+11	111	4	115	consultar_validez_mensaje-804
+13	183	12	195	firmar_mensaje-769
+7	313	12	325	calc_nivel_confianza-711
+18	432	30	462	calc_premio-645
+10	110	4	114	consultar_validez_mensaje-806
+10	110	4	114	consultar_validez_mensaje-807
+18	432	30	462	calc_premio-646
+9	250	9	259	calc_puntaje_mensaje-742
+7	319	12	331	calc_nivel_confianza-712
+7	107	4	111	consultar_validez_mensaje-810
+5	315	12	327	calc_nivel_confianza-714
+6	106	4	110	consultar_validez_mensaje-811
+9	253	9	262	calc_puntaje_mensaje-747
+9	250	9	259	calc_puntaje_mensaje-751
+6	312	12	324	calc_nivel_confianza-723
+15	182	12	194	firmar_mensaje-785
+8	248	9	257	calc_puntaje_mensaje-753
+16	434	30	464	calc_premio-660
+8	319	12	331	calc_nivel_confianza-726
+8	250	9	259	calc_puntaje_mensaje-758
+7	316	12	328	calc_nivel_confianza-728
+8	108	4	112	consultar_validez_mensaje-821
+6	106	4	110	consultar_validez_mensaje-823
+17	434	30	464	calc_premio-666
+18	185	12	197	firmar_mensaje-793
+7	246	9	255	calc_puntaje_mensaje-764
+7	107	4	111	consultar_validez_mensaje-828
+8	108	4	112	consultar_validez_mensaje-830
+8	249	9	258	calc_puntaje_mensaje-765
+12	179	12	191	firmar_mensaje-800
+12	179	12	191	firmar_mensaje-801
+12	179	12	191	firmar_mensaje-802
+4	440	30	470	calc_premio-674
+13	250	9	259	calc_puntaje_mensaje-774
+14	248	9	257	calc_puntaje_mensaje-775
+13	247	9	256	calc_puntaje_mensaje-776
+11	247	9	256	calc_puntaje_mensaje-777
+14	248	9	257	calc_puntaje_mensaje-779
+8	108	4	112	consultar_validez_mensaje-836
+8	174	12	186	firmar_mensaje-808
+9	317	12	329	calc_nivel_confianza-745
+8	175	12	187	firmar_mensaje-809
+2	441	30	471	calc_premio-681
+8	108	4	112	consultar_validez_mensaje-842
+12	249	9	258	calc_puntaje_mensaje-787
+14	253	9	262	calc_puntaje_mensaje-788
+13	252	9	261	calc_puntaje_mensaje-789
+8	182	12	194	firmar_mensaje-816
+13	113	4	117	consultar_validez_mensaje-851
+15	115	4	119	consultar_validez_mensaje-852
+15	115	4	119	consultar_validez_mensaje-853
+4	449	30	479	calc_premio-690
+4	453	30	483	calc_premio-689
+16	254	9	263	calc_puntaje_mensaje-794
+16	252	9	261	calc_puntaje_mensaje-795
+4	455	30	485	calc_premio-688
+4	453	30	483	calc_premio-691
+6	178	12	190	firmar_mensaje-822
+7	320	12	332	calc_nivel_confianza-762
+13	113	4	117	consultar_validez_mensaje-856
+13	113	4	117	consultar_validez_mensaje-859
+7	320	12	332	calc_nivel_confianza-766
+14	256	9	265	calc_puntaje_mensaje-798
+9	246	9	255	calc_puntaje_mensaje-803
+8	178	12	190	firmar_mensaje-831
+12	319	12	331	calc_nivel_confianza-773
+8	181	12	193	firmar_mensaje-832
+12	325	12	337	calc_nivel_confianza-772
+7	177	12	189	firmar_mensaje-835
+4	449	30	479	calc_premio-708
+6	450	30	480	calc_premio-710
+8	180	12	192	firmar_mensaje-837
+12	112	4	116	consultar_validez_mensaje-875
+7	180	12	192	firmar_mensaje-840
+17	325	12	337	calc_nivel_confianza-784
+5	456	30	486	calc_premio-713
+6	250	9	259	calc_puntaje_mensaje-815
+15	115	4	119	consultar_validez_mensaje-878
+13	113	4	117	consultar_validez_mensaje-879
+9	184	12	196	firmar_mensaje-843
+10	184	12	196	firmar_mensaje-844
+5	460	30	490	calc_premio-715
+9	184	12	196	firmar_mensaje-845
+5	458	30	488	calc_premio-718
+8	257	9	266	calc_puntaje_mensaje-817
+6	462	30	492	calc_premio-720
+13	329	12	341	calc_nivel_confianza-790
+6	459	30	489	calc_premio-724
+7	256	9	265	calc_puntaje_mensaje-819
+16	330	12	342	calc_nivel_confianza-792
+14	114	4	118	consultar_validez_mensaje-890
+6	251	9	260	calc_puntaje_mensaje-826
+13	113	4	117	consultar_validez_mensaje-894
+9	465	30	495	calc_premio-727
+5	456	30	486	calc_premio-732
+6	461	30	491	calc_premio-733
+6	462	30	492	calc_premio-731
+10	324	12	336	calc_nivel_confianza-805
+7	464	30	494	calc_premio-734
+13	189	12	201	firmar_mensaje-863
+19	119	4	123	consultar_validez_mensaje-908
+16	116	4	120	consultar_validez_mensaje-911
+12	188	12	200	firmar_mensaje-870
+12	189	12	201	firmar_mensaje-869
+17	117	4	121	consultar_validez_mensaje-915
+12	188	12	200	firmar_mensaje-874
+9	468	30	498	calc_premio-744
+10	470	30	500	calc_premio-743
+9	259	9	268	calc_puntaje_mensaje-846
+16	116	4	120	consultar_validez_mensaje-920
+13	191	12	203	firmar_mensaje-880
+11	265	9	274	calc_puntaje_mensaje-848
+7	470	30	500	calc_premio-749
+20	120	4	124	consultar_validez_mensaje-925
+7	472	30	502	calc_premio-750
+15	196	12	208	firmar_mensaje-882
+16	196	12	208	firmar_mensaje-883
+15	196	12	208	firmar_mensaje-884
+7	338	12	350	calc_nivel_confianza-820
+13	266	9	275	calc_puntaje_mensaje-855
+5	331	12	343	calc_nivel_confianza-824
+10	479	30	509	calc_premio-755
+20	120	4	124	consultar_validez_mensaje-935
+13	267	9	276	calc_puntaje_mensaje-857
+2	122	4	126	consultar_validez_mensaje-938
+8	338	12	350	calc_nivel_confianza-829
+10	479	30	509	calc_premio-767
+10	481	30	511	calc_premio-768
+17	200	12	212	firmar_mensaje-905
+7	337	12	349	calc_nivel_confianza-838
+5	125	4	129	consultar_validez_mensaje-951
+18	203	12	215	firmar_mensaje-907
+19	205	12	217	firmar_mensaje-906
+8	342	12	354	calc_nivel_confianza-839
+7	127	4	131	consultar_validez_mensaje-954
+17	205	12	217	firmar_mensaje-909
+8	128	4	132	consultar_validez_mensaje-955
+9	129	4	133	consultar_validez_mensaje-957
+8	349	12	361	calc_nivel_confianza-841
+17	210	12	222	firmar_mensaje-913
+13	490	30	520	calc_premio-778
+14	488	30	518	calc_premio-781
+10	130	4	134	consultar_validez_mensaje-968
+14	487	30	517	calc_premio-782
+18	209	12	221	firmar_mensaje-917
+18	209	12	221	firmar_mensaje-918
+14	492	30	522	calc_premio-783
+13	133	4	137	consultar_validez_mensaje-970
+11	356	12	368	calc_nivel_confianza-849
+14	134	4	138	consultar_validez_mensaje-973
+13	133	4	137	consultar_validez_mensaje-974
+19	209	12	221	firmar_mensaje-924
+20	210	12	222	firmar_mensaje-926
+19	209	12	221	firmar_mensaje-928
+11	131	4	135	consultar_validez_mensaje-979
+14	288	9	297	calc_puntaje_mensaje-891
+13	286	9	295	calc_puntaje_mensaje-892
+13	133	4	137	consultar_validez_mensaje-988
+13	364	12	376	calc_nivel_confianza-860
+14	134	4	138	consultar_validez_mensaje-990
+16	500	30	530	calc_premio-796
+1	216	12	228	firmar_mensaje-937
+15	292	9	301	calc_puntaje_mensaje-899
+14	367	12	379	calc_nivel_confianza-862
+2	218	12	230	firmar_mensaje-940
+3	220	12	232	firmar_mensaje-941
+3	221	12	233	firmar_mensaje-944
+13	371	12	383	calc_nivel_confianza-865
+18	138	4	142	consultar_validez_mensaje-998
+10	365	12	377	calc_nivel_confianza-868
+6	223	12	235	firmar_mensaje-947
+11	367	12	379	calc_nivel_confianza-871
+12	368	12	380	calc_nivel_confianza-872
+18	299	9	308	calc_puntaje_mensaje-912
+6	219	12	231	firmar_mensaje-952
+6	217	12	229	firmar_mensaje-953
+13	370	12	382	calc_nivel_confianza-873
+9	218	12	230	firmar_mensaje-956
+12	218	12	230	firmar_mensaje-961
+13	219	12	231	firmar_mensaje-963
+16	295	9	304	calc_puntaje_mensaje-916
+15	368	12	380	calc_nivel_confianza-877
+11	214	12	226	firmar_mensaje-966
+7	500	30	530	calc_premio-812
+7	500	30	530	calc_premio-813
+13	211	12	223	firmar_mensaje-971
+15	360	12	372	calc_nivel_confianza-887
+8	502	30	532	calc_premio-814
+10	206	12	218	firmar_mensaje-976
+10	207	12	219	firmar_mensaje-977
+2	289	9	298	calc_puntaje_mensaje-930
+1	289	9	298	calc_puntaje_mensaje-931
+7	498	30	528	calc_premio-818
+20	288	9	297	calc_puntaje_mensaje-933
+13	359	12	371	calc_nivel_confianza-895
+14	359	12	371	calc_nivel_confianza-897
+5	498	30	528	calc_premio-825
+8	495	30	525	calc_premio-827
+14	204	12	216	firmar_mensaje-989
+16	362	12	374	calc_nivel_confianza-900
+3	287	9	296	calc_puntaje_mensaje-943
+3	286	9	295	calc_puntaje_mensaje-945
+17	200	12	212	firmar_mensaje-995
+17	361	12	373	calc_nivel_confianza-904
+18	202	12	214	firmar_mensaje-997
+3	285	9	294	calc_puntaje_mensaje-949
+3	283	9	292	calc_puntaje_mensaje-950
+16	359	12	371	calc_nivel_confianza-910
+13	280	9	289	calc_puntaje_mensaje-962
+10	281	9	290	calc_puntaje_mensaje-960
+6	499	30	529	calc_premio-834
+17	358	12	370	calc_nivel_confianza-914
+7	502	30	532	calc_premio-833
+13	275	9	284	calc_puntaje_mensaje-967
+11	270	9	279	calc_puntaje_mensaje-969
+19	344	12	356	calc_nivel_confianza-923
+20	342	12	354	calc_nivel_confianza-927
+18	337	12	349	calc_nivel_confianza-929
+12	257	9	266	calc_puntaje_mensaje-980
+12	486	30	516	calc_premio-847
+11	256	9	265	calc_puntaje_mensaje-983
+1	333	12	345	calc_nivel_confianza-936
+13	485	30	515	calc_premio-850
+14	253	9	262	calc_puntaje_mensaje-986
+12	252	9	261	calc_puntaje_mensaje-987
+14	483	30	513	calc_premio-854
+2	332	12	344	calc_nivel_confianza-939
+15	250	9	259	calc_puntaje_mensaje-992
+3	331	12	343	calc_nivel_confianza-942
+12	473	30	503	calc_premio-858
+13	475	30	505	calc_premio-861
+10	318	12	330	calc_nivel_confianza-958
+9	317	12	329	calc_nivel_confianza-959
+14	315	12	327	calc_nivel_confianza-964
+11	473	30	503	calc_premio-864
+11	292	12	304	calc_nivel_confianza-975
+13	467	30	497	calc_premio-867
+13	469	30	499	calc_premio-866
+14	454	30	484	calc_premio-876
+14	447	30	477	calc_premio-881
+11	290	12	302	calc_nivel_confianza-978
+12	283	12	295	calc_nivel_confianza-984
+15	441	30	471	calc_premio-885
+15	440	30	470	calc_premio-886
+16	438	30	468	calc_premio-889
+15	440	30	470	calc_premio-888
+18	267	12	279	calc_nivel_confianza-996
+16	272	12	284	calc_nivel_confianza-993
+13	426	30	456	calc_premio-896
+13	431	30	461	calc_premio-893
+13	423	30	453	calc_premio-898
+16	423	30	453	calc_premio-901
+15	421	30	451	calc_premio-902
+15	422	30	452	calc_premio-903
+17	393	30	423	calc_premio-919
+18	393	30	423	calc_premio-921
+18	392	30	422	calc_premio-922
+1	372	30	402	calc_premio-932
+19	369	30	399	calc_premio-934
+4	356	30	386	calc_premio-946
+4	352	30	382	calc_premio-948
+13	333	30	363	calc_premio-965
+13	301	30	331	calc_premio-981
+14	320	30	350	calc_premio-972
+13	301	30	331	calc_premio-982
+13	294	30	324	calc_premio-985
+15	285	30	315	calc_premio-991
+16	279	30	309	calc_premio-994
+18	272	30	302	calc_premio-999
